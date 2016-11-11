@@ -1,0 +1,43 @@
+{
+	"description": "grunt data config",
+	"developDir": {
+		"srcPath": "src/",
+		"devPath": "dev/",
+		"destPath": "dist/"
+	},
+	"taskConfig": {
+		"html": "index.html",
+		"less": {
+			"files": ["css/index.less"]
+		},
+		"requirejs": {
+			"config": "theme/main.js",
+			"out": "theme/main.dist.js"
+		},
+		"copy": {
+			"files": ["**", "!**/*.{less,js}", "!theme/common/**"]
+		},
+		"uglifyjs": {
+			"files": ["app.js"]
+		},
+		"imagemin": {
+			"jpg": ["**/*.jpg"],
+			"png": ["**/*.png"]
+		},
+		"commonJSUrl": {
+			"local": "",
+			"server": "http://p0.cdn.iwasai.com/data/common/javascript/wow/"
+		},
+		"url": {
+			"local": "",
+			"server": ""
+		},
+		"preload": {
+			"files": ["**/*.png", "**/*.jpg", "**/*.gif","**/*.mp3","!theme/common/loading_2/**"]
+		},
+		"concat":{
+			"dist":"app.js"
+		}
+	}
+
+}
