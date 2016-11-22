@@ -1,3 +1,10 @@
 <div class="feedback" ng-controller="feedbackCtrl">
-	
+    <div class="feedback_content_con">
+        <input class="input_title" placeholder="遇到问题：" ng-model="myfeedback.Title"></input>
+        <textarea class="input_content" placeholder="问题描述：" ng-model="myfeedback.MsgContent"></textarea>
+    </div>
+    <div class="btn_con">
+        <button class="btn_cancel" ng-click="cancelSubmit()">取消</button>
+        <button class="btn_commit" ng-click="submit()">提交</button>
+    </div>
 </div>
