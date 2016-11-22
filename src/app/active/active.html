@@ -1,0 +1,28 @@
+<div ng-controller='active_controller'>
+	<div class="activelist">
+
+		<div class="active_container" >
+
+			<div class="active_item" ng-repeat='active in all_acitves' ng-click='click_active(active)'>
+
+				<div class="active_cover_image">
+					<img src="{{active.s01}}" alt="">
+				</div>
+
+				<div class="is_applied" ng-show='active.IsSignUp==1'></div>
+
+				<div class="active_remind" ng-show='active.EventStatus==3 || active.EventStatus==2'>
+					<div class="active_remind_title" ng-show='active.EventStatus==2'>活动结束</div>
+					<div class="active_remind_title" ng-show='active.EventStatus==3'>活动回顾</div>
+				</div>
+
+				<div class="active_title" ng-show='active.EventStatus!=2'>{{active.Title}}</div>
+				<div class="active_title" ng-show='active.EventStatus==2'>资料整理中...</div>
+
+				<!-- <div class="active_end" ng-show='active.EventStatus==2'></div> -->
+				
+			</div>
+		</div>
+	</div>
+	
+</div>
