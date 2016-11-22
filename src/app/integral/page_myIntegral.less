@@ -1,0 +1,125 @@
+.integral_my {
+    ._br-position(0, 0, 100%, 100%);
+    .integral_my_top {
+        background-image: url('@{imgUrl}/integral_head.png');
+        background-size: 100% auto;
+        height: 235px;
+        .integral_my_top_left {
+            float: left;
+            padding-top: 78px;
+            .integral_icon {
+                background-image: url('@{imgUrl}/integral_icon.png');
+                width: 80px;
+                height: 80px;
+                background-size: 100% 100%;
+                margin-left: 50px;
+                float: left;
+            }
+            .integral_myNum {
+                margin-left: 30px;
+                margin-top: 83px-78px;
+                float: left;
+                width: 140px;
+                .integral_myNum_text {
+                    font-size: 24px;
+                    color: #EFEFF4;
+                }
+                .integral_myNum_textNum {
+                    font-size: 40px;
+                    color: #EFEFF4;
+                    line-height: 56px;
+                }
+            }
+        }
+        .split_line {
+            float: left;
+            background: #EFEFF4;
+            width: 1px;
+            height: 60px;
+            margin-top: 88px;
+            margin-left: 20px;
+        }
+        .integral_my_top_right {
+            float: left;
+            margin-left: 69px;
+            .btn_integral_exchange {
+                margin-top: 90px;
+                background: #EFEFF4;
+                border-radius: 6px;
+                width: 200px;
+                height: 60px;
+                text-align: center;
+                font-size: 32px;
+                color: #FF801A;
+                line-height: 60px;
+            }
+        }
+    }
+    .integral_my_body {
+        height: 100%;
+        .integral_my_body_title_con {
+            height: 93px;
+            border-bottom: 13px solid #EFEFF4;
+            .integral_my_body_title {
+                float: left;
+                width: 640px/3;
+                font-size: 24px;
+                color: #333333;
+                line-height: 93px-4px;
+                text-align: center;
+                &.selected {
+                    color: #508CEE;
+                    border-bottom: 4px solid #508CEE;
+                }
+            }
+        }
+        .integral_my_body_content {
+            height: 100%;
+            overflow-y: auto;
+            .integral_item {
+                border-bottom: 1px solid #EFEFF4;
+                padding-left: 24px;
+                padding-top: 10px;
+                padding-right: 24px;
+                padding-bottom: 12px;
+                .integral_type_icon {
+                    width: 80px;
+                    height: 80px;
+                    float: left;
+                    background-size: 100% 100%;
+                    &.achieve{
+						background-image: url('@{imgUrl}/integral_icon_achieve.png')
+                    }
+                    &.del{
+						background-image: url('@{imgUrl}/integral_icon_del.png')
+                    }
+                }
+                .top_text {
+                    margin-left: 80px+24px;
+                    .creditAmount {
+                        font-size: 32px;
+                        color: #FF801A;
+                        line-height: 45px;
+                        width: 200px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    .text_date {
+                        font-size: 22px;
+                        color: #999999;
+                        line-height: 34px;
+                        float: right;
+                        margin-right: 56px-24px;
+                    }
+                }
+                .creditDesc {
+                    margin-left: 80px+24px;
+                    font-size: 24px;
+                    color: #999999;
+                    line-height: 33px;
+                }
+            }
+        }
+    }
+}

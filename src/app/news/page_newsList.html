@@ -1,0 +1,21 @@
+<div class="news_list" ng-controller="newsListCtrl">
+    <div class="news_category_list">
+        <table style="border:none;">
+            <tr>
+                <td ng-repeat="NewsCategory in NewsCategorys">
+                    <div class="news_category {{NewsCategory.selected==1?'selected':''}}" ng-click="changeNewsCategory($index)">{{NewsCategory.CategoryName}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="news_content_list">
+        <div class="news_item" ng-repeat="news in NewsList" ng-click="gotoNewsDetail(news.InfoID)">
+            <div class="news_item_left" style="float: left;">
+                <div class="news_item_title">{{news.Title}}</div>
+                <div class="news_item_desc"><img src="./images/main_icon1_selected.png" style="width: 28px;height: 28px;top: 9px;position: relative;"><span style="margin-left: 12px;">{{news.Source}}</span><span style="margin-left: 20px;">{{getDateStr(news.Created)}}</span></div>
+            </div>
+            <img src="{{news.PhotoURL}}" style="width: 134px;height: 134px; float: right;margin-right: 24px;pointer-events: none;">
+        </div>
+        <div style="height: 102px"></div>
+    </div>
+</div>

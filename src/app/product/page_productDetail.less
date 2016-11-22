@@ -1,0 +1,187 @@
+.product_detail {
+    background-color: #EFEFF4;
+    ._br-position(0, 0, 640px, 100%);
+    .product_detail_all_content {
+        ._br-position(0, 0, 640px, 100%);
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .detail_cover {
+        height: 296px;
+        background-size: 100% auto;
+    }
+    .detail_title {
+        padding-top: 30px;
+        padding-left: 24px;
+        padding-right: 24px;
+        font-size: 32px;
+        line-height: 45px;
+        color: #EFEFF4;
+    }
+    .detail_Income {
+        position: absolute;
+        top: 87px;
+        font-size: 64px;
+        color: #EFEFF4;
+        font-weight: bold;
+        width: 640px;
+        text-align: center;
+    }
+    .detail_Income_text {
+        position: absolute;
+        top: 12px+87px+90px;
+        font-size: 24px;
+        line-height: 33px;
+        color: #EFEFF4;
+        width: 640px;
+        text-align: center;
+    }
+    .detail_content1 {
+        height: 88px;
+        background-color: white;
+    }
+    .detail_content1_text {
+        position: absolute;
+        top: 296px;
+        width: 640px/2;
+        text-align: center;
+        color: #999999;
+        font-size: 24px;
+        line-height: 40px;
+        padding-top: 24px;
+    }
+    .detail_content1_1content {
+        color: #508CEE;
+        font-size: 36px;
+    }
+    .detail_content1_2text {
+        left: 320px;
+    }
+    .detail_line {
+        width: 1px;
+        height: 48px;
+        background-color: #D8D8D8;
+        margin-left: 320px;
+        top: 20px;
+        position: relative;
+    }
+    .content_item_con {
+        background-color: white;
+        &.hideItem {
+            .content_item_title_arrow {
+                ._br-transform(rotate(180deg));
+            }
+            .content_element_table {
+                display: none;
+            }
+            .content_item_table{
+                display:none;
+            }
+        }
+    }
+    .content_item_title_con {
+        border-top: 12px solid #EFEFF4;
+    }
+    .content_item_title {
+        color: #333333;
+        font-size: 28px;
+        line-height: 40px;
+        margin-left: 24px;
+        margin-right: 24px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #EFEFF4;
+        pointer-events: none;
+    }
+    .content_item_title_arrow {
+        background-image: url("@{imgUrl}/arrow.png");
+        width: 20px;
+        height: 20px;
+        background-size: 100% auto;
+        float: right;
+        top: 70px-41px-41px-45px-24px;
+        right: 48px;
+        position: relative;
+        margin-top: 30px;
+    }
+    .content_item_content {
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+    .content_element_table {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        .content_element_item {
+            margin-left: 24px;
+            margin-right: 24px;
+        }
+        .content_element_item_content {
+            position: relative;
+            background: rgba(80, 140, 238, 0.10);
+        }
+        .content_element_item_content_left {
+            line-height: 40px;
+            height: 100%;
+            color: #333333;
+            font-size: 24px;
+            width: 103px;
+            margin-left: 56px;
+            float: left;
+        }
+        .content_element_item_content_right {
+            position: relative;
+            line-height: 40px;
+            color: #333333;
+            font-size: 24px;
+            line-height: 40px;
+            margin-left: 70px+56px+103px;
+        }
+    }
+    .content_item_table {
+        margin-left: 24px;
+        margin-right: 24px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        .content_element_item_yellow {
+            line-height: 40px;
+            height: 100%;
+            color: #FF801A;
+            font-size: 24px;
+            background: rgba(255, 128, 26, 0.10);
+        }
+        .content_element_item {
+            position: relative;
+            color: #999999;
+            height: 100%;
+            font-size: 24px;
+            line-height: 40px;
+        }
+    }
+    .phone_con {
+        background: #FF801A;
+        height: 88px;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        .phone_text {
+            text-align: center;
+            font-size: 36px;
+            color: #FFFFFF;
+            height: 100%;
+            line-height: 88px;
+        }
+        .icon_phone {
+            background-image: url('@{imgUrl}/product_detail_icon_phone.png');
+            width: 44px;
+            height: 44px;
+            background-size: 100% 100%;
+            margin-right: 24px;
+            top: 10px;
+            position: relative;
+        }
+    }
+    .highlight {
+        color: #FF801A;
+    }
+}

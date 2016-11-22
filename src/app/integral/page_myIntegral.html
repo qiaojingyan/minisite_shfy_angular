@@ -1,0 +1,55 @@
+<div class="integral_my" ng-controller="myIntegralCtrl">
+    <div class="integral_my_top">
+        <div class="integral_my_top_left">
+            <div class="integral_icon"></div>
+            <div class="integral_myNum">
+                <div class="integral_myNum_text">我的积分</div>
+                <div class="integral_myNum_textNum">{{myIntegral}}</div>
+            </div>
+        </div>
+        <div class="split_line"></div>
+        <div class="integral_my_top_right">
+            <div class="btn_integral_exchange" ng-click="gotoExchange()">积分兑换</div>
+        </div>
+    </div>
+    <div class="integral_my_body">
+        <div class="integral_my_body_title_con">
+            <div class="integral_my_body_title title1 selected" ng-click="changePage(1)">我的记录</div>
+            <div class="integral_my_body_title title2" ng-click="changePage(2)">获取记录</div>
+            <div class="integral_my_body_title title3" ng-click="changePage(3)">兑换记录</div>
+        </div>
+        <div class="integral_my_body_content">
+            <div class="integral_my_body_content_myrecords" ng-if="selectedPage == 1">
+                <div class="integral_item" ng-repeat="record in myIntegralRecords">
+                    <div class="integral_type_icon {{record.CreditType==1?'achieve':'del'}}"></div>
+                    <div class="top_text">
+                        <span class="creditAmount">{{record.CreditType == 1?'+':'-'}}{{record.CreditAmount}}</span>
+                        <span class="text_date">{{record.CreditDateText}}</span>
+                    </div>
+                    <div class="creditDesc">{{record.CreditDesc}}</div>
+                </div>
+            </div>
+            <div class="integral_my_body_content_myrecords" ng-if="selectedPage == 2">
+                <div class="integral_item" ng-repeat="record in myAchieveIntegralRecords">
+                    <div class="integral_type_icon {{record.CreditType==1?'achieve':'del'}}"></div>
+                    <div class="top_text">
+                        <span class="creditAmount">{{record.CreditType == 1?'+':'-'}}{{record.CreditAmount}}</span>
+                        <span class="text_date">{{record.CreditDateText}}</span>
+                    </div>
+                    <div class="creditDesc">{{record.CreditDesc}}</div>
+                </div>
+            </div>
+            <div class="integral_my_body_content_myrecords" ng-if="selectedPage == 3">
+                <div class="integral_item" ng-repeat="record in myExchangeIntegralRecords">
+                    <div class="integral_type_icon {{record.CreditType==1?'achieve':'del'}}"></div>
+                    <div class="top_text">
+                        <span class="creditAmount">{{record.CreditType == 1?'+':'-'}}{{record.CreditAmount}}</span>
+                        <span class="text_date">{{record.CreditDateText}}</span>
+                    </div>
+                    <div class="creditDesc">{{record.CreditDesc}}</div>
+                </div>
+            </div>
+            <div class="bottomHeight" style="height: 341px;"></div>
+        </div>
+    </div>
+</div>

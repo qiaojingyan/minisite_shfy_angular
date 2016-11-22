@@ -1,0 +1,18 @@
+<div class="productList" ng-controller='productListCtrl'>
+    <img src="{{productCategory.s02}}" style="width: 640px;height: 296px;">
+    <div class="tips"></div>
+    <div class="tips_name">{{productCategory.CategoryName}}</div>
+    <div class="productlist">
+        <div class="product_item" ng-repeat="product in productList" ng-click='goProductDetail(product.ProductID)'>
+            <div class="text_expectedIncome">{{getListIncome(product.ExpectedIncome)}}</div>
+            <div class="text_expectedIncomeText">{{product.ExpectedIncomeDesc}}</div>
+            <div class="line_split"></div>
+            <div class="text_name">{{product.Name}}</div>
+            <div class="text_IncomeType">{{getRewardType(product)}}</div>
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <div class="product_content" id="product_content">
+    </div>
+</div>
+</div>

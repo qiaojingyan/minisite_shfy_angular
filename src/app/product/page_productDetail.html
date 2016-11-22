@@ -1,0 +1,35 @@
+<div class="product_detail" ng-controller="productDetailCtrl" id="product_detail">
+    <div class="product_detail_all_content" style="height: {{show_con_height}}">
+        <div class="detail_cover" style="background-image: url({{productCategory.s03}})">
+            <div class="detail_title">{{productDetail.Name}}</div>
+            <div class="detail_Income">{{getTopIncome(productDetail.ExpectedIncome)}}</div>
+            <div class="detail_Income_text">{{productDetail.ExpectedIncomeDesc+"（%）"}}</div>
+        </div>
+        <div class="detail_content1">
+            <div class="detail_content1_text detail_content1_1text">产品期限 <span class="detail_content1_1content">{{productDetail.ProductTerm}}</span></div>
+            <div class="detail_line"></div>
+            <div class="detail_content1_text detail_content1_2text">起购资金 <span class="detail_content1_1content">{{productDetail.SubscriptionPoint}}</span></div>
+        </div>
+        <div class="content_item_con">
+            <div class="content_item_title_con">
+                <div class="content_item_title">一、产品要素</div>
+                <div class="content_item_title_arrow"></div>
+            </div>
+            <div class="content_element_table">
+                <div class="content_element_item" ng-repeat="productDetail in ProductElement">
+                    <div class="content_element_item_content" style="background:{{$index%2==0?'rgba(80,140,238,0.10);':'white'}}">
+                        <div class="content_element_item_content_left">{{productDetail.key}}</div>
+                        <div class="content_element_item_content_right" style="color: {{productDetail.important==1?'#FF801A':''}}">{{productDetail.value}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product_detail_content" id="product_detail_content">
+        </div>
+        <div style="height: 88px"></div>
+    </div>
+    <div class="phone_con" style="background-color: {{productCategory.CategoryID == 'd1264b05-7ff9-4cb1-95fb-ee3106928c03'?'#6691D8':''}}">
+        <div class="phone_text">
+            <img src="./images/product_detail_icon_phone.png" class="icon_phone">{{productDetail.ContactPhone}}</div>
+    </div>
+</div>

@@ -1,49 +1,82 @@
 'use strict';
-var mainMoudle = angular.module('mainMoudle', []);
+var mainMoudle = angular.module('mainMoudle', ['ksSwiper', 'ngTouch']);
 
-function initScene() {
-    var show_con_height = $(window).height() - 88;
-    $('.show_con').css('height', show_con_height + "px");
-    var main_fy_height = show_con_height - $('#swiper-container1').height();
-    var main_fy_need_height = 300 * 2 + 8;
-    if ((main_fy_height - main_fy_need_height) > 16 * 2) {
-        var top = $('#swiper-container1').height() + (main_fy_height - main_fy_need_height) / 2;
-        $('.main_btn_content').css('top', top + 'px');
-    } else {
-        $('.main_btn_content').css('top', (16 + $('#swiper-container1').height()) + 'px');
-    }
-}
-
-function initEvent() {
-    $('.icon_con').on('touchstart', function(evt) {
-        $('.icon_con').removeClass('selected');
-        $(this).addClass('selected');
-    });
-}
-
-function initfy() {
-    initBanner();
-    $('.icon_1_con').addClass('selected');
-}
-
-function initBanner() {
-    var mySwiper = new Swiper('.swiper-container', {
-        autoplay: 2000, //可选选项，自动滑动
-        initialSlide: 3,
-        direction: 'horizontal',
-        pagination: '.swiper-pagination'
-    });
-
-    $('.swiper-slide').on('click', function() {
-        alert(111);
-    });
-}
-mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', function($scope, $http, $location, Const) {
+mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyData', function($scope, $http, $location, Const, fyData) {
     init();
 
-    function init() {
-        initScene();
-        initEvent();
-        initfy();
+    $scope.chosePage = function(num) {
+        fyData.nowPage = $scope.nowPage = num;
+    };
+    $scope.toProductList = function(CategoryID) {
+        $location.path('/product_list/' + CategoryID);
+    };
+    $scope.goToNewsList = function() {
+        $location.path('/news_list');
     }
+    $scope.goToMyIntegral = function() {
+        $location.path('/integral_my');
+    }
+    $scope.goToIntegralMall = function() {
+        if ($scope.esUrl != null) {
+            window.location.href = $scope.esUrl;
+            return;
+        }
+        getEsUrl(function() {
+            window.location.href = $scope.esUrl;
+        });
+    }
+
+    function init() {
+        var show_con_height = document.body.clientHeight - 88;
+        $scope.show_con_height = show_con_height + 'px';
+        $scope.main_btn_content_top = (show_con_height - 235 - 300 * 2 - 8) / 2 > 16 ? ((show_con_height - 235 - 300 * 2 - 8) / 2) + 'px' : '16px';
+        var params = {
+            slidesPerView: $scope.slidesPerView || 1,
+            slidesPerColumn: $scope.slidesPerColumn || 1,
+            spaceBetween: $scope.spaceBetween || 0,
+            direction: $scope.direction || 'horizontal',
+            loop: $scope.loop || false,
+            initialSlide: $scope.initialSlide || 0,
+            showNavButtons: false
+        };
+        $scope.nowPage = fyData.nowPage;
+        $scope.banners = fyData.getBanners();
+
+        getCategoryList('F3A147D3-92B6-4BC6-8DD2-0988CBE46F32',function(res) {
+            res = JSON.parse(res);
+            $scope.productList = res;
+        })
+
+    }
+
+    function getEsUrl(fun) {
+        $http({
+            method: 'GET',
+            url: Const.baseUrl + "/Credit/GetEsURL",
+            params: {
+                'Token': fyData.user.token
+            }
+        }).success(function(res) {
+            $scope.esUrl = JSON.parse(res);
+            if (fun) {
+                fun();
+            }
+        });
+    }
+
+    function getCategoryList(CategoryID, fun) {
+        $http({
+            method: 'GET',
+            url: Const.baseUrl + "/Category/GetCategoryList",
+            params: {
+                'Token': fyData.user.token,
+                'CategoryID': CategoryID
+            }
+        }).success(function(res) {
+            if (fun) {
+                fun(res);
+            }
+        });
+    }
+
 }])

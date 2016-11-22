@@ -1,43 +1,68 @@
 <div class="main" ng-controller="mainCtrl">
-    <div class="show_con">
-        <div class="main_fy">
-            <div class="swiper-container swiper-container-horizontal" id="swiper-container1">
-                <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                    <div class="swiper-slide slide1">
-                    </div>
-                    <div class="swiper-slide slide2">
-                    </div>
-                    <div class="swiper-slide slide3">
-                    </div>
-                </div>
-                <div class="swiper-pagination swiper-pagination-bullets">
-                    <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-                    <span class="swiper-pagination-bullet"></span>
-                    <span class="swiper-pagination-bullet"></span>
-                </div>
-            </div>
-            <div class="main_btn_content">
+    <div class="show_con" style="height: {{show_con_height}}">
+        <div class="main_fy" ng-if="nowPage == 1">
+            <ks-swiper-container slides-per-view="1" slides-per-column="1" space-between="0" pagination-is-active="true" pagination-clickable="false" show-nav-buttons="false" loop="false" autoplay="2000" initial-slide="0" direction="horizontal">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="banner in banners">
+                    <img ng-src="{{banner.RefImageURL}}">
+                </ks-swiper-slide>
+            </ks-swiper-container>
+            <div class="main_btn_content" style="top:{{main_btn_content_top}}">
                 <div class="btn_fy"></div>
                 <div class="btn_active"></div>
-                <div class="btn_news"></div>
+                <div class="btn_news" ng-click="goToNewsList()"></div>
                 <div class="btn_knowledge"></div>
             </div>
         </div>
-        <div class="product_fy">
-            
+        <div class="product_fy" ng-if="nowPage == 2">
+            <div class="product_item" ng-repeat="product in productList" style="background-image: url({{product.s01}});" ng-click="toProductList(product.CategoryID)">
+                <div class="product_item_text_bg"></div>
+                <div class="product_item_text">
+                    {{product.CategoryName}}
+                </div>
+            </div>
         </div>
-        <div class="profile"></div>
+        <div class="profile_fy" ng-if="nowPage == 3">
+            <div class="profile_head_con">
+                <div class="profile_head_img"></div>
+                <div class="profile_head_nickname">昵称昵称昵称</div>
+                <div class="btn_linkPhone">绑定手机号</div>
+            </div>
+            <div class="main_profile_item" style="margin-top: 24px;">
+                <img src="./images/main_profile_icon_info.png" class="main_profile_item_icon">我的资料
+                <img src="./images/arrow.png" class="main_profile_arrow">
+            </div>
+            <div class="main_profile_item" style="margin-top: 24px;" ng-click="goToMyIntegral()">
+                <img src="./images/main_profile_icon_integral.png" class="main_profile_item_icon">我的积分
+                <img src="./images/arrow.png" class="main_profile_arrow">
+            </div>
+            <div class="main_profile_item" ng-click="goToIntegralMall()">
+                <img src="./images/main_profile_icon_integral_shop.png" class="main_profile_item_icon">积分商城
+                <img src="./images/arrow.png" class="main_profile_arrow">
+            </div>
+            <div class="main_profile_item">
+                <img src="./images/main_profile_icon_integral_achieve.png" class="main_profile_item_icon">获取积分
+                <img src="./images/arrow.png" class="main_profile_arrow">
+            </div>
+            <div class="main_profile_item" style="margin-top: 24px;">
+                <img src="./images/main_profile_icon_linkus.png" class="main_profile_item_icon">联系我们
+                <img src="./images/arrow.png" class="main_profile_arrow">
+            </div>
+            <div class="main_profile_item">
+                <img src="./images/main_profile_icon_feedback.png" class="main_profile_item_icon">反馈帮助
+                <img src="./images/arrow.png" class="main_profile_arrow">
+            </div>
+        </div>
     </div>
     <div class="footer_main">
-        <div class="icon_1_con icon_con">
+        <div class="icon_1_con icon_con {{nowPage==1?'selected':''}}" ng-touchstart='chosePage(1)'>
             <div class="icon_1 icon"></div>
             <span class="main_footer_text main_footer_text_1">上海福盈</span>
         </div>
-        <div class="icon_2_con icon_con">
+        <div class="icon_2_con icon_con {{nowPage==2?'selected':''}}" ng-touchstart='chosePage(2)'>
             <div class="icon_2 icon"></div>
             <span class="main_footer_text main_footer_text_2">福盈产品</span>
         </div>
-        <div class="icon_3_con icon_con">
+        <div class="icon_3_con icon_con {{nowPage==3?'selected':''}}" ng-touchstart='chosePage(3)'>
             <div class="icon_3 icon"></div>
             <span class="main_footer_text main_footer_text_3">会员中心</span>
         </div>
