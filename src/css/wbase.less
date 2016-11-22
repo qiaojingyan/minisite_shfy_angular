@@ -99,6 +99,13 @@
     -o-transition: @css;
 }
 
+._br-filter(@css){
+    -webkit-filter: @css; /* Chrome, Opera */
+       -moz-filter: @css;
+        -ms-filter: @css;
+            filter: @css;
+}
+
 ._br-animation(@css) {
     animation: @css;
     -o-animation: @css;
@@ -247,4 +254,17 @@
     -moz-transform-style: @minate;
     -ms-transform-style: @minate;
     -o-transform-style: @minate;
+}
+
+._br-border-radius(@minate){
+    -moz-border-radius:@minate;
+    -webkit-border-radius:@minate;
+    border-radius:@minate;
+}
+
+._br-transition(@minate){
+    transition: @minate;
+    -moz-transition: @minate;  /* Firefox 4 */
+    -webkit-transition: @minate;   /* Safari 和 Chrome */
+    -o-transition: @minate;
 }

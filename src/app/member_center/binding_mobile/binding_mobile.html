@@ -1,0 +1,46 @@
+<div ng-controller="binding_mobile_controller">
+	<div class="binding_mobile_view">
+
+		<div class="binding_container">
+			<div class="user_bg"></div>
+			<div class="user_icon"></div>
+			<div class="user_nickname">昵称昵称昵称昵称</div>
+			<div class="binding_remind" ng-hide='hasmobile'>
+				<p>还没有绑定手机号</p>
+				<p>点击下方添加手机号</p>
+			</div>
+			<div class="binding_mobile">
+				<div class="phone_item" ng-repeat='phone in phones'>
+					<div class="phone_number">手机号: <span>{{phone.tel}}</span></div>
+					<div class="remove_mobile" ng-click='remove_mobile(phone)'>解绑</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="binding_btn" ng-click='show_binding()'>
+			<div class="binding_add">+</div>
+		</div>
+
+		<div class="add_mobile_view" ng-show='show_add_view'>
+			<div class="add_phone">
+				<div class="phone_number">手机号: <input type='number' ng-model='number'></div>
+				<div class="send_autocode_btn">发送验证码</div>
+				<div class="autocode">验证码: <input type='number' ng-model='autocode'></div>
+				<div class="binding_cancel" ng-click='is_binding(false)'>取消</div>
+				<div class="binding_confirm" ng-click='is_binding(true)'>确定</div>
+			</div>
+		</div>
+		
+		<div class="remove_mobile_view" ng-show='show_remove_view'>
+			<div class="reminder_view">
+				<div class="reminder_top"></div>
+				<div class="reminder_middle">你确定要解除: <span>18888888888</span>手机号码么?</div>
+				<div class="reminder_bottom"></div>
+			</div>
+			<div class="remove_confirm" ng-click='is_remove(true)'>确定</div>
+			<div class="remove_cancel" ng-click='is_remove(false)'>取消</div>
+			
+		</div>
+
+	</div>
+</div>

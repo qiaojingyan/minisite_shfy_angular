@@ -1,0 +1,96 @@
+<div ng-controller='my_info_controller'>
+	<div class="my_info">
+		<div class="info_view">
+			<div class="user_bg"></div>
+			<div class="user_icon">
+				<input type="file" id='upload_photo' class="select_btn" ng-model="file" name="file" style="display:none;">
+			</div>
+			<div class="user_nickname">昵称昵称昵称昵称</div>
+			
+			<div class="username info_class" ng-click='info_click(0)'>
+				姓名
+				<span>张三三</span>
+				<div class="arrows"></div>
+			</div>
+			<div class="mobile info_class" ng-click='info_click(1)'>
+				手机号
+				<span>18888888888</span>
+				<div class="arrows"></div>
+			</div>
+			<div class="email info_class" ng-click='info_click(2)'>
+				邮箱
+				<span>337459212@qq.com</span>
+				<div class="arrows"></div>
+			</div>
+			<div class="idcard info_class" ng-click='info_click(3)'>
+				身份证
+				<span>343434343434343434</span>
+				<div class="arrows"></div>
+			</div>
+			<div class="birthday info_class" ng-click='info_click(4)'>
+				出生日期
+				<span>1999-01-01</span>
+				<div class="arrows"></div>
+			</div>
+			<div class="area info_class" ng-click='info_click(5)'>
+				地区
+				<span>上海市</span>
+				<div class="arrows"></div>
+			</div>
+			<div class="detailed_address info_class" ng-click='info_click(6)'>
+				详细地址
+				<span>北京市朝阳区太阳宫中路太阳宫大厦6楼6-11</span>
+				<div class="arrows"></div>
+			</div>
+			<div class="postcode info_class" ng-click='info_click(7)'>
+				邮编
+				<span>400001</span>
+				<div class="arrows"></div>
+			</div>
+		</div>
+		
+		<div class="input_view" ng-show='show_arr[0].show_input || show_arr[1].show_input || show_arr[2].show_input || show_arr[3].show_input || show_arr[4].show_input || show_arr[5].show_input || show_arr[6].show_input || show_arr[7].show_input'>
+			<div class="input_name input_class" ng-show='show_arr[0].show_input'>姓名：<input type="text"></div>
+			<div class="input_mobile input_class" ng-show='show_arr[1].show_input'>手机号：<input type="number"></div>
+			<div class="input_email input_class" ng-show='show_arr[2].show_input'>邮箱：<input type="email"></div>
+			<div class="input_idcard input_class" ng-show='show_arr[3].show_input'>身份证：<input type="text"></div>
+			<div class="input_birthday input_class" ng-show='show_arr[4].show_input'>
+				出生日期
+				<!-- <input type="text"> -->
+				<div class="bir_year" ng-click='click_year()'>{{bir_year}}
+					<div class="dropdown_arrows"></div>
+				</div>
+				<div class="bir_month" ng-click='click_month()'>{{bir_month}}
+					<div class="dropdown_arrows"></div>
+				</div>
+				<div class="bir_day" ng-click='click_day()'>{{bir_day}}
+					<div class="dropdown_arrows"></div>
+				</div>
+
+				<div class="birthday_view" ng-show='show_year_view || show_month_view || show_day_view'>
+					<div class="year_view" ng-show='show_year_view'>
+						<p class="year" ng-repeat='y in year_datas' ng-click='selected_year(y)'>{{y}}</p>
+					</div>
+					<div class="month_view" ng-show='show_month_view'>
+						<p class="month" ng-repeat='m in month_datas' ng-click='selected_month(m)'>{{m}}</p>
+					</div>
+					<div class="day_view" ng-show='show_day_view'>
+						<p class="day" ng-repeat='d in day_datas' ng-click='selected_day(d)'>{{d}}</p>
+					</div>
+				</div>
+
+			</div>
+			<div class="input_area input_class" ng-show='show_arr[5].show_input'>地区：<input type="text"></div>
+			<div class="input_detail_address input_class" ng-show='show_arr[6].show_input'>详细地址：<input type="text"></div>
+			<div class="input_postcard input_class" ng-show='show_arr[7].show_input'>邮编：<input type="number"></div>
+			
+			<div class="input_cancel" ng-click='is_change(false)'>取消</div>
+			<div class="input_confirm" ng-click='is_change(true)'>确定</div>
+			
+		</div>
+		
+
+	</div>
+
+	
+</div>

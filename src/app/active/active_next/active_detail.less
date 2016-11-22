@@ -1,0 +1,399 @@
+.active_detail{
+	._br-position(0, 0, 100%, 100%);
+	// padding-bottom: 40px;
+	
+	.active_detail_cont{
+		._br-position(0, 0, 100%, 100%);
+		-webkit-overflow-scrolling: touch;
+		overflow: scroll;
+		padding-bottom: 88px;
+
+		.active_cover_img{
+			._br-position(0, 0, 100%, 295px);
+			background-color: blue;
+			.is_applied{
+				._br-position(auto, 0, 80px, 80px);
+				right: 0;
+				background: url('@{imgUrl}/is_applied.png') no-repeat center center;
+				background-size: 80px 80px;
+			}
+		}
+		.active_theme{
+			// ._br-position(0, 320px, 100%, 105px);
+			left: 0;
+			margin-top: 320px;
+			width: 100%;
+			height: 105px;
+			// background-color: red;
+			color: #333;
+			font-size: 32px;
+			text-align: center;
+			line-height: 105px;
+		}
+		.line{
+			background-color: #efeff4;
+			height: 1px;
+			width: 592px;
+			margin: 0 auto;
+		}
+		
+		.active_container{
+			width: 100%;
+			height: auto;
+			text-align: left;
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+		.active_title{
+			margin-top: 0;
+			margin-bottom: 0;
+			margin-left: 24px;
+			height: 40px;
+			font-size: 28px;
+			line-height: 40px;
+			color: #333;
+		}
+		.active_content{
+			margin-top: 0;
+			margin-bottom: 0;
+			margin-left: 24px;
+			padding-top: 10px;
+			width: 592px;
+			height: auto;
+			// background-color: blue;
+			font-size: 24px;
+			line-height: 40px;
+			color: #999;
+		}
+
+		.active_time{
+			.active_container;
+			.a_title{
+				.active_title;
+			}
+			.a_content{
+				.active_content;
+			}
+		}
+		.active_site{
+			.active_container;
+
+			.a_title{
+				.active_title;
+			}
+			.a_content{
+				.active_content;
+			}
+		}
+		.active_description{
+			.active_container;
+			.a_title{
+				.active_title;
+			}
+			.a_content{
+				.active_content;
+			}
+		}
+		.active_sign{
+			
+			.active_container;
+			position: relative;
+			// display: none;
+			.a_title{
+				.active_title;
+			}
+			.a_content{
+				.active_content;
+			}
+			.apply_success{
+				._br-position(540px, 100px, 122px, 122px);
+				background: url('@{imgUrl}/apply_success.png') no-repeat center center;
+				background-size: 122px 122px;
+			}
+		}
+	}
+
+	.apply_view{
+		._br-position(0, 0px, 100%, 100%);
+		background-color: rgba(0, 0, 0, 0.5);
+		.apply_info{
+			._br-position(0, auto, 100%, 612px);
+			bottom: 0;
+			background-color: white;
+			
+			.apply_common_style{
+				font-size: 28px;
+				line-height: 90px;
+				color: #333;
+				border-bottom: 1px #efeff4 solid;
+			}
+			.apply_name{
+				._br-position(24px, 0, 592px, 90px);
+				.apply_common_style;
+				input{
+					line-height: 60px;
+					width: 300px;
+					font-size: 24px;
+					// outline: none;
+					border: none;
+
+				}
+			}
+			.apply_phone{
+				._br-position(24px, 90px, 592px, 90px);
+				.apply_common_style;
+
+				.dropdown_arrows{
+					._br-position(auto, 30px, '@{imgUrl}/arrows.png');
+					right: 0px;
+					._br-transform(scale(0.5));
+				}
+
+			}
+			.apply_sex{
+				._br-position(24px, 180px, 592px, 90px);
+				.apply_common_style;
+				.sex_male{
+					._br-position(150px, 20px, 140px, 60px);
+					background: url('@{imgUrl}/male_unchecked.png') no-repeat center center;
+					background-size: 70px, 30px;
+
+					&.sex_selected{
+						background-image: url('@{imgUrl}/male_checked.png');
+					}
+				}
+				.sex_female{
+					._br-position(350px, 20px, 140px, 60px);
+					// ._br-transform(scale(0.5));
+					background: url('@{imgUrl}/female_unchecked.png') no-repeat center center;
+					background-size: 70px, 30px;
+
+					&.sex_selected{
+						background-image: url('@{imgUrl}/female_checked.png');
+					}
+				}
+			}
+			.apply_birthday{
+				._br-position(24px, 270px, 592px, 90px);
+				.apply_common_style;
+
+				.bir_style{
+					border: #979797 solid 1px;
+					._br-border-radius(6px);
+					line-height: 40px;
+					color: #979797;
+					padding: 0 10px;
+
+					.dropdown_arrows{
+						._br-position(auto, 0px, '@{imgUrl}/arrows.png');
+						right: 0px;
+						._br-transform(scale(0.5));
+					}
+				}
+				.bir_year{
+					._br-position(116px, 25px, 146px, 40px);
+					.bir_style;
+				}
+				.bir_month{
+					._br-position(292px, 25px, 113px, 40px);
+					.bir_style;
+				}
+				.bir_day{
+					._br-position(435px, 25px, 113px, 40px);
+					.bir_style;
+				}
+			}
+			.apply_city{
+				._br-position(24px, 360px, 592px, 90px);
+				.apply_common_style;
+			}
+
+			.phonedropdown_menu{
+				._br-position(90px, 170px, 200px, 200px);
+				background-color: white;
+				-webkit-overflow-scrolling: touch;
+				overflow: scroll;
+				box-Shadow: 1px 1px 3px #888888;
+				
+				.phone{
+					width: 100%;
+					height: 80px;
+					padding:0 10px;
+					color: #333;
+					font-size: 28px;
+					line-height: 80px;
+					border-bottom: solid #efeff4;
+					
+				}
+			}
+
+			.birthday_view{
+				._br-position(140px, 340px, 430px, 180px);
+				// background-color: red;
+				.container_class{
+					background-color: white;
+					-webkit-overflow-scrolling: touch;
+					overflow: scroll;
+					box-Shadow: 1px 1px 3px #888888;
+					p{
+						width: 100%;
+						height: 50px;
+						font-size: 28px;
+						color: #999;
+						line-height: 50px;
+						text-align: left;
+						padding-left: 10px;
+						margin-bottom: 0px;
+					}
+				}
+				.year_view{
+					._br-position(0px, 0px, 146px, 180px);
+					.container_class;
+				}
+				.month_view{
+					._br-position(178px, 0px, 113px, 180px);
+					.container_class;
+				}
+				.day_view{
+					._br-position(320px, 0px, 113px, 180px);
+					.container_class;
+				}
+
+			}
+
+
+
+			.apply_cancel{
+				._br-position(60px, 530px, 200px, 60px);
+				color: #999;
+				font-size: 32px;
+				text-align: center;
+				._br-border-radius(4px);
+				border: 2px solid #999;
+				line-height: 60px;
+			}
+			.apply_confirm{
+				._br-position(380px, 530px, 200px, 60px);
+				color: white;
+				font-size: 32px;
+				text-align: center;
+				background-color: #ff801a;
+				._br-border-radius(4px);
+				// border: 2px solid #999;
+				line-height: 60px;
+			}
+		}
+
+		.city_view{
+			._br-position(0,0,100%,100%);
+			background-color: #ccc;
+
+			.provinces{
+				._br-position(0,0,100%,100%);
+				-webkit-overflow-scrolling: touch;
+				overflow: scroll;
+				.province_item{
+					width: 100%;
+					height: 90px;
+					font-size: 30px;
+					line-height: 90px;
+					padding-left: 24px;
+					border-bottom: 1px solid #efeff4;
+				}
+			}
+			.citys{
+				._br-position(0,0,100%,100%);
+				-webkit-overflow-scrolling: touch;
+				overflow: scroll;
+				.citys_item{
+					width: 100%;
+					height: 90px;
+					font-size: 30px;
+					line-height: 90px;
+					padding-left: 24px;
+					border-bottom: 1px solid #efeff4;
+				}
+			}
+			.areas{
+				._br-position(0,0,100%,100%);
+				-webkit-overflow-scrolling: touch;
+				overflow: scroll;
+				.ereas_item{
+					width: 100%;
+					height: 90px;
+					font-size: 30px;
+					line-height: 90px;
+					padding-left: 24px;
+					border-bottom: 1px solid #efeff4;
+				}
+			}
+
+		}
+	}
+	.active_detail_button{
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 88px;
+		background-color: #ff801a;
+		color: #efeff4;
+		font-size: 32px;
+		text-align: center;
+		line-height: 88px;
+
+		.ui-datepicker-calendar{
+			font-size: 30px;
+		}
+	}
+
+	.select_apply_birthday{
+		._br-position(0, 0, 100%, 100%);
+		background-color: #ccc;
+	}
+	
+	.reminder_gray_view{
+		._br-position(0,0,100%,100%);
+		background-color: rgba(0, 0, 0, 0.4);
+		.reminder_view{
+
+			margin: 420px auto auto;
+			width: 494px;
+			height: auto;
+			.reminder_top{
+				width: 100%;
+				height: 20px;
+				
+				background: url('@{imgUrl}/remainder_top.png') no-repeat center center;
+				background-size: 100% 20px;
+			}
+			.reminder_middle{
+				position: relative;
+				padding: 43px 46px 39px;
+				color: #333;
+				font-size: 20px;
+				background-size: 100% 1px;
+				background: url('@{imgUrl}/remainder_middle.png') repeat top center;
+				.smiling_face{
+					._br-position(0, 0, 140px, 100%);
+					// width: 140px;
+					// height: 100%;
+					background: url('@{imgUrl}/smiling_face.png') no-repeat center center;
+					background-size: 65px 63px;
+				}
+				.reminder_content{
+					padding-left: 100px;
+				}
+			}
+			.reminder_bottom{
+				width: 100%;
+				height: 84px;
+				
+				background: url('@{imgUrl}/remainder_bottom.png') no-repeat center center;
+				background-size: 100% 84px;
+			}
+		}
+	}
+	
+
+}
