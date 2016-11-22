@@ -5,6 +5,10 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
     init();
 
     function init() {
+        $scope.NewsList = [];
+        $scope.productCategory = {
+            CategoryID: $stateParams.parentCategoryId
+        };
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Category/GetCategoryList",
@@ -18,10 +22,6 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
             $scope.NewsCategorys[fyData.nowNewsCategory].selected = 1;
             getNewsList($scope.NewsCategorys[fyData.nowNewsCategory].CategoryID);
         });
-
-
-        // $scope.NewsList = fyData.getNewsList($scope.NewsCategorys[fyData.nowNewsCategory].CategoryID);
-        // $scope.NowNewsCategory = $scope.NewsCategorys[fyData.nowNewsCategory];
     }
 
     function getNewsList(CategoryID) {
