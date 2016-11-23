@@ -103,7 +103,7 @@
 				<div class="reminder_middle">
 					<div class="smiling_face"></div>
 					<div class="reminder_content">
-						恭喜你成功报名“<span>{{active_info.Title}}</span>”活动，请耐心等待，我们的工作人员会及时与您联系！
+						恭喜你成功报名</br><span>{{active_info.Title}}</span>活动，</br>请耐心等待，我们的工作人员会及时与您联系！
 					</div>
 				</div>
 				<div class="reminder_bottom"></div>
@@ -112,5 +112,14 @@
 		
 
 	</div>
+	<div class="spinner_con" ng-if="!dataGetSuccess">
+        <div class="spinner spinner_product_detail">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
 	
 </div>

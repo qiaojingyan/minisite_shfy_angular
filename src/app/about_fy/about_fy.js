@@ -21,6 +21,7 @@ active_module.controller('about_fy_controller', ['$scope', '$http', '$location',
 	            // $scope.NewsList = res;
 	            $('.about_fy_content').html(data.ContentBody);
 	            // console.log(res);
+	            $scope.dataGetSuccess = true;
 	        })
 	        .error(function(req){
 				console.log('error_'+req);

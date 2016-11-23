@@ -25,7 +25,7 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
 					// console.log($scope.all_acitves);
 				}
 				// console.log('success_'+req);
-
+				$scope.dataGetSuccess = true;
 			})
 			.error(function(req){
 				console.log('error_'+req);

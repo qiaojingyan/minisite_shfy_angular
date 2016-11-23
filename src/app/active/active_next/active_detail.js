@@ -20,7 +20,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 					$scope.active_info = JSON.parse(req);
 					// console.log($scope.active_info);
 					// $scope.active_info.st_end_time = format($scope.active_info.StartDate)+'~~'+format($scope.active_info.EndDate);
-					
+					$scope.dataGetSuccess = true;	
 				}
 				// console.log('success_'+req);
 			})
@@ -38,11 +38,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 				}
 			})
 			.success(function(req){
-				// if(1){
-				// 	$scope.my_info = JSON.parse(req);
-				// 	// console.log('my_info: '+$scope.my_info);
-				// 	dataHandle();
-				// }
+
 				$scope.phonenums = JSON.parse(req);
 				if ($scope.phonenums.length > 0) {
 					$scope.phonenum = $scope.phonenums[0].Mobile;
@@ -51,7 +47,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 					$scope.phonenum = '';
 				};
 				
-				console.log('success_'+req);
+				// console.log('success_'+req);
 			})
 			.error(function(req){
 				console.log('error_'+req);
@@ -369,6 +365,17 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			
 		};
 		function apply_submit(){
+
+			if (!$scope.username || $scope.username.length<=0) {
+				alert('请输入姓名！');
+				return;
+			}else if(!$scope.province.name || $scope.province.name.length<=0){
+				alert('请选择正确的地区！');
+				return;
+			};
+
+			// console.log('完美');
+			// return;
 			$http({
 				method: 'get',
 				url: Const.baseUrl + 'Event/SignUp',

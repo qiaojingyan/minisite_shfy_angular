@@ -13,6 +13,15 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
     $scope.goToNewsList = function() {
         $location.path('/news_list');
     };
+    $scope.goToAboutFy = function(){
+        $location.path('/about_fy');
+    };
+    $scope.goToActive = function(){
+        $location.path('/active');
+    };
+    $scope.goToKnowledge = function(){
+        $location.path('/manage_money');
+    };
     $scope.goToMyIntegral = function() {
         $location.path('/integral_my');
     };
@@ -27,6 +36,15 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
     };
     $scope.goToFeedback = function() {
         $location.path('/feedback');
+    };
+    $scope.binding_mobile = function(){
+        $location.path('/binding_mobile');
+    };
+    $scope.goToMyInfo = function(){
+        $location.path('/my_info');
+    };
+    $scope.goToContactUs = function(){
+        $location.path('/cantact_us');
     };
 
     function init() {

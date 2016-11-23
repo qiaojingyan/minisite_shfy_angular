@@ -11,11 +11,12 @@ active_module.controller('active_review_controller', ['$scope', '$http', '$locat
 			if(1){
 				$scope.acitve_review = JSON.parse(req);
 
-				$('#active_review_content').html($scope.acitve_review.EventContent);
+				$('#active_review_content').prepend($scope.acitve_review.EventContent);
 				// document.getElementById('active_review_content').innerHTML = $scope.acitve_review.EventContent;
 				// $('.active_review_content').empty();
 				// console.log($scope.acitve_review);
 			}
+			$scope.dataGetSuccess = true;
 			// console.log('success_'+req);
 		})
 		.error(function(req){

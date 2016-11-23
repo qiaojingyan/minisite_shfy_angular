@@ -103,6 +103,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 				// 	dataHandle();
 				// }
 				$scope.phones = JSON.parse(req);
+				$scope.dataGetSuccess = true;
 				console.log('success_'+req);
 			})
 			.error(function(req){

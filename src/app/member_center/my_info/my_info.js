@@ -18,6 +18,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 					dataHandle();
 				}
 				console.log('success_'+req);
+				$scope.dataGetSuccess = true;
 			})
 			.error(function(req){
 				console.log('error_'+req);
@@ -39,7 +40,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				$scope.bir_day = '01';
 
 			};
-			console.log('temp_info:'+$scope.temp_info);
+			// console.log('temp_info:'+$scope.temp_info);
 		};
 
 		$scope.show_arr = [
@@ -116,7 +117,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				// }
 				$scope.my_info = angular.copy($scope.temp_info);
 
-				console.log('success_'+req);
+				// console.log('success_'+req);
 			})
 			.error(function(req){
 				console.log('error_'+req);
@@ -193,9 +194,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 					};
 				};
 			}else{
-				// console.log('闰年');
 				if ($scope.bir_month === '02') {
-					console.log('2月');
 					create_days(29);
 				};
 			};
