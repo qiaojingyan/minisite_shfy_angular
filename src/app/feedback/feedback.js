@@ -17,6 +17,15 @@ feedbackModule.controller('feedbackCtrl', ['$scope', '$http', '$location', '$sta
 
     $scope.submit = function() {
         $scope.myfeedback.Token = fyData.user.token;
+        if($scope.myfeedback.Title.replace(/(^\s*)|(\s*$)/g, "") == ''){
+            alert('请填写所遇问题');
+            return;
+        }
+        if($scope.myfeedback.MsgContent.replace(/(^\s*)|(\s*$)/g, "") == ''){
+            alert('请填写问题描述');
+            return;
+        }
+        $scope.loading = true;
         $http({
             method: 'POST',
             url: Const.baseUrl + "/Feedback/SaveFeedback",
@@ -25,7 +34,12 @@ feedbackModule.controller('feedbackCtrl', ['$scope', '$http', '$location', '$sta
             },
             data: $scope.myfeedback
         }).success(function(res) {
-            console.log(res);
+            res = JSON.parse(res);
+            $scope.loading = false;
+            if(res == true){
+                alert('提交成功')
+                window.history.back();
+            }
         });
     }
 }]);

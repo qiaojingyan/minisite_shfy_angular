@@ -112,6 +112,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     });
 }).run(function($location) {
     console.log($location.path());
+    console.log(window.location.hash);
 }).service('fyData', function() {
     var banners = [{
         RefImageURL: './images/main_pro_cover1.png'
