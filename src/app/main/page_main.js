@@ -50,6 +50,8 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
             $scope.productList = res;
         })
 
+        $scope.user = fyData.user;
+
     }
 
     function getEsUrl(fun) {

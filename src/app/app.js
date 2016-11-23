@@ -1,10 +1,17 @@
 'use strict';
 var routerApp = angular.module('routerApp', ['ui.router', 'mainMoudle', 'manager.const', 'productMoudle', 'newsModule', 'integralModule', 'feedbackModule', 'active_module', 'active_detail_module', 'manage_money_module',
-    'about_fy_module', 'my_info_module', 'cantact_us_module', 'active_review_module', 'binding_mobile_module'
+    'about_fy_module', 'my_info_module', 'cantact_us_module', 'active_review_module', 'binding_mobile_module', 'loadingModule'
 ]);
 routerApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
-    $stateProvider.state('main', {
+    $stateProvider.state('loading', {
+        url: '/loading/:redirectUrl',
+        views: {
+            '': {
+                templateUrl: './app/loading/page_loading.html'
+            }
+        }
+    }).state('main', {
         url: '/main',
         views: {
             '': {
@@ -111,8 +118,10 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         }
     });
 }).run(function($location) {
-    console.log($location.path());
-    console.log(window.location.hash);
+    if (!sessionStorage.getItem('user')) {
+        $location.path('/loading/'+encodeURIComponent($location.path()));
+    }
+
 }).service('fyData', function() {
     var banners = [{
         RefImageURL: './images/main_pro_cover1.png'
@@ -124,9 +133,10 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     this.getBanners = function() {
         return banners;
     };
+    this.user = {};
+    if (sessionStorage.getItem('user')) {
+        this.user = JSON.parse(sessionStorage.getItem('user'));
+    }
     this.nowPage = 1;
     this.nowNewsCategory = 0;
-    this.user = {
-        token: '123456'
-    }
 });
