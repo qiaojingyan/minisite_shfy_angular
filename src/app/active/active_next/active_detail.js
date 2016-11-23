@@ -2,9 +2,10 @@ var active_detail_module = angular.module('active_detail_module', []);
 active_detail_module.controller('active_detail_controller', ['$scope', '$http', '$location', '$stateParams', 'Const', 'fyData', 
 	function($scope, $http, $location, $stateParams, Const, fyData){
 
-		console.log('详情——activeid:'+$stateParams.id);
+		// console.log('详情——activeid:'+$stateParams.id);
 
 		getDetailActive();
+		getAccountList();
 		function getDetailActive(){
 			$http({
 				method: 'get',
@@ -17,13 +18,40 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			.success(function(req){
 				if(1){
 					$scope.active_info = JSON.parse(req);
-					// var date = new Date('2016-11-01T00:00:00');
-					console.log($scope.active_info);
-					$scope.active_info.st_end_time = format($scope.active_info.StartDate)+'~~'+format($scope.active_info.EndDate);
-					// console.log(format('2016-11-01T00:00:00'));
-					// console.log($scope.all_acitves);
+					// console.log($scope.active_info);
+					// $scope.active_info.st_end_time = format($scope.active_info.StartDate)+'~~'+format($scope.active_info.EndDate);
+					
 				}
 				// console.log('success_'+req);
+			})
+			.error(function(req){
+				console.log('error_'+req);
+			});
+		};
+
+		function getAccountList(){
+			$http({
+				method: 'get',
+				url: Const.baseUrl + 'User/GetAccountList',
+				params:{
+					'Token': fyData.user.token
+				}
+			})
+			.success(function(req){
+				// if(1){
+				// 	$scope.my_info = JSON.parse(req);
+				// 	// console.log('my_info: '+$scope.my_info);
+				// 	dataHandle();
+				// }
+				$scope.phonenums = JSON.parse(req);
+				if ($scope.phonenums.length > 0) {
+					$scope.phonenum = $scope.phonenums[0].Mobile;
+				}
+				else{
+					$scope.phonenum = '';
+				};
+				
+				console.log('success_'+req);
 			})
 			.error(function(req){
 				console.log('error_'+req);
@@ -47,9 +75,9 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 
 		$scope.is_applied = false;
 		$scope.is_show_applyview =false;
-		$scope.phonenums = [{'phone':'18888888888'}, {'phone':'18888888881'},{'phone':'18888888882'}];
+		
 		$scope.username = '123';
-		$scope.phonenum = '';
+		
 		$('.apply_sex .sex_male').addClass('sex_selected');
 		$scope.isMale = 1;
 		$scope.birthday = '1999-01-01';
@@ -167,8 +195,8 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 
 		$scope.active_apply = '';
 		$scope.click_phone = function(phone){
-			console.log(phone);
-			$scope.phonenum = phone.phone;
+			// console.log(phone);
+			$scope.phonenum = phone.Mobile;
 			$scope.show_phone_menu = false;
 		};
 		$scope.isClick_male = function(isMale){
@@ -351,7 +379,10 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			        'Mobile': $scope.phonenum,
 			        'Gender': $scope.isMale,
 			        'Birthday': $scope.birthday,
-			        'Location': $scope.area_string
+			        // 'Location': $scope.area_string
+			        'Country': '中国',
+			        'State': $scope.province.name,
+			        'City': $scope.city.name
 				}
 			})
 			.success(function(req){

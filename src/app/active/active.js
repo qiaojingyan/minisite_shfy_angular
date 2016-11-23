@@ -24,7 +24,7 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
 					$scope.all_acitves = JSON.parse(req);
 					// console.log($scope.all_acitves);
 				}
-				console.log('success_'+req);
+				// console.log('success_'+req);
 
 			})
 			.error(function(req){

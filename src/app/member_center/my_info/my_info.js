@@ -55,9 +55,13 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 							];
 
 		$scope.info_click = function(index){
-
-			dataHandle();
-			$scope.show_arr[index].show_input = true;
+			if (index == 1) {
+				$location.path('/binding_mobile');
+			}else{
+				dataHandle();
+				$scope.show_arr[index].show_input = true;
+			};
+			
 
 		};
 
