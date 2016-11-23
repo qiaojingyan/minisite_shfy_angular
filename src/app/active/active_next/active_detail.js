@@ -72,12 +72,20 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 		$scope.is_applied = false;
 		$scope.is_show_applyview =false;
 		
-		$scope.username = '123';
+		$scope.username = fyData.user.Name;
+		$scope.isMale = fyData.user.Sex;
+		if ($scope.isMale == 1) {
+			$('.apply_sex .sex_male').addClass('sex_selected');
+		}else{
+			$('.apply_sex .sex_female').addClass('sex_selected');
+		};
 		
-		$('.apply_sex .sex_male').addClass('sex_selected');
-		$scope.isMale = 1;
+		
 		$scope.birthday = '1999-01-01';
-		$scope.area_string = '';
+		$scope.province = {'name': fyData.user.State};
+		$scope.city = {'name': fyData.user.City};
+		$scope.area = {};
+		$scope.area_string = fyData.user.Country+' '+fyData.user.State+' '+fyData.user.City;
 		$scope.show_phone_menu = false;
 		$scope.show_year_view = false;
 		$scope.show_month_view = false;
@@ -93,11 +101,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 
 	    $scope.select_city = function(){
 	    	$scope.provinces_show = true;
-	    };
-
-	    $scope.province = {};
-		$scope.city = {};
-		$scope.area = {};
+	    }; 
 	    
 	    $scope.provinces_show = false;
 	    $scope.citys_show = false;
@@ -401,14 +405,23 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 				$scope.active_info.Gender = $scope.isMale;
 				$scope.active_info.Birthday = $scope.birthday;
 
+				fyData.user.Name = $scope.username;
+				fyData.user.Sex = $scope.isMale;
+				fyData.user.Birthday = $scope.birthday;
+				fyData.user.State = $scope.province.name;
+				fyData.user.City = $scope.city.name;
 
 				$scope.is_show_applyview = false;
 				$scope.show_reminder_view = true;
-
+				// setUserToLocal();
 			})
 			.error(function(req){
 				console.log('error_'+req);
 			});
+		};
+
+		function setUserToLocal(){
+			sessionStorage.setItem('user', JSON.stringify(fyData.user));
 		};
 
 

@@ -3,8 +3,12 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 	function($scope, $http, $location, Const, fyData){
 
 		$scope.my_info = {};
-
-		$http({
+		if (fyData.user) {
+	        // fyData.user = JSON.parse(sessionStorage.getItem('user'));
+	        $scope.my_info = fyData.user;
+	        $scope.dataGetSuccess = true;
+	    }else{
+	    	$http({
 				method: 'get',
 				url: Const.baseUrl + 'User/GetUser',
 				params: {
@@ -23,6 +27,11 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 			.error(function(req){
 				console.log('error_'+req);
 			});
+	    };
+		// console.log('user:'+fyData.user);
+		
+
+		
 
 		function dataHandle(){
 			$scope.temp_info = angular.copy($scope.my_info);
@@ -117,9 +126,13 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				// }
 				if (JSON.parse(req)) {
 					$scope.my_info = angular.copy($scope.temp_info);
+					fyData.user = angular.copy($scope.my_info);
+					setUserToLocal();
 				}else{
 					alert('保存失败！');
 				};
+				// $scope.my_info = angular.copy($scope.temp_info);
+				// fyData.user = angular.copy($scope.my_info);
 				
 
 				console.log('success_'+req);
@@ -129,6 +142,9 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 			});
 
 			
+		};
+		function setUserToLocal(){
+			sessionStorage.setItem('user', JSON.stringify(fyData.user));
 		};
 		
 		$scope.year_datas = [];
