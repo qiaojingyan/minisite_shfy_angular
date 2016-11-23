@@ -1,28 +1,61 @@
 var active_detail_module = angular.module('active_detail_module', []);
-active_detail_module.controller('active_detail_controller', ['$scope', '$http', '$location', '$stateParams', 'Const', 
-	function($scope, $http, $location, $stateParams, Const){
+active_detail_module.controller('active_detail_controller', ['$scope', '$http', '$location', '$stateParams', 'Const', 'fyData', 
+	function($scope, $http, $location, $stateParams, Const, fyData){
 
-		console.log('详情——activeid:'+$stateParams.id);
+		// console.log('详情——activeid:'+$stateParams.id);
 
-		$http({
-			method: 'get',
-			url: Const.baseUrl + 'Event/GetEvent?Token=123456&EventId='+$stateParams.id
-		})
-		.success(function(req){
-			if(1){
-				$scope.active_info = JSON.parse(req);
-				// var date = new Date('2016-11-01T00:00:00');
-				console.log($scope.active_info);
-				console.log(format('2016-11-01T00:00:00'));
-				// console.log($scope.all_acitves);
-			}
-			// console.log('success_'+req);
-		})
-		.error(function(req){
-			console.log('error_'+req);
-		});
+		getDetailActive();
+		getAccountList();
+		function getDetailActive(){
+			$http({
+				method: 'get',
+				url: Const.baseUrl + 'Event/GetEvent',
+				params: {
+			                'Token': fyData.user.token,
+			                'EventId': $stateParams.id
+			            }
+			})
+			.success(function(req){
+				if(1){
+					$scope.active_info = JSON.parse(req);
+					// console.log($scope.active_info);
+					// $scope.active_info.st_end_time = format($scope.active_info.StartDate)+'~~'+format($scope.active_info.EndDate);
+					$scope.dataGetSuccess = true;	
+				}
+				// console.log('success_'+req);
+			})
+			.error(function(req){
+				console.log('error_'+req);
+			});
+		};
 
-		function add0(m){return m<10?'0'+m:m };
+		function getAccountList(){
+			$http({
+				method: 'get',
+				url: Const.baseUrl + 'User/GetAccountList',
+				params:{
+					'Token': fyData.user.token
+				}
+			})
+			.success(function(req){
+
+				$scope.phonenums = JSON.parse(req);
+				if ($scope.phonenums.length > 0) {
+					$scope.phonenum = $scope.phonenums[0].Mobile;
+				}
+				else{
+					$scope.phonenum = '';
+				};
+				
+				// console.log('success_'+req);
+			})
+			.error(function(req){
+				console.log('error_'+req);
+			});
+		};
+		
+
+		function add0(m){return m<10?'0'+m:m; };
 		function format(shijianchuo)
 		{
 		//shijianchuo是整数，否则要parseInt转换
@@ -36,85 +69,110 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			return y+'年'+add0(m)+'月'+add0(d)+'日';
 		};
 
-		// $scope.active_info = {
-		// 						'a_title': '活动主题', 
-		// 						'a_time': '2016年11月11日--2016年11月12日', 
-		// 						'a_site': '上海市长宁区仙霞路99',
-		// 						'a_des': '霞路99号区仙霞路99号海市长宁区仙霞路99号区仙霞路9 仙霞路99号区仙霞路9仙霞路99号区仙霞路9仙霞路99号区仙霞路9 仙霞路99号区仙霞路9仙霞路99号区仙霞路9 仙霞路99号区仙霞路9',
-		// 						'apply_info':{
-		// 							'name': '张三三',
-		// 							'mobile': '18888888888',
-		// 							'sex':2,
-		// 							'birthday':'1991-12-12',
-		// 							'city': '上海市'
-		// 						}
-		// 					};
 		$scope.is_applied = false;
 		$scope.is_show_applyview =false;
-		$scope.phonenums = [{'phone':'18888888888'}, {'phone':'18888888881'},{'phone':'18888888882'}];
-		$scope.username = '';
-		$scope.phonenum = '';
+		
+		$scope.username = '123';
+		
 		$('.apply_sex .sex_male').addClass('sex_selected');
-		$scope.isMale = true;
+		$scope.isMale = 1;
+		$scope.birthday = '1999-01-01';
+		$scope.area_string = '';
 		$scope.show_phone_menu = false;
 		$scope.show_year_view = false;
 		$scope.show_month_view = false;
 		$scope.show_day_view = false;
 
 		$scope.show_reminder_view = false;
-
+		
 
 		$http.get("app/common/citys.json").success(function(data) {
 	         $scope.provinces = data;
-	         console.log(data);
+	         // console.log(data);
 	    });
 
 	    $scope.select_city = function(){
 	    	$scope.provinces_show = true;
 	    };
 
-	    $scope.area_string = '';
+	    $scope.province = {};
+		$scope.city = {};
+		$scope.area = {};
+	    
 	    $scope.provinces_show = false;
 	    $scope.citys_show = false;
 	    $scope.areas_show = false;
 		$scope.click_province = function(pro){
 			
 			var index = $scope.provinces.indexOf(pro);
-			console.log(index);
-			if (index != 0) {
-				console.log(pro.name);
+			// console.log(index);
+			if (index > 0 && index < $scope.provinces.length-1) {
+				// console.log(pro.name);
 				$scope.province = pro;
+				if (pro.sub.length == 0) {
+					$scope.city.name = '';
+					$scope.area.name = '';
+					setCity();
+					
+					$scope.citys_show = false;
+
+				}else{
+					$scope.citys_show = true;
+				};
 				$scope.provinces_show = false;
-				$scope.citys_show = true;
 	    
+			}else if(index == $scope.provinces.length-1){
+				$scope.provinces_show = false;
+				$scope.citys_show = false;
+				$scope.province.name = '其他';
+				$scope.city.name = '其他';
+				$scope.area.name = '其他';
+				setCity();
 			};
 		};
 		$scope.click_city = function(city){
 			
 			var index = $scope.province.sub.indexOf(city);
-			console.log(index);
-			if (index != 0) {
-				console.log(city.name);
+			// console.log(index);
+			if (index > 0 && index < $scope.province.sub.length - 1)  {
+				// console.log(city.name);
 				$scope.city = city;
+				if (!city.sub || city.sub.length == 0) {
+					$scope.area.name = '';
+					setCity();
+					
+					$scope.areas_show = false;
+				}else{
+					$scope.areas_show = true;
+				};
 				$scope.citys_show = false;
-				$scope.areas_show = true;
+				
 
-			};
+			}else if (index == $scope.province.sub.length - 1) {
+				$scope.city.name = '其他';
+				$scope.area.name = '其他';
+				setCity();
+				$scope.citys_show = false;
+			};;
 		};
 		$scope.click_area = function(area){
 			
 			var index = $scope.city.sub.indexOf(area);
-			console.log(index);
+			// console.log(index);
 			if (index != 0) {
-				console.log(area.name);
+				// console.log(area.name);
 				$scope.area = area;
 				$scope.provinces_show = false;
 			    $scope.citys_show = false;
 			    $scope.areas_show = false;
 
-			    $scope.area_string = $scope.province.name+'-'+$scope.city.name+'-'+$scope.area.name;
+			    setCity();
+			    // $scope.area_string = $scope.province.name+' '+$scope.city.name+' '+$scope.area.name;
 			};
 		};
+		function setCity(){
+			$scope.area_string = $scope.province.name+' '+$scope.city.name+' '+$scope.area.name;
+		}
 
 		// $scope.click_active = function(active){
 		// 	console.log('click_active:'+active.Title);
@@ -133,8 +191,8 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 
 		$scope.active_apply = '';
 		$scope.click_phone = function(phone){
-			console.log(phone);
-			$scope.phonenum = phone.phone;
+			// console.log(phone);
+			$scope.phonenum = phone.Mobile;
 			$scope.show_phone_menu = false;
 		};
 		$scope.isClick_male = function(isMale){
@@ -147,9 +205,9 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 				$('.apply_sex .sex_class').removeClass('sex_selected');
 				$(this).addClass('sex_selected');
 				if ($(this).hasClass('sex_male')) {
-					$scope.isMale = true;
+					$scope.isMale = 1;
 				}else{
-					$scope.isMale = false;
+					$scope.isMale = 2;
 				};
 				console.log($scope.isMale);
 			};
@@ -233,6 +291,8 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 					create_days(29);
 				};
 			};
+
+			$scope.birthday = $scope.bir_year+'-'+$scope.bir_month+'-'+$scope.bir_day;
 		};
 		$scope.selected_month = function(m){
 			$scope.bir_month = m;
@@ -285,20 +345,74 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 				}
 			};
 
+			$scope.birthday = $scope.bir_year+'-'+$scope.bir_month+'-'+$scope.bir_day;
+
 		};
 		$scope.selected_day = function(d){
 			$scope.bir_day = d;
 			$scope.show_day_view = false;
+
+			$scope.birthday = $scope.bir_year+'-'+$scope.bir_month+'-'+$scope.bir_day;
 		};
 
 		$scope.is_apply = function(is_a){
 			if (is_a) {
-				$scope.show_reminder_view = true;
+				apply_submit();
+				
 			}else{
-
+				$scope.is_show_applyview = false;
 			};
-			$scope.is_show_applyview = false;
+			
 		};
+		function apply_submit(){
+
+			if (!$scope.username || $scope.username.length<=0) {
+				alert('请输入姓名！');
+				return;
+			}else if(!$scope.province.name || $scope.province.name.length<=0){
+				alert('请选择正确的地区！');
+				return;
+			};
+
+			// console.log('完美');
+			// return;
+			$http({
+				method: 'get',
+				url: Const.baseUrl + 'Event/SignUp',
+				params:{
+					'Token': fyData.user.token,
+			        'EventId': $stateParams.id,
+			        'UserName': $scope.username,
+			        'Mobile': $scope.phonenum,
+			        'Gender': $scope.isMale,
+			        'Birthday': $scope.birthday,
+			        // 'Location': $scope.area_string
+			        'Country': '中国',
+			        'State': $scope.province.name,
+			        'City': $scope.city.name
+				}
+			})
+			.success(function(req){
+				
+				console.log('success_'+req);
+				$scope.active_info.IsSignUp = '1';
+				$scope.active_info.UserName = $scope.username;
+				$scope.active_info.Mobile = $scope.phonenum;
+				$scope.active_info.Gender = $scope.isMale;
+				$scope.active_info.Birthday = $scope.birthday;
+
+
+				$scope.is_show_applyview = false;
+				$scope.show_reminder_view = true;
+
+			})
+			.error(function(req){
+				console.log('error_'+req);
+			});
+		};
+
+
+		// function 
 
 		$scope.is_show_grayview = function(){
 			$scope.show_reminder_view = false;

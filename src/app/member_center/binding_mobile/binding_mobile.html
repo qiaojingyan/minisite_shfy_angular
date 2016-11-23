@@ -2,8 +2,15 @@
 	<div class="binding_mobile_view">
 
 		<div class="binding_container">
-			<div class="user_bg"></div>
-			<div class="user_icon"></div>
+			<div class="user_bg">
+				<img src="images/main_fy.png" alt="">
+			</div>
+			<!-- <div class="user_icon" style="background-image: url({{mg_info.HeadImgUrl}});"></div> -->
+			<div class="user_icon" >
+				<img src="images/main_fy.png" alt="">
+			</div>
+			<!-- <div class="user_bg"></div>
+			<div class="user_icon"></div> -->
 			<div class="user_nickname">昵称昵称昵称昵称</div>
 			<div class="binding_remind" ng-hide='hasmobile'>
 				<p>还没有绑定手机号</p>
@@ -11,7 +18,7 @@
 			</div>
 			<div class="binding_mobile">
 				<div class="phone_item" ng-repeat='phone in phones'>
-					<div class="phone_number">手机号: <span>{{phone.tel}}</span></div>
+					<div class="phone_number">手机号: <span>{{phone.Mobile}}</span></div>
 					<div class="remove_mobile" ng-click='remove_mobile(phone)'>解绑</div>
 				</div>
 			</div>
@@ -24,7 +31,7 @@
 		<div class="add_mobile_view" ng-show='show_add_view'>
 			<div class="add_phone">
 				<div class="phone_number">手机号: <input type='number' ng-model='number'></div>
-				<div class="send_autocode_btn">发送验证码</div>
+				<div class="send_autocode_btn">获取验证码</div>
 				<div class="autocode">验证码: <input type='number' ng-model='autocode'></div>
 				<div class="binding_cancel" ng-click='is_binding(false)'>取消</div>
 				<div class="binding_confirm" ng-click='is_binding(true)'>确定</div>
@@ -43,4 +50,13 @@
 		</div>
 
 	</div>
+	<div class="spinner_con" ng-if="!dataGetSuccess">
+        <div class="spinner spinner_product_detail">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
 </div>

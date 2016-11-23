@@ -16,6 +16,7 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
             }
         }).success(function(res) {
             var Token = JSON.parse(res);
+            fyData.user.token = Token;
             $http({
                 method: 'GET',
                 url: Const.baseUrl + "/User/GetUser",
@@ -24,14 +25,11 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                 }
             }).success(function(res) {
                 res = JSON.parse(res);
-                fyData.user = res;
-                fyData.user.token = Token;
-
+                fyData.user = res
+                console.log(res);
                 sessionStorage.setItem('user', JSON.stringify(fyData.user));
                 $location.path(redirectPath);
             });
-
-
         });
     }
 }]);

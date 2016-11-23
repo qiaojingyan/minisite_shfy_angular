@@ -1,27 +1,33 @@
 var active_module = angular.module('about_fy_module', []);
-active_module.controller('about_fy_controller', ['$scope', '$http', '$location', 'Const', 
-	function($scope, $http, $location, Const){
+active_module.controller('about_fy_controller', ['$scope', '$http', '$location', 'Const', 'fyData', 
+	function($scope, $http, $location, Const, fyData){
 
-		// $http({
-		// 	method: 'get',
-		// 	url: Const.baseUrl + 'Event/GetEventList?Token=123456&CategoryID=1&PageIndex=1&PageSize=10'
-		// })
-		// .success(function(req){
-		// 	if(1){
-		// 		$scope.all_acitves = JSON.parse(req);
-		// 		console.log($scope.all_acitves);
-		// 	}
-		// 	console.log('success_'+req);
-			
-		// })
-		// .error(function(req){
-		// 	console.log('error_'+req);
-		// });
+		// getNewsList('9F96AEBF-B2F6-4FAB-A288-092A9CE11AEF');
+		getNewsList('0CB47B14-7535-407E-AEA1-646F82DDB668');
+		
 
-		$scope.click_active = function(active){
-			console.log('click_active:'+active.Title);
-			$location.path('/activedetail/1');
-		};
+		function getNewsList(CategoryID) {
+	        $http({
+	            method: 'GET',
+	            url: Const.baseUrl + "/Info/GetInfoList",
+	            params: {
+	                'Token': fyData.user.token,
+	                'CategoryID': CategoryID,
+	                'PageIndex': 1,
+	                'PageSize': 100
+	            }
+	        }).success(function(res) {
+	            var data = JSON.parse(res)[0];
+	            // $scope.NewsList = res;
+	            $('.about_fy_content').html(data.ContentBody);
+	            // console.log(res);
+	            $scope.dataGetSuccess = true;
+	        })
+	        .error(function(req){
+				console.log('error_'+req);
+			});
+
+	    }
 
 
 }]);

@@ -1,23 +1,37 @@
 // 'use strict';
 var active_module = angular.module('active_module', []);
-active_module.controller('active_controller', ['$scope', '$http', '$location', 'Const', 
-	function($scope, $http, $location, Const){
+active_module.controller('active_controller', ['$scope', '$http', '$location', 'Const', 'fyData', 
+	function($scope, $http, $location, Const, fyData){
 
-		$http({
-			method: 'get',
-			url: Const.baseUrl + 'Event/GetEventList?Token=123456&CategoryID=1&PageIndex=1&PageSize=9999'
-		})
-		.success(function(req){
-			if(1){
-				$scope.all_acitves = JSON.parse(req);
-				// console.log($scope.all_acitves);
-			}
-			console.log('success_'+req);
 
-		})
-		.error(function(req){
-			console.log('error_'+req);
-		});
+		getActiveList('738F8B57-3CEE-4D18-9D24-23E123C49DA2');
+		// getActiveList('738F8B57-3CEE-4D18-9D24-23E123C49DA3');
+		
+		function getActiveList(CategoryID){
+			$http({
+				method: 'get',
+				url: Const.baseUrl + 'Event/GetEventList',
+				params: {
+		                'Token': fyData.user.token,
+		                'CategoryID': CategoryID,
+		                'PageIndex': 1,
+		                'PageSize': 100
+		            }
+
+			})
+			.success(function(req){
+				if(1){
+					$scope.all_acitves = JSON.parse(req);
+					// console.log($scope.all_acitves);
+				}
+				// console.log('success_'+req);
+				$scope.dataGetSuccess = true;
+			})
+			.error(function(req){
+				console.log('error_'+req);
+			});
+		};
+		
 
 		$scope.click_active = function(active){
 			// console.log('click_active:'+active.Title);

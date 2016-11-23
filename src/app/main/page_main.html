@@ -7,10 +7,10 @@
                 </ks-swiper-slide>
             </ks-swiper-container>
             <div class="main_btn_content" style="top:{{main_btn_content_top}}">
-                <div class="btn_fy"></div>
-                <div class="btn_active"></div>
+                <div class="btn_fy" ng-click='goToAboutFy()'></div>
+                <div class="btn_active" ng-click='goToActive()'></div>
                 <div class="btn_news" ng-click="goToNewsList()"></div>
-                <div class="btn_knowledge"></div>
+                <div class="btn_knowledge" ng-click='goToKnowledge()'></div>
             </div>
         </div>
         <div class="product_fy" ng-if="nowPage == 2">
@@ -32,9 +32,9 @@
             <div class="profile_head_con">
                 <div class="profile_head_img" style="background-image: url({{user.HeadImgUrl}})"></div>
                 <div class="profile_head_nickname">{{user.NickName}}</div>
-                <div class="btn_linkPhone">绑定手机号</div>
+                <div class="btn_linkPhone" ng-click='binding_mobile()'>绑定手机号</div>
             </div>
-            <div class="main_profile_item" style="margin-top: 24px;">
+            <div class="main_profile_item" style="margin-top: 24px;" ng-click='goToMyInfo()'>
                 <img src="./images/main_profile_icon_info.png" class="main_profile_item_icon">我的资料
                 <img src="./images/arrow.png" class="main_profile_arrow">
             </div>
@@ -50,7 +50,7 @@
                 <img src="./images/main_profile_icon_integral_achieve.png" class="main_profile_item_icon">获取积分
                 <img src="./images/arrow.png" class="main_profile_arrow">
             </div>
-            <div class="main_profile_item" style="margin-top: 24px;">
+            <div class="main_profile_item" style="margin-top: 24px;" ng-click='goToContactUs()'>
                 <img src="./images/main_profile_icon_linkus.png" class="main_profile_item_icon">联系我们
                 <img src="./images/arrow.png" class="main_profile_arrow">
             </div>
