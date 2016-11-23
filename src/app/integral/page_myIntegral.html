@@ -19,6 +19,15 @@
             <div class="integral_my_body_title title3" ng-click="changePage(3)">兑换记录</div>
         </div>
         <div class="integral_my_body_content">
+            <div class="spinner_con" ng-if="!dataGetSuccess">
+                <div class="spinner spinner_news_integral">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
             <div class="integral_my_body_content_myrecords" ng-if="selectedPage == 1">
                 <div class="integral_item" ng-repeat="record in myIntegralRecords">
                     <div class="integral_type_icon {{record.CreditType==1?'achieve':'del'}}"></div>
@@ -49,7 +58,7 @@
                     <div class="creditDesc">{{record.CreditDesc}}</div>
                 </div>
             </div>
-            <div class="bottomHeight" style="height: 341px;"></div>
+            <div class="bottomHeight" style="height: 341px;pointer-events: none;"></div>
         </div>
     </div>
 </div>

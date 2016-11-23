@@ -25,6 +25,8 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
     }
 
     function getNewsList(CategoryID) {
+
+        $scope.dataGetSuccess = false;
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Info/GetInfoList",
@@ -35,6 +37,7 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
                 'PageSize': 100
             }
         }).success(function(res) {
+            $scope.dataGetSuccess = true;
             res = JSON.parse(res);
             $scope.NewsList = res;
         });
@@ -42,6 +45,9 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
     }
 
     $scope.changeNewsCategory = function(index) {
+        if (fyData.nowNewsCategory == index) {
+            return;
+        }
         fyData.nowNewsCategory = index;
         getNewsList($scope.NewsCategorys[fyData.nowNewsCategory].CategoryID);
         $scope.NewsCategorys.forEach(function(item) {
@@ -74,6 +80,7 @@ newsModule.controller('newsDetailCtrl', ['$scope', '$http', '$location', '$state
                 'InfoID': $stateParams.newsId,
             }
         }).success(function(res) {
+            $scope.dataGetSuccess = true;
             res = JSON.parse(res);
             $scope.nowNews = res;
             if ($scope.nowNews.ContentBody != undefined && $scope.nowNews.ContentBody != null) {

@@ -2,9 +2,16 @@
     ._br-position(0, 0, 100%, 100%);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    .spinner_con {
+        ._br-position(0, 0, 100%, 100%);
+        background-color: white;
+        .spinner_news_detail {
+            margin-top: 350px;
+        }
+    }
     .news_detail_head_img {
         width: 640px;
-        border-bottom: 24px solid #EFEFF4;
+        border-bottom: 24px solid @appGray;
     }
     .news_detail_content_con {
         padding-top: 30px;
@@ -22,7 +29,7 @@
             margin-top: 12px;
             margin-left: 1px;
             .text_desc_source {
-                color: #508CEE;
+                color: @appBlue;
             }
         }
         .news_detail_content {

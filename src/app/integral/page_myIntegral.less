@@ -1,5 +1,12 @@
 .integral_my {
     ._br-position(0, 0, 100%, 100%);
+    .spinner_con {
+        ._br-position(0, 235px+106px, 100%, 100%);
+        background-color: white;
+        .spinner_news_integral {
+            margin-top: 200px;
+        }
+    }
     .integral_my_top {
         background-image: url('@{imgUrl}/integral_head.png');
         background-size: 100% auto;
@@ -22,18 +29,18 @@
                 width: 140px;
                 .integral_myNum_text {
                     font-size: 24px;
-                    color: #EFEFF4;
+                    color: @appGray;
                 }
                 .integral_myNum_textNum {
                     font-size: 40px;
-                    color: #EFEFF4;
+                    color: @appGray;
                     line-height: 56px;
                 }
             }
         }
         .split_line {
             float: left;
-            background: #EFEFF4;
+            background: @appGray;
             width: 1px;
             height: 60px;
             margin-top: 88px;
@@ -44,13 +51,13 @@
             margin-left: 69px;
             .btn_integral_exchange {
                 margin-top: 90px;
-                background: #EFEFF4;
+                background: @appGray;
                 border-radius: 6px;
                 width: 200px;
                 height: 60px;
                 text-align: center;
                 font-size: 32px;
-                color: #FF801A;
+                color: @appOrange;
                 line-height: 60px;
             }
         }
@@ -59,7 +66,7 @@
         height: 100%;
         .integral_my_body_title_con {
             height: 93px+13px;
-            border-bottom: 13px solid #EFEFF4;
+            border-bottom: 13px solid @appGray;
             .integral_my_body_title {
                 float: left;
                 width: 640px/3;
@@ -68,16 +75,17 @@
                 line-height: 93px-4px;
                 text-align: center;
                 &.selected {
-                    color: #508CEE;
-                    border-bottom: 4px solid #508CEE;
+                    color: @appBlue;
+                    border-bottom: 4px solid @appBlue;
                 }
             }
         }
         .integral_my_body_content {
             height: 100%;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
             .integral_item {
-                border-bottom: 1px solid #EFEFF4;
+                border-bottom: 1px solid @appGray;
                 padding-left: 24px;
                 padding-top: 10px;
                 padding-right: 24px;
@@ -87,18 +95,18 @@
                     height: 80px;
                     float: left;
                     background-size: 100% 100%;
-                    &.achieve{
-						background-image: url('@{imgUrl}/integral_icon_achieve.png')
+                    &.achieve {
+                        background-image: url('@{imgUrl}/integral_icon_achieve.png')
                     }
-                    &.del{
-						background-image: url('@{imgUrl}/integral_icon_del.png')
+                    &.del {
+                        background-image: url('@{imgUrl}/integral_icon_del.png')
                     }
                 }
                 .top_text {
                     margin-left: 80px+24px;
                     .creditAmount {
                         font-size: 32px;
-                        color: #FF801A;
+                        color: @appOrange;
                         line-height: 45px;
                         width: 200px;
                         white-space: nowrap;

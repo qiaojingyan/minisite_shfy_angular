@@ -1,6 +1,15 @@
 .product_detail {
-    background-color: #EFEFF4;
+    background-color: @appGray;
     ._br-position(0, 0, 640px, 100%);
+    .spinner_con {
+        ._br-position(0, 0, 640px, 100%);
+        background-color: white;
+        .spinner_product_detail {
+            position: absolute;
+            left: 295px;
+            top: 300px;
+        }
+    }
     .product_detail_all_content {
         ._br-position(0, 0, 640px, 100%);
         overflow-x: hidden;
@@ -17,13 +26,13 @@
         padding-right: 24px;
         font-size: 32px;
         line-height: 45px;
-        color: #EFEFF4;
+        color: @appGray;
     }
     .detail_Income {
         position: absolute;
         top: 87px;
         font-size: 64px;
-        color: #EFEFF4;
+        color: @appGray;
         font-weight: bold;
         width: 640px;
         text-align: center;
@@ -33,7 +42,7 @@
         top: 12px+87px+90px;
         font-size: 24px;
         line-height: 33px;
-        color: #EFEFF4;
+        color: @appGray;
         width: 640px;
         text-align: center;
     }
@@ -52,7 +61,7 @@
         padding-top: 24px;
     }
     .detail_content1_1content {
-        color: #508CEE;
+        color: @appBlue;
         font-size: 36px;
     }
     .detail_content1_2text {
@@ -75,13 +84,13 @@
             .content_element_table {
                 display: none;
             }
-            .content_item_table{
-                display:none;
+            .content_item_table {
+                display: none;
             }
         }
     }
     .content_item_title_con {
-        border-top: 12px solid #EFEFF4;
+        border-top: 12px solid @appGray;
     }
     .content_item_title {
         color: #333333;
@@ -91,7 +100,7 @@
         margin-right: 24px;
         padding-top: 30px;
         padding-bottom: 20px;
-        border-bottom: 1px solid #EFEFF4;
+        border-bottom: 1px solid @appGray;
         pointer-events: none;
     }
     .content_item_title_arrow {
@@ -146,7 +155,7 @@
         .content_element_item_yellow {
             line-height: 40px;
             height: 100%;
-            color: #FF801A;
+            color: @appOrange;
             font-size: 24px;
             background: rgba(255, 128, 26, 0.10);
         }
@@ -159,7 +168,7 @@
         }
     }
     .phone_con {
-        background: #FF801A;
+        background: @appOrange;
         height: 88px;
         width: 100%;
         position: absolute;
@@ -182,6 +191,6 @@
         }
     }
     .highlight {
-        color: #FF801A;
+        color: @appOrange;
     }
 }

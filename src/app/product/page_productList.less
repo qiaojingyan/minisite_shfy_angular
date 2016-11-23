@@ -1,9 +1,18 @@
 .productList {
-    background-color: #EFEFF4;
+    background-color: @appGray;
     ._br-position(0, 0, 640px, 100%);
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    .spinner_con {
+        ._br-position(0, 0, 640px, 100%);
+        background-color: white;
+        .spinner_product_list {
+            position: absolute;
+            left: 295px;
+            top: 300px;
+        }
+    }
     .tips {
         position: absolute;
         width: 0;
@@ -14,10 +23,10 @@
         right: 0px;
     }
     .tips_name {
-        color: #EFEFF4;
+        color: @appGray;
         font-size: 20px;
         position: absolute;
-        left: 564px;
+        left: 562px;
         width: 80px;
         top: 20px;
         ._br-transform(rotate(45deg));
@@ -34,13 +43,13 @@
         width: 100%;
         height: 160px;
         background-color: white;
-        border-bottom: 1px solid #EFEFF4;
+        border-bottom: 1px solid @appGray;
     }
     .text_expectedIncome {
         position: relative;
         left: 30px;
         top: 41px;
-        color: #FF801A;
+        color: @appOrange;
         font-weight: bold;
         font-size: 40px;
         line-height: 53px;
@@ -109,7 +118,7 @@
             margin-right: 24px;
             line-height: 45px;
             text-align: center;
-            border-bottom: 1px solid #EFEFF4;
+            border-bottom: 1px solid @appGray;
         }
         .content_desc {
             float: top;
@@ -117,7 +126,7 @@
             padding-left: 24px;
             padding-right: 24px;
             font-size: 24px;
-            height:100%;
+            height: 100%;
             color: #999999;
             line-height: 40px;
         }
@@ -134,7 +143,7 @@
             padding-bottom: 30px;
         }
         .highlight {
-            color: #FF801A;
+            color: @appOrange;
         }
         .content_item_con {
             &.hideItem {
@@ -147,7 +156,7 @@
             }
         }
         .content_item_title_con {
-            border-top: 12px solid #EFEFF4;
+            border-top: 12px solid @appGray;
         }
         .content_item_title {
             color: #333333;
@@ -157,7 +166,7 @@
             margin-right: 24px;
             padding-top: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #EFEFF4;
+            border-bottom: 1px solid @appGray;
             pointer-events: none;
             height: 100%;
         }
@@ -175,7 +184,7 @@
         .content_item_content {
             color: #999999;
             font-size: 24px;
-            height:100%;
+            height: 100%;
             padding-left: 24px;
             padding-right: 24px;
             padding-bottom: 30px;

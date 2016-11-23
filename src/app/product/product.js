@@ -5,7 +5,7 @@ productMoudle.controller('productListCtrl', ['$scope', '$http', '$location', '$s
     init();
 
     function init() {
-        $('.product_content').delegate('.content_item_title_con', 'touchstart', function() {
+        $('.product_content').delegate('.content_item_title_con', 'click', function() {
             if ($(this).parent().hasClass('hideItem')) {
                 $(this).parent().removeClass('hideItem').addClass('showItem');
             } else {
@@ -14,6 +14,7 @@ productMoudle.controller('productListCtrl', ['$scope', '$http', '$location', '$s
         });
         getProductContent($stateParams.categoryId, function(res) {
             res = JSON.parse(res);
+            $scope.dataGetSuccess = true;
             if (res.length == 1 && res[0].Description != undefined && res[0].Description != '' && res[0].Description != null) {
                 document.getElementById('product_content').innerHTML = res[0].Description;
                 return;
@@ -92,6 +93,7 @@ productMoudle.controller('productDetailCtrl', ['$scope', '$http', '$location', '
 
         getProductDetail($stateParams.categoryId, function(res) {
             res = JSON.parse(res);
+            $scope.dataGetSuccess = true;
             $scope.productDetail = res;
 
             var ProductElement = [{
@@ -194,7 +196,7 @@ productMoudle.controller('productDetailCtrl', ['$scope', '$http', '$location', '
             document.getElementById('product_detail_content').innerHTML = content;
         })
 
-        $('.product_detail').delegate('.content_item_title_con', 'touchstart', function() {
+        $('.product_detail').delegate('.content_item_title_con', 'click', function() {
             if ($(this).parent().hasClass('hideItem')) {
                 $(this).parent().removeClass('hideItem').addClass('showItem');
             } else {

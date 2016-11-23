@@ -26,7 +26,7 @@
                     ._br-position(26px, 11px, 44px, 44px, '@{imgUrl}/main_icon1_selected.png');
                 }
                 .main_footer_text_1 {
-                    color: #508CEE;
+                    color: @appBlue;
                 }
             }
         }
@@ -37,7 +37,7 @@
                     ._br-position(26px, 11px, 44px, 44px, '@{imgUrl}/main_icon2_selected.png');
                 }
                 .main_footer_text_2 {
-                    color: #508CEE;
+                    color: @appBlue;
                 }
             }
         }
@@ -48,7 +48,7 @@
                     ._br-position(26px, 11px, 44px, 44px, '@{imgUrl}/main_icon3_selected.png');
                 }
                 .main_footer_text_2 {
-                    color: #508CEE;
+                    color: @appBlue;
                 }
             }
         }
@@ -112,6 +112,13 @@
                 pointer-events: none;
             }
         }
+
+        .spinner_product_fy{
+            position:absolute;
+            top:300px;
+            left:295px;
+
+        }
     }
     .main_fy {
         position: relative;
@@ -167,12 +174,12 @@
             margin: 0 5px;
         }
         .swiper-pagination-bullet-active {
-            background: #508CEE;
+            background: @appBlue;
             opacity: .8;
         }
     }
     .profile_fy {
-        background-color: #EFEFF4;
+        background-color: @appGray;
         position: relative;
         height: 100%;
         .profile_head_con {
@@ -195,14 +202,14 @@
             position: relative;
             font-size: 32px;
             line-height: 45px;
-            color: #EFEFF4;
+            color: @appGray;
             text-align: center;
             margin-top: 40px;
         }
         .btn_linkPhone {
             width: 200px;
             height: 60px;
-            background: #FF801A;
+            background: @appOrange;
             border-radius: 6px;
             margin-left: 220px;
             font-size: 28px;
@@ -219,7 +226,7 @@
             line-height: 100px;
             padding-left: 24px;
             padding-right: 24px;
-            border-bottom: 1px solid #EFEFF4;
+            border-bottom: 1px solid @appGray;
         }
         .main_profile_item_icon {
             width: 60px;

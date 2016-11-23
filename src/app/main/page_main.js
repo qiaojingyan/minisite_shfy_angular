@@ -12,10 +12,10 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
     };
     $scope.goToNewsList = function() {
         $location.path('/news_list');
-    }
+    };
     $scope.goToMyIntegral = function() {
         $location.path('/integral_my');
-    }
+    };
     $scope.goToIntegralMall = function() {
         if ($scope.esUrl != null) {
             window.location.href = $scope.esUrl;
@@ -24,7 +24,10 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
         getEsUrl(function() {
             window.location.href = $scope.esUrl;
         });
-    }
+    };
+    $scope.goToFeedback = function() {
+        $location.path('/feedback');
+    };
 
     function init() {
         var show_con_height = document.body.clientHeight - 88;
@@ -42,7 +45,7 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
         $scope.nowPage = fyData.nowPage;
         $scope.banners = fyData.getBanners();
 
-        getCategoryList('F3A147D3-92B6-4BC6-8DD2-0988CBE46F32',function(res) {
+        getCategoryList('F3A147D3-92B6-4BC6-8DD2-0988CBE46F32', function(res) {
             res = JSON.parse(res);
             $scope.productList = res;
         })

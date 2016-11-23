@@ -20,6 +20,13 @@
                     {{product.CategoryName}}
                 </div>
             </div>
+            <div class="spinner spinner_product_fy" ng-if="productList==undefined || productList.length==0">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
         </div>
         <div class="profile_fy" ng-if="nowPage == 3">
             <div class="profile_head_con">
@@ -47,7 +54,7 @@
                 <img src="./images/main_profile_icon_linkus.png" class="main_profile_item_icon">联系我们
                 <img src="./images/arrow.png" class="main_profile_arrow">
             </div>
-            <div class="main_profile_item">
+            <div class="main_profile_item" ng-click="goToFeedback()">
                 <img src="./images/main_profile_icon_feedback.png" class="main_profile_item_icon">反馈帮助
                 <img src="./images/arrow.png" class="main_profile_arrow">
             </div>

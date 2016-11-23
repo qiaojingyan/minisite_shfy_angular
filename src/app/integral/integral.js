@@ -23,7 +23,7 @@ integralModule.controller('myIntegralCtrl', ['$scope', '$http', '$location', '$s
                 'CreditType': ''
             }
         }).success(function(res) {
-            console.log(res);
+            $scope.dataGetSuccess = true;
             $scope.myIntegralRecords = JSON.parse(res);
 
             $scope.myAchieveIntegralRecords = [];
