@@ -1,17 +1,17 @@
 <div ng-controller="cantact_us_controller">
 	<div class="cantact_us">
 		<div class="nav_bar">
-			<div class="bar_btn cantact_btn" index='cantact_view'>联系我们</div>
-			<div class="bar_btn business_btn" index='business_view'>招商合作</div>
-			<div class="bar_btn recruit_btn" index='recruit_view'>招贤纳士</div>
+			<div class="bar_btn cantact_btn {{selecteds[0].select==1?'bar_btn_selected':''}}" index='cantact_view' ng-click='bar_btn_click(0)'>联系我们</div>
+			<div class="bar_btn business_btn {{selecteds[1].select==1?'bar_btn_selected':''}}" index='business_view' ng-click='bar_btn_click(1)'>招商合作</div>
+			<div class="bar_btn recruit_btn {{selecteds[2].select==1?'bar_btn_selected':''}}" index='recruit_view' ng-click='bar_btn_click(2)'>招贤纳士</div>
 		</div>
-		<div class="cantact_view nav_controller">
+		<div class="cantact_view nav_controller" ng-show='selecteds[0].select==1'>
 			<a href="http://j.map.baidu.com/1863H" class="map_view"></a>
 			<div class="phone_num">全国客服:&nbsp&nbsp&nbsp&nbsp<span>400-002-5135</span></div>
 			<div class="address">富盈集团(上海总部)地址: <p>上海市长宁区仙霞路99号尚嘉中心(LV大楼)6楼</p></div>
 			<div class="email">E-mail:&nbsp&nbsp&nbsp&nbsp<span>welcome@fxigroup.com</span></div>
 		</div>
-		<div class="business_view nav_controller">
+		<div class="business_view nav_controller" ng-show='selecteds[1].select==1'>
 			<div class="business_topimg"></div>
 			<div class="business_content">“普惠宜居”是由上海福盈资产管理有限公司与淳遂众慈公益基金通过金融创新的方式，联手推出的“去库存工具”，通过对接保险、信托等专业机构以达成对购房困难人群实现最低半价买房的闭环。降低购房人面对高额房价的压力，帮助开发商降解高企的库存。</br>上海福盈秉承“我助人人，人人助我”的公益精神，面向全国进行招商，以及诚招代理。欢迎走在“去库存”政策前沿的开发商，以及有心助力购房困难家庭改善居住环境的代理商。</div>
 			<div class="business_cantact">
@@ -20,7 +20,7 @@
 				<p>项目电话：<span>400-016-4396</span></p>
 			</div>
 		</div>
-		<div class="recruit_view nav_controller">
+		<div class="recruit_view nav_controller" ng-show='selecteds[2].select==1'>
 			<div class="recruit_topimg"></div>
 			<div class="recruit_email">请将作品与简历发至<p>zhaopin@fxigroup.com，标题写明应聘岗位。</p></div>
 			<div class="recruit_content">

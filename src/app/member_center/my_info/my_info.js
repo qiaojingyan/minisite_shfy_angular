@@ -115,9 +115,14 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				// 	$scope.all_acitves = JSON.parse(req);
 				// 	console.log($scope.all_acitves);
 				// }
-				$scope.my_info = angular.copy($scope.temp_info);
+				if (JSON.parse(req)) {
+					$scope.my_info = angular.copy($scope.temp_info);
+				}else{
+					alert('保存失败！');
+				};
+				
 
-				// console.log('success_'+req);
+				console.log('success_'+req);
 			})
 			.error(function(req){
 				console.log('error_'+req);
