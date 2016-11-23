@@ -10,18 +10,31 @@
 		.user_bg{
 			width: 100%;
 			height: 296px;
-			background-color: blue;
-			background: url('@{imgUrl}/main_fy.png') no-repeat center center;
-			background-size: 100%;
+			// background-color: blue;
+			// background: url('@{imgUrl}/main_fy.png') no-repeat center center;
+			// background-size: 100%;
 			._br-filter(blur(10px));
+			img{
+				display: block;
+				width: 100%;
+				height: 100%;
+
+			}
 			
 		}
 		.user_icon{
 			._br-position(270px, 76px, 100px, 100px);
 			._br-border-radius(50px);
 			border: 3px solid rgba(255, 255, 255, 0.5);
-			background: url('@{imgUrl}/main_fy.png') no-repeat center center;
-			._br-filter(blur(0px));
+			overflow: hidden;
+			// background: url('@{imgUrl}/main_fy.png') no-repeat center center;
+			// ._br-filter(blur(0px));
+			img{
+				display: block;
+				width: 100%;
+				height: 100%;
+
+			}
 		}
 		.user_nickname{
 			._br-position(0px, 190px, 100%, 40px);
@@ -52,6 +65,22 @@
 				// float: right;
 				// margin-left: 150px;
 			}
+			.warning{
+				._br-position(auto, 30px, 40px, 40px);
+				right: 120px;
+				background: url('@{imgUrl}/warning_point.png') no-repeat center center;
+				// background-color: red;
+				// ._br-position(400px, 30px, '@{imgUrl}/warning_point.png');
+				// // right: 100px;
+				._br-transform(scale(0.5));
+			}
+			.have_not{
+				._br-position(auto, 33px, 66px, 34px);
+				right: 50px;
+				color: #999;
+				font-size: 22px;
+				line-height: 34px;
+			}
 			.arrows{
 				._br-position(auto, 30px, '@{imgUrl}/arrows.png');
 				right: 10px;
@@ -69,7 +98,9 @@
 
 	.input_view{
 		._br-position(0, 0, 100%, 100%);
-		background-color: white;
+		background: url('@{imgUrl}/myinfo_bg.png') no-repeat center center;
+		background-size: 100% 100%;
+		// background-color: white;
 		overflow: scroll;
 		-webkit-overflow-scrolling: touch;
 		.input_class{
@@ -83,6 +114,7 @@
 			color: #999;
 			input{
 				border: none;
+				background-color: rgba(255, 255, 255, 0);
 			}
 		}
 		.input_birthday{
@@ -166,6 +198,52 @@
 			._br-border-radius(4px);
 			// border: 2px solid #999;
 			line-height: 60px;
+		}
+
+		.city_view{
+			._br-position(0,0,100%,100%);
+			background-color: #ccc;
+
+			.provinces{
+				._br-position(0,0,100%,100%);
+				-webkit-overflow-scrolling: touch;
+				overflow: scroll;
+				.province_item{
+					width: 100%;
+					height: 90px;
+					font-size: 30px;
+					line-height: 90px;
+					padding-left: 24px;
+					border-bottom: 1px solid #efeff4;
+				}
+			}
+			.citys{
+				._br-position(0,0,100%,100%);
+				-webkit-overflow-scrolling: touch;
+				overflow: scroll;
+				.citys_item{
+					width: 100%;
+					height: 90px;
+					font-size: 30px;
+					line-height: 90px;
+					padding-left: 24px;
+					border-bottom: 1px solid #efeff4;
+				}
+			}
+			.areas{
+				._br-position(0,0,100%,100%);
+				-webkit-overflow-scrolling: touch;
+				overflow: scroll;
+				.ereas_item{
+					width: 100%;
+					height: 90px;
+					font-size: 30px;
+					line-height: 90px;
+					padding-left: 24px;
+					border-bottom: 1px solid #efeff4;
+				}
+			}
+
 		}
 
 	}

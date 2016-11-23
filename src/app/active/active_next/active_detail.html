@@ -1,43 +1,44 @@
 <div ng-controller='active_detail_controller'>
 	<div class="active_detail">
 		<div class="active_detail_cont">
-			<div class="active_cover_img">
-				<div class="is_applied" ng-show='is_applied'></div>
+			<div class="active_cover_img" >
+				<img src='{{active_info.s02}}' alt="">
+				<div class="is_applied" ng-show='active_info.IsSignUp == 1'></div>
 			</div>
 			<div class="active_theme">{{active_info.Title}}</div>
 			<div class="line"></div>
 			<div class="active_time">
 				<p class="a_title">活动时间</p>
-				<p class="a_content">{{active_info.a_time}}</p>
+				<p class="a_content">{{active_info.st_end_time}}</p>
 			</div>
 			<div class="line"></div>
 			<div class="active_site">
 				<p class="a_title">活动地点</p>
-				<p class="a_content">{{active_info.a_site}}</p>
+				<p class="a_content">{{active_info.Address}}</p>
 			</div>
 			<div class="line"></div>
 			<div class="active_description">
 				<p class="a_title">活动简介</p>
-				<div class="a_content"> {{active_info.a_des}}</div>
+				<div class="a_content"> {{active_info.Description}}</div>
 			</div>
 			<div class="line"></div>
-			<div class="active_sign" ng-show='is_applied'>
+			<div class="active_sign" ng-show='active_info.IsSignUp == 1'>
 				<p class="a_title">报名信息</p>
-				<p class="a_content">姓名: <span class='name'>{{active_info.apply_info.name}}</span></p>
-				<p class="a_content">手机: <span class='phone'>{{active_info.apply_info.mobile}}</span></p>
-				<p class="a_content" ng-if='active_info.apply_info.sex == 1'>性别: <span class='sex'>男</span></p>
-				<p class="a_content" ng-if='active_info.apply_info.sex == 2'>性别: <span class='sex'>女</span></p>
-				<p class="a_content">生日: <span class='birthday'>{{active_info.apply_info.birthday}}</span></p>
+				<p class="a_content">姓名: <span class='name'>{{active_info.UserName}}</span></p>
+				<p class="a_content">手机: <span class='phone'>{{active_info.Mobile}}</span></p>
+				<p class="a_content" ng-if='active_info.Gender == 1'>性别: <span class='sex'>男</span></p>
+				<p class="a_content" ng-if='active_info.Gender == 2'>性别: <span class='sex'>女</span></p>
+				<p class="a_content">生日: <span class='birthday'>{{active_info.Birthday}}</span></p>
 				<div class="apply_success"></div>
 			</div>
 		</div>
 		
-		<div class="active_detail_button" ng-hide='is_applied' ng-click='click_apply_btn()'>我要报名</div>
+		<div class="active_detail_button" ng-hide='active_info.IsSignUp == 1' ng-click='click_apply_btn()'>我要报名</div>
 
 		<div class="apply_view" ng-show='is_show_applyview'>
 			<!-- <div class="gray_view"></div> -->
 			<div class="apply_info">
-				<div class="apply_name">姓名：<input type="text">{{username}}</div>
+				<div class="apply_name">姓名：<input type="text" ng-model='username'></div>
 				<div class="apply_phone" ng-click='click_apply_phone(show_phone_menu)'>
 					电话: <span>{{phonenum}}</span>
 					<div class="dropdown_arrows"></div>
@@ -108,7 +109,7 @@
 				<div class="reminder_middle">
 					<div class="smiling_face"></div>
 					<div class="reminder_content">
-						恭喜你成功报名<span>xxxx</span>活动，请耐心等待，我们的工作人员会及时与您联系！活动，请耐心等待，我们的工作人员会及时与您联系！活动，请耐心等待，我们的工作人员会及时与您联系！
+						恭喜你成功报名<span>{{active_info.Title}}</span>活动，请耐心等待，我们的工作人员会及时与您联系！活动，请耐心等待，我们的工作人员会及时与您联系！活动，请耐心等待，我们的工作人员会及时与您联系！
 					</div>
 				</div>
 				<div class="reminder_bottom"></div>

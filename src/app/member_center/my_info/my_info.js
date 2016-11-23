@@ -1,24 +1,54 @@
 var active_module = angular.module('my_info_module', []);
-active_module.controller('my_info_controller', ['$scope', '$http', '$location', 'Const', 
-	function($scope, $http, $location, Const){
+active_module.controller('my_info_controller', ['$scope', '$http', '$location', 'Const', 'fyData', 
+	function($scope, $http, $location, Const, fyData){
 
 		$scope.my_info = {};
-		$scope.submit_icon = function(){
-			var file = $('#upload_photo')[0].files[0];
-            console.log('file_: '+file);
-		}
-		$('#upload_photo').on('change', function(){
-			console.log('改变');
-			var file = $('#upload_photo')[0].files[0];
-            console.log('file_: '+file);
-		});
+
+		$http({
+				method: 'get',
+				url: Const.baseUrl + 'User/GetUser',
+				params: {
+					'Token': fyData.user.token
+				}
+			})
+			.success(function(req){
+				if(1){
+					$scope.my_info = JSON.parse(req);
+					// console.log('my_info: '+$scope.my_info);
+					dataHandle();
+				}
+				console.log('success_'+req);
+			})
+			.error(function(req){
+				console.log('error_'+req);
+			});
+
+		function dataHandle(){
+			$scope.temp_info = angular.copy($scope.my_info);
+					// $scope.temp_info = $scope.my_info;
+			if ($scope.temp_info.Birthday && $scope.temp_info.Birthday.length>0) {
+				$scope.temp_info.Birthday = $scope.temp_info.Birthday.substr(0, 10);
+				$scope.my_info.Birthday = $scope.temp_info.Birthday;
+
+				$scope.bir_year = $scope.temp_info.Birthday.split('-')[0];
+				$scope.bir_month = $scope.temp_info.Birthday.split('-')[1];
+				$scope.bir_day = $scope.temp_info.Birthday.split('-')[2];
+			}else{
+				$scope.bir_year = '1999';
+				$scope.bir_month = '01';
+				$scope.bir_day = '01';
+
+			};
+			console.log('temp_info:'+$scope.temp_info);
+		};
 
 		$scope.show_arr = [
 							{'show_input' : false},
 							{'show_input' : false},
 							{'show_input' : false},
 							{'show_input' : false},
-							{'show_input' : true},
+							{'show_input' : false},
+							{'show_input' : false},
 							{'show_input' : false},
 							{'show_input' : false},
 							{'show_input' : false}
@@ -26,13 +56,22 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 
 		$scope.info_click = function(index){
 
+			dataHandle();
 			$scope.show_arr[index].show_input = true;
 
 		};
 
 		$scope.is_change = function(is_c){
 			if (is_c) {
-
+				var i = 0;
+				for (; i < $scope.show_arr.length; i++) {
+					var ob = $scope.show_arr[i];
+					if (ob.show_input) {
+						// ob.show_input = false;
+						break;
+					};
+				};
+				submit_info(i);
 			}else{
 
 			};
@@ -44,29 +83,43 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				};
 			};
 		};
-		// $http({
-		// 	method: 'get',
-		// 	url: Const.baseUrl + 'Event/GetEventList?Token=123456&CategoryID=1&PageIndex=1&PageSize=10'
-		// })
-		// .success(function(req){
-		// 	if(1){
-		// 		$scope.all_acitves = JSON.parse(req);
-		// 		console.log($scope.all_acitves);
-		// 	}
-		// 	// console.log('success_'+req);
-		// })
-		// .error(function(req){
-		// 	console.log('error_'+req);
-		// });
 
-		// $scope.click_active = function(active){
-		// 	console.log('click_active:'+active.Title);
-		// 	$location.path('/activedetail/1');
-		// };
+		function submit_info(index){
+			if (index === 4) {
+				$scope.temp_info.Birthday = $scope.bir_year+'-'+$scope.bir_month+'-'+$scope.bir_day;
+			};
+			var info_data = {
+							'Name': $scope.temp_info.Name, 
+							'IDNumber': $scope.temp_info.IDNumber,
+							'Mobile': $scope.temp_info.Mobile,
+							'Email': $scope.temp_info.Email,
+							'Country': '中国',
+							'State': $scope.temp_info.State,
+							'City': $scope.temp_info.City,
+							'Zip': $scope.temp_info.Zip,
+							'Birthday': $scope.temp_info.Birthday,
+							'Address': $scope.temp_info.Address
+							};
+			$http({
+				method: 'post',
+				url: Const.baseUrl + 'User/SaveUser?Token=123456',
+				data: info_data
+			})
+			.success(function(req){
+				// if(1){
+				// 	$scope.all_acitves = JSON.parse(req);
+				// 	console.log($scope.all_acitves);
+				// }
+				$scope.my_info = angular.copy($scope.temp_info);
 
-		$scope.bir_year = '1999';
-		$scope.bir_month = '01';
-		$scope.bir_day = '01';
+				console.log('success_'+req);
+			})
+			.error(function(req){
+				console.log('error_'+req);
+			});
+
+			
+		};
 		
 		$scope.year_datas = [];
 		$scope.month_datas = [];
@@ -199,5 +252,96 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 			$scope.bir_day = d;
 			$scope.show_day_view = false;
 		};
+
+
+		$http.get("app/common/citys.json").success(function(data) {
+	         $scope.provinces = data;
+	         // console.log(data);
+	    });
+
+	    $scope.select_city = function(){
+	    	$scope.provinces_show = true;
+	    };
+
+	    $scope.province = {};
+		$scope.city = {};
+		$scope.area = {};
+	    
+	    $scope.provinces_show = false;
+	    $scope.citys_show = false;
+	    $scope.areas_show = false;
+		$scope.click_province = function(pro){
+			
+			var index = $scope.provinces.indexOf(pro);
+			// console.log(index);
+			if (index > 0 && index < $scope.provinces.length-1) {
+				// console.log(pro.name);
+				$scope.province = pro;
+				if (pro.sub.length == 0) {
+					$scope.city.name = '';
+					$scope.area.name = '';
+					setCity();
+					
+					$scope.citys_show = false;
+
+				}else{
+					$scope.citys_show = true;
+				};
+				$scope.provinces_show = false;
+	    
+			}else if(index == $scope.provinces.length-1){
+				$scope.provinces_show = false;
+				$scope.citys_show = false;
+				$scope.province.name = '其他';
+				$scope.city.name = '其他';
+				$scope.area.name = '其他';
+				setCity();
+			};
+		};
+		$scope.click_city = function(city){
+			
+			var index = $scope.province.sub.indexOf(city);
+			// console.log(index);
+			if (index > 0 && index < $scope.province.sub.length - 1)  {
+				// console.log(city.name);
+				$scope.city = city;
+				if (!city.sub || city.sub.length == 0) {
+					$scope.area.name = '';
+					setCity();
+					
+					$scope.areas_show = false;
+				}else{
+					$scope.areas_show = true;
+				};
+				$scope.citys_show = false;
+				
+
+			}else if (index == $scope.province.sub.length - 1) {
+				$scope.city.name = '其他';
+				$scope.area.name = '其他';
+				setCity();
+				$scope.citys_show = false;
+			};;
+		};
+		$scope.click_area = function(area){
+			
+			var index = $scope.city.sub.indexOf(area);
+			// console.log(index);
+			if (index != 0) {
+				// console.log(area.name);
+				$scope.area = area;
+				$scope.provinces_show = false;
+			    $scope.citys_show = false;
+			    $scope.areas_show = false;
+
+			    setCity();
+			    // $scope.area_string = $scope.province.name+' '+$scope.city.name+' '+$scope.area.name;
+			};
+		};
+		function setCity(){
+			$scope.temp_info.Country = '中国';
+			$scope.temp_info.State = $scope.province.name;
+			$scope.temp_info.City = $scope.city.name;
+		}
 
 }]);
