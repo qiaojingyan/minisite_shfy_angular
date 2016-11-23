@@ -25,8 +25,8 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                 }
             }).success(function(res) {
                 res = JSON.parse(res);
-                fyData.user = res
-                console.log(res);
+                fyData.user = res;
+                fyData.user.token = Token;
                 sessionStorage.setItem('user', JSON.stringify(fyData.user));
                 $location.path(redirectPath);
             });
