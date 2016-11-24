@@ -3,8 +3,13 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 	function($scope, $http, $location, Const, fyData){
 
 		$scope.my_info = {};
-
-		$http({
+		if (fyData.user) {
+	        // fyData.user = JSON.parse(sessionStorage.getItem('user'));
+	        $scope.my_info = fyData.user;
+	        $scope.dataGetSuccess = true;
+	        dataHandle();
+	    }else{
+	    	$http({
 				method: 'get',
 				url: Const.baseUrl + 'User/GetUser',
 				params: {
@@ -23,6 +28,11 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 			.error(function(req){
 				console.log('error_'+req);
 			});
+	    };
+		// console.log('user:'+fyData.user);
+		
+
+		
 
 		function dataHandle(){
 			$scope.temp_info = angular.copy($scope.my_info);
@@ -78,8 +88,63 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				};
 				submit_info(i);
 			}else{
-
+				for (var i = 0; i < $scope.show_arr.length; i++) {
+					var ob = $scope.show_arr[i];
+					if (ob.show_input) {
+						ob.show_input = false;
+						break;
+					};
+				};
 			};
+
+			
+		};
+		
+		
+		function checkIDCard(idCard){ 
+		    
+			var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+		   	if(reg.test(idCard) === false)  
+		   	{  
+		       alert("身份证输入不合法");  
+		       return  false;  
+		   	} 
+		    return true;
+		}
+
+		function checkEmail(email){
+			var reg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;  
+		   	
+			if(reg.test(email) === false){
+				alert("邮箱格式有误，请重填");  
+		        return false; 
+			};
+			return true;
+		}
+
+		function checkZip(Zip){
+			var reg = /^[1-9][0-9]{5}$/;  
+			if(reg.test(Zip) === false){
+				alert("邮政编码格式有误，请重填");  
+		        return false; 
+			};
+			return true;
+		}
+
+		function submit_info(index){
+			if (index === 4) {
+				$scope.temp_info.Birthday = $scope.bir_year+'-'+$scope.bir_month+'-'+$scope.bir_day;
+			}else if(index === 2){
+				//邮箱
+				if (!checkEmail($scope.temp_info.Email)) {return;}; 
+			}else if(index === 3){
+				//身份证
+				if (!checkIDCard($scope.temp_info.IDNumber)) {return;}; 
+			}else if(index === 7){
+				//邮政编码
+				if (!checkZip($scope.temp_info.Zip)) {return;}; 
+			};
+			$scope.dataGetSuccess = false;
 			for (var i = 0; i < $scope.show_arr.length; i++) {
 				var ob = $scope.show_arr[i];
 				if (ob.show_input) {
@@ -87,12 +152,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 					break;
 				};
 			};
-		};
 
-		function submit_info(index){
-			if (index === 4) {
-				$scope.temp_info.Birthday = $scope.bir_year+'-'+$scope.bir_month+'-'+$scope.bir_day;
-			};
 			var info_data = {
 							'Name': $scope.temp_info.Name, 
 							'IDNumber': $scope.temp_info.IDNumber,
@@ -117,18 +177,27 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				// }
 				if (JSON.parse(req)) {
 					$scope.my_info = angular.copy($scope.temp_info);
+					fyData.user = angular.copy($scope.my_info);
+					setUserToLocal();
 				}else{
 					alert('保存失败！');
 				};
+				$scope.dataGetSuccess = true;
+				// $scope.my_info = angular.copy($scope.temp_info);
+				// fyData.user = angular.copy($scope.my_info);
 				
 
 				console.log('success_'+req);
 			})
 			.error(function(req){
 				console.log('error_'+req);
+				$scope.dataGetSuccess = true;
 			});
 
 			
+		};
+		function setUserToLocal(){
+			sessionStorage.setItem('user', JSON.stringify(fyData.user));
 		};
 		
 		$scope.year_datas = [];

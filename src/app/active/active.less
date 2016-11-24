@@ -36,32 +36,35 @@
 			}
 
 			.active_remind{
-				._br-position(0, 0, 100%, 235px);
-				background-color: rgba(0, 0, 0, 0.5);
-				.active_remind_title{
-					background-color: rgba(0, 0, 0, 0.5);
-					._br-position(220px, 85px, 200px, 60px);
-					color: white;
-					font-size: 36px;
-					text-align: center;
-					line-height: 60px;
-					._br-border-radius(6px);
-				}
-			}
-			// .active_end{
-			// 	._br-position(484px, 83px, 120px, 120px);
-			// 	background: url('@{imgUrl}/active_end.png') no-repeat center center;
-			// 	background-size: 120px 120px;
-			// }
-			.active_title{
 				._br-position(0, auto, 100%, 60px);
 				bottom: 12px;
-				background-color: rgba(0, 0, 0, 0.5);;
+				background-color: rgba(0, 0, 0, 0.5);
+				.active_remind_title{
+					._br-position(auto, 12px, 150px, 36px);
+					right: 35px;
+					color: white;
+					font-size: 24px;
+					text-align: center;
+					line-height: 36px;
+					._br-border-radius(3px);
+					border: 1px solid #efeff4;
+				}
+				.active_start{
+					background-color: #ff801a;
+				}
+				.active_end{
+					background-color: rgba(255, 255, 255, 0.5);
+				}
+
+			}
+
+			.active_title{
+				._br-position(35px, auto, 346px, 60px);
+				
 				color: #efeff4;
 				font-size: 24px;
 				line-height: 60px;
-				padding: 0 47px;
-				text-align: center;
+				text-align: left;
 				overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;

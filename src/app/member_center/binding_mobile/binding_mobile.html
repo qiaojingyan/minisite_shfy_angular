@@ -1,17 +1,17 @@
-<div ng-controller="binding_mobile_controller">
+<div ng-controller="binding_mobile_controller" class="binding_mobile_con">
 	<div class="binding_mobile_view">
 
 		<div class="binding_container">
 			<div class="user_bg">
-				<img src="images/main_fy.png" alt="">
+				<img src="images/prolist_cover1.png" alt="">
 			</div>
 			<!-- <div class="user_icon" style="background-image: url({{mg_info.HeadImgUrl}});"></div> -->
 			<div class="user_icon" >
-				<img src="images/main_fy.png" alt="">
+				<img src={{icon_img}} alt="">
 			</div>
 			<!-- <div class="user_bg"></div>
 			<div class="user_icon"></div> -->
-			<div class="user_nickname">昵称昵称昵称昵称</div>
+			<div class="user_nickname">{{nickname}}</div>
 			<div class="binding_remind" ng-hide='hasmobile'>
 				<p>还没有绑定手机号</p>
 				<p>点击下方添加手机号</p>
@@ -25,7 +25,7 @@
 		</div>
 
 		<div class="binding_btn" ng-click='show_binding()'>
-			<div class="binding_add">+</div>
+			<div class="binding_add"></div>
 		</div>
 
 		<div class="add_mobile_view" ng-show='show_add_view'>
@@ -41,7 +41,7 @@
 		<div class="remove_mobile_view" ng-show='show_remove_view'>
 			<div class="reminder_view">
 				<div class="reminder_top"></div>
-				<div class="reminder_middle">你确定要解除: <span>18888888888</span>手机号码么?</div>
+				<div class="reminder_middle">你确定要解除: <span>{{rm_mobile.Mobile}}</span>手机号码么?</div>
 				<div class="reminder_bottom"></div>
 			</div>
 			<div class="remove_confirm" ng-click='is_remove(true)'>确定</div>

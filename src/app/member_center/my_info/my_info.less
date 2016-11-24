@@ -1,246 +1,258 @@
-.my_info{
+.my_info_con{
+	.my_info{
 	
-	._br-position(0, 0, 100%, 100%);
-	.info_view{
 		._br-position(0, 0, 100%, 100%);
-		padding-bottom: 88px;
-		overflow: scroll;
-		-webkit-overflow-scrolling: touch;
-		background-color: rgb(235, 235, 241);
-		.user_bg{
-			width: 100%;
-			height: 296px;
-			// background-color: blue;
-			// background: url('@{imgUrl}/main_fy.png') no-repeat center center;
-			// background-size: 100%;
-			._br-filter(blur(10px));
-			img{
-				display: block;
+		.info_view{
+			._br-position(0, 0, 100%, 100%);
+			padding-bottom: 88px;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+			background-color: rgb(235, 235, 241);
+			.user_bg{
 				width: 100%;
-				height: 100%;
+				height: 296px;
+				// background-color: blue;
+				// background: url('@{imgUrl}/main_fy.png') no-repeat center center;
+				// background-size: 100%;
+				._br-filter(blur(10px));
+				img{
+					display: block;
+					width: 100%;
+					height: 100%;
 
+				}
+				
 			}
-			
-		}
-		.user_icon{
-			._br-position(270px, 76px, 100px, 100px);
-			._br-border-radius(50px);
-			border: 3px solid rgba(255, 255, 255, 0.5);
-			overflow: hidden;
-			// background: url('@{imgUrl}/main_fy.png') no-repeat center center;
-			// ._br-filter(blur(0px));
-			img{
-				display: block;
-				width: 100%;
-				height: 100%;
+			.user_icon{
+				._br-position(270px, 76px, 100px, 100px);
+				._br-border-radius(50px);
+				border: 3px solid rgba(255, 255, 255, 0.5);
+				overflow: hidden;
+				// background: url('@{imgUrl}/main_fy.png') no-repeat center center;
+				// ._br-filter(blur(0px));
+				img{
+					display: block;
+					width: 100%;
+					height: 100%;
 
+				}
 			}
-		}
-		.user_nickname{
-			._br-position(0px, 190px, 100%, 40px);
-			// background-color: red;
-			color: #efeff4;
-			font-size: 28px;
-			line-height: 40px;
-			text-align: center;
-		}
-
-		.info_class{
-			position: relative;
-			width: 100%;
-			height: auto;
-			background-color: white;
-			border-bottom: 1px solid rgb(235, 235, 241);
-			font-size: 28px;
-			color: #333;
-			line-height: 40px;
-			padding: 25px 24px;
-			span{
-				._br-position(160px, 0px, 400px, 100%);
-				// position: relative;
-				padding: 29px 0;
-				display: block;
-				font-size: 24px;
-				color: #999;
-				// float: right;
-				// margin-left: 150px;
-			}
-			.warning{
-				._br-position(auto, 30px, 40px, 40px);
-				right: 120px;
-				background: url('@{imgUrl}/warning_point.png') no-repeat center center;
+			.user_nickname{
+				._br-position(0px, 190px, 100%, 40px);
 				// background-color: red;
-				// ._br-position(400px, 30px, '@{imgUrl}/warning_point.png');
-				// // right: 100px;
-				._br-transform(scale(0.5));
-			}
-			.have_not{
-				._br-position(auto, 33px, 66px, 34px);
-				right: 50px;
-				color: #999;
-				font-size: 22px;
-				line-height: 34px;
-			}
-			.arrows{
-				._br-position(auto, 30px, '@{imgUrl}/arrows.png');
-				right: 10px;
-				._br-transform(scale(0.5) rotate(-90deg));
-			}
-		}
-		.username, .email, .birthday{
-			margin-bottom: 12px;
-		}
-		.detailed_address{
-			height: 124px;
-		}
-	}
-	
-
-	.input_view{
-		._br-position(0, 0, 100%, 100%);
-		background: url('@{imgUrl}/myinfo_bg.png') no-repeat center center;
-		background-size: 100% 100%;
-		// background-color: white;
-		overflow: scroll;
-		-webkit-overflow-scrolling: touch;
-		.input_class{
-			border: 1px solid #999;
-			._br-border-radius(4px);
-			margin: 105px 24px auto;
-			height: 90px;
-			font-size: 28px;
-			line-height: 40px;
-			padding: 25px 24px;
-			color: #999;
-			input{
-				border: none;
-				background-color: rgba(255, 255, 255, 0);
-			}
-		}
-		.input_birthday{
-			position: relative;
-			.bir_style{
-				border: #979797 solid 1px;
-				._br-border-radius(6px);
+				color: #efeff4;
+				font-size: 28px;
 				line-height: 40px;
-				color: #979797;
-				padding: 0 10px;
+				text-align: center;
+			}
 
-				.dropdown_arrows{
-					._br-position(auto, 0px, '@{imgUrl}/arrows.png');
-					right: 0px;
+			.info_class{
+				position: relative;
+				width: 100%;
+				height: auto;
+				background-color: white;
+				border-bottom: 1px solid rgb(235, 235, 241);
+				font-size: 28px;
+				color: #333;
+				line-height: 40px;
+				padding: 25px 24px;
+				span{
+					._br-position(160px, 0px, 400px, 100%);
+					// position: relative;
+					padding: 29px 0;
+					display: block;
+					font-size: 24px;
+					color: #999;
+					// float: right;
+					// margin-left: 150px;
+				}
+				.warning{
+					._br-position(auto, 30px, 40px, 40px);
+					right: 120px;
+					background: url('@{imgUrl}/warning_point.png') no-repeat center center;
+					// background-color: red;
+					// ._br-position(400px, 30px, '@{imgUrl}/warning_point.png');
+					// // right: 100px;
 					._br-transform(scale(0.5));
 				}
+				.have_not{
+					._br-position(auto, 33px, 66px, 34px);
+					right: 50px;
+					color: #999;
+					font-size: 22px;
+					line-height: 34px;
+				}
+				.arrows{
+					._br-position(auto, 30px, '@{imgUrl}/arrows.png');
+					right: 10px;
+					._br-transform(scale(0.5) rotate(-90deg));
+				}
 			}
-			.bir_year{
-				._br-position(156px, 25px, 146px, 40px);
-				.bir_style;
+			.username, .email, .birthday{
+				margin-bottom: 12px;
 			}
-			.bir_month{
-				._br-position(312px, 25px, 113px, 40px);
-				.bir_style;
+			.detailed_address{
+				height: 124px;
 			}
-			.bir_day{
-				._br-position(435px, 25px, 113px, 40px);
-				.bir_style;
-			}
+		}
+		
 
-			.birthday_view{
-				._br-position(156px, 70px, 430px, 180px);
-				// background-color: red;
-				.container_class{
-					background-color: white;
-					-webkit-overflow-scrolling: touch;
-					overflow: scroll;
-					box-Shadow: 1px 1px 3px #888888;
-					p{
-						width: 100%;
-						height: 50px;
-						font-size: 28px;
-						color: #999;
-						line-height: 50px;
-						text-align: left;
-						padding-left: 10px;
-						margin-bottom: 0px;
+		.input_view{
+			._br-position(0, 0, 100%, 100%);
+			background: url('@{imgUrl}/myinfo_bg.png') no-repeat center center;
+			background-size: 100% 100%;
+			// background-color: white;
+			overflow: auto;
+			-webkit-overflow-scrolling: touch;
+			.input_class{
+				border: 1px solid #999;
+				._br-border-radius(4px);
+				margin: 105px 24px auto;
+				height: 90px;
+				font-size: 28px;
+				line-height: 40px;
+				padding: 25px 24px;
+				color: #999;
+				input{
+					border: none;
+					background-color: rgba(255, 255, 255, 0);
+				}
+			}
+			.input_birthday{
+				position: relative;
+				.bir_style{
+					border: #979797 solid 1px;
+					._br-border-radius(6px);
+					line-height: 40px;
+					color: #979797;
+					padding: 0 10px;
+
+					.dropdown_arrows{
+						._br-position(auto, 0px, '@{imgUrl}/arrows.png');
+						right: 0px;
+						._br-transform(scale(0.5));
 					}
 				}
-				.year_view{
-					._br-position(0px, 0px, 146px, 180px);
-					.container_class;
+				.bir_year{
+					._br-position(156px, 25px, 146px, 40px);
+					.bir_style;
 				}
-				.month_view{
-					._br-position(158px, 0px, 113px, 180px);
-					.container_class;
+				.bir_month{
+					._br-position(312px, 25px, 113px, 40px);
+					.bir_style;
 				}
-				.day_view{
-					._br-position(280px, 0px, 113px, 180px);
-					.container_class;
+				.bir_day{
+					._br-position(435px, 25px, 113px, 40px);
+					.bir_style;
 				}
 
+				.birthday_view{
+					._br-position(156px, 70px, 430px, 180px);
+					// background-color: red;
+					.container_class{
+						background-color: white;
+						-webkit-overflow-scrolling: touch;
+						overflow: auto;
+						box-Shadow: 1px 1px 3px #888888;
+						p{
+							width: 100%;
+							height: 50px;
+							font-size: 28px;
+							color: #999;
+							line-height: 50px;
+							text-align: left;
+							padding-left: 10px;
+							margin-bottom: 0px;
+						}
+					}
+					.year_view{
+						._br-position(0px, 0px, 146px, 180px);
+						.container_class;
+					}
+					.month_view{
+						._br-position(158px, 0px, 113px, 180px);
+						.container_class;
+					}
+					.day_view{
+						._br-position(280px, 0px, 113px, 180px);
+						.container_class;
+					}
+
+				}
 			}
-		}
 
-		.input_cancel{
-			._br-position(60px, 598px, 200px, 60px);
-			color: #999;
-			font-size: 32px;
-			text-align: center;
-			._br-border-radius(4px);
-			border: 2px solid #999;
-			line-height: 60px;
-		}
-		.input_confirm{
-			._br-position(380px, 598px, 200px, 60px);
-			color: white;
-			font-size: 32px;
-			text-align: center;
-			background-color: #ff801a;
-			._br-border-radius(4px);
-			// border: 2px solid #999;
-			line-height: 60px;
-		}
+			.input_cancel{
+				._br-position(60px, 598px, 200px, 60px);
+				color: #999;
+				font-size: 32px;
+				text-align: center;
+				._br-border-radius(4px);
+				border: 2px solid #999;
+				line-height: 60px;
+			}
+			.input_confirm{
+				._br-position(380px, 598px, 200px, 60px);
+				color: white;
+				font-size: 32px;
+				text-align: center;
+				background-color: #ff801a;
+				._br-border-radius(4px);
+				// border: 2px solid #999;
+				line-height: 60px;
+			}
 
-		.city_view{
-			._br-position(0,0,100%,100%);
-			// background-color: #ccc;
-			background: url('@{imgUrl}/myinfo_bg.png') no-repeat;
-			
-			.container_class{
+			.city_view{
 				._br-position(0,0,100%,100%);
-				-webkit-overflow-scrolling: touch;
-				overflow: scroll;
-			}
-			.item_class{
-				width: 100%;
-				height: 90px;
-				font-size: 30px;
-				line-height: 90px;
-				padding-left: 24px;
-				border-bottom: 1px solid rgb(226, 226, 234);
-			}
-
-			.provinces{
-				.container_class;
-				.province_item{
-					.item_class;
-				}
-			}
-			.citys{
-				.container_class;
+				// background-color: #ccc;
+				background: url('@{imgUrl}/myinfo_bg.png') no-repeat;
 				
-				.citys_item{
-					.item_class;
+				.container_class{
+					._br-position(0,0,100%,100%);
+					-webkit-overflow-scrolling: touch;
+					overflow: scroll;
 				}
-			}
-			.areas{
-				.container_class;
-				.ereas_item{
-					.item_class;
+				.item_class{
+					width: 100%;
+					height: 90px;
+					font-size: 30px;
+					line-height: 90px;
+					padding-left: 24px;
+					border-bottom: 1px solid rgb(226, 226, 234);
 				}
+
+				.provinces{
+					.container_class;
+					.province_item{
+						.item_class;
+					}
+				}
+				.citys{
+					.container_class;
+					
+					.citys_item{
+						.item_class;
+					}
+				}
+				.areas{
+					.container_class;
+					.ereas_item{
+						.item_class;
+					}
+				}
+
 			}
 
 		}
 
 	}
-
+	.spinner_con {
+	    ._br-position(0, 0, 640px, 100%);
+	    background-color: rgba(0, 0, 0, 0);
+	    .spinner_product_detail {
+	        position: absolute;
+	        left: 295px;
+	        top: 300px;
+	    }
+	}
 }
+
