@@ -83,6 +83,10 @@ productMoudle.controller('productDetailCtrl', ['$scope', '$http', '$location', '
     init();
 
     function init() {
+        if (fyData.user.Mobile == null || fyData.user.Mobile == undefined) {
+            $location.path('binding_mobile');
+            return;
+        }
         $scope.productCategory = {
             CategoryID: $stateParams.parentCategoryId
         };

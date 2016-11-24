@@ -65,7 +65,11 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
             showNavButtons: false
         };
         $scope.nowPage = fyData.nowPage;
-        $scope.banners = fyData.getBanners();
+        $scope.banners = [{},{}];
+        getBanners(function(res) {
+            res = JSON.parse(res);
+            $scope.banners = res;
+        });
 
         getCategoryList('F3A147D3-92B6-4BC6-8DD2-0988CBE46F32', function(res) {
             res = JSON.parse(res);
@@ -98,6 +102,23 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
             params: {
                 'Token': fyData.user.token,
                 'CategoryID': CategoryID
+            }
+        }).success(function(res) {
+            if (fun) {
+                fun(res);
+            }
+        });
+    }
+
+    function getBanners(fun) {
+        $http({
+            method: 'GET',
+            url: Const.baseUrl + "/Info/GetInfoList",
+            params: {
+                'Token': fyData.user.token,
+                'CategoryID': '0CB47B14-7535-407E-AEA1-646F82DDB118',
+                'PageIndex': 1,
+                'PageSize': 100
             }
         }).success(function(res) {
             if (fun) {
