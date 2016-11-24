@@ -18,6 +18,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			.success(function(req){
 				if(1){
 					$scope.active_info = JSON.parse(req);
+					$scope.active_info.Birthday = format_yyyy_mm_dd($scope.active_info.Birthday);
 					// console.log($scope.active_info);
 					// $scope.active_info.st_end_time = format($scope.active_info.StartDate)+'~~'+format($scope.active_info.EndDate);
 					$scope.dataGetSuccess = true;	
@@ -68,6 +69,18 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			// var s = time.getSeconds();
 			return y+'年'+add0(m)+'月'+add0(d)+'日';
 		};
+		function format_yyyy_mm_dd(shijianchuo)
+		{
+		//shijianchuo是整数，否则要parseInt转换
+			var time = new Date(shijianchuo);
+			var y = time.getFullYear();
+			var m = time.getMonth()+1;
+			var d = time.getDate();
+			// var h = time.getHours();
+			// var mm = time.getMinutes();
+			// var s = time.getSeconds();
+			return y+'-'+add0(m)+'-'+add0(d);
+		};
 
 		$scope.is_applied = false;
 		$scope.is_show_applyview =false;
@@ -81,7 +94,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 		};
 		
 		
-		$scope.birthday = '1999-01-01';
+		$scope.birthday = fyData.user.Birthday.length > 0 ? fyData.user.Birthday : '1999-01-01';
 		$scope.province = {'name': fyData.user.State};
 		$scope.city = {'name': fyData.user.City};
 		$scope.area = {};
@@ -217,9 +230,9 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			};
 		});
 
-		$scope.bir_year = '1999';
-		$scope.bir_month = '01';
-		$scope.bir_day = '01';
+		$scope.bir_year = $scope.birthday.split('-')[0];
+		$scope.bir_month = $scope.birthday.split('-')[1];
+		$scope.bir_day = $scope.birthday.split('-')[2];
 		
 		$scope.year_datas = [];
 		$scope.month_datas = [];

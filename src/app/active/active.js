@@ -37,7 +37,17 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
 			// console.log('click_active:'+active.Title);
 
 			if (active.EventStatus === 1) {
-				$location.path('/active_detail/'+active.EventID);
+				// if (confirm('请先绑定手机号，可以查看更多精彩内容！')) {
+				// 		$location.path('/binding_mobile');
+				// 	};
+				if (!fyData.user.Mobile.length || fyData.user.Mobile.length <= 0) {
+					if (confirm('请先绑定手机号，可以查看更多精彩内容！')) {
+						$location.path('/binding_mobile');
+					};
+				}else{
+					$location.path('/active_detail/'+active.EventID);
+				};
+				
 			}else if (active.EventStatus === 3){
 				$location.path('/active_review/'+active.EventID);
 			};

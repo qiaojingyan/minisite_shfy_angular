@@ -11,13 +11,15 @@
 
 				<div class="is_applied" ng-show='active.IsSignUp==1'></div>
 
-				<div class="active_remind" ng-show='active.EventStatus==3 || active.EventStatus==2'>
-					<div class="active_remind_title" ng-show='active.EventStatus==2'>活动结束</div>
+				<div class="active_remind">
+					<div class="active_title" ng-show='active.EventStatus!=2'>{{active.Title}}</div>
+					<div class="active_title" ng-show='active.EventStatus==2'>资料整理中...</div>
+					<div class="active_remind_title active_start" ng-show='active.EventStatus==1'>活动进行中</div>
+					<div class="active_remind_title active_end" ng-show='active.EventStatus==2'>活动已结束</div>
 					<div class="active_remind_title" ng-show='active.EventStatus==3'>活动回顾</div>
 				</div>
-
-				<div class="active_title" ng-show='active.EventStatus!=2'>{{active.Title}}</div>
-				<div class="active_title" ng-show='active.EventStatus==2'>资料整理中...</div>
+						
+				
 
 				<!-- <div class="active_end" ng-show='active.EventStatus==2'></div> -->
 				

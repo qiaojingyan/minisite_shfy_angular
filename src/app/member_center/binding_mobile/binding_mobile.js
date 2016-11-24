@@ -1,13 +1,15 @@
 var active_module = angular.module('binding_mobile_module', []);
-active_module.controller('binding_mobile_controller', ['$scope', '$http', '$location', 'Const', 'fyData', 
-	function($scope, $http, $location, Const, fyData){
+active_module.controller('binding_mobile_controller', ['$scope', '$http', '$location', '$stateParams', 'Const', 'fyData', 
+	function($scope, $http, $location, $stateParams, Const, fyData){
 
 		getAccountList();
 		$scope.phones = [];
 		$scope.hasmobile = true;
 		$scope.show_add_view = false;
 		$scope.show_remove_view = false;
-
+		$scope.nickname = fyData.user.NickName;
+		$scope.icon_img = fyData.user.HeadImgUrl;
+		// console.log('from:'+$stateParams.from);
 		// $('.binding_btn').on('click', function(){
 		// 	console.log('click');
 		// 	$scope.show_add_view = true;
@@ -112,6 +114,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 		};
 		
 		function binding_mobile(){
+
 			$http({
 				method: 'get',
 				url: Const.baseUrl + 'User/AddMobile',
@@ -126,11 +129,17 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 				if (JSON.parse(req)) {
 					var phone = {"Mobile": $scope.number};
 					$scope.phones.push(phone);
+					$scope.show_add_view = false;
+
+					window.history.back();
+					
 				};
+				$scope.dataGetSuccess = true;
 				console.log('binding_'+req);
 			})
 			.error(function(req){
 				console.log('error_'+req);
+				$scope.dataGetSuccess = true;
 			});
 		};	
 		function remove_mobile(){
@@ -174,6 +183,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 			});
 		};
 		function checkAutocode(){
+			$scope.dataGetSuccess = false;
 			$http({
 				method: 'get',
 				url: Const.baseUrl + 'Token/CheckVerifyCode',
@@ -190,6 +200,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 					
 					binding_mobile();
 				}else{
+					$scope.dataGetSuccess = true;
 					alert("手机号或验证码有误！");  
 				};
 				console.log('check_'+req);
@@ -197,6 +208,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 			})
 			.error(function(req){
 				console.log('error_'+req);
+				$scope.dataGetSuccess = true;
 			});
 		};
 
