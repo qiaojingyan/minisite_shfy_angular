@@ -25,6 +25,10 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                 }
             }).success(function(res) {
                 res = JSON.parse(res);
+                if(res == null){
+                    return;
+                    // res = {};
+                }
                 fyData.user = res;
                 fyData.user.token = Token;
                 sessionStorage.setItem('user', JSON.stringify(fyData.user));

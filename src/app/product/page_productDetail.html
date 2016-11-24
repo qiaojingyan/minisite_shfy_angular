@@ -30,7 +30,8 @@
     </div>
     <div class="phone_con" style="background-color: {{productCategory.CategoryID == 'd1264b05-7ff9-4cb1-95fb-ee3106928c03'?'#6691D8':''}}">
         <div class="phone_text">
-            <img src="./images/product_detail_icon_phone.png" class="icon_phone">{{productDetail.ContactPhone}}</div>
+            <img src="./images/product_detail_icon_phone.png" class="icon_phone">
+            <a href="tel:{{productDetail.ContactPhone}}" class="phone_text">{{productDetail.ContactPhone}}</a></div>
     </div>
     <div class="spinner_con" ng-if="!dataGetSuccess">
         <div class="spinner spinner_product_detail">

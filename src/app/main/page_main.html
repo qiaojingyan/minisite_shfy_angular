@@ -3,7 +3,7 @@
         <div class="main_fy" ng-if="nowPage == 1">
             <ks-swiper-container slides-per-view="1" slides-per-column="1" space-between="0" pagination-is-active="true" pagination-clickable="false" show-nav-buttons="false" loop="false" autoplay="2000" initial-slide="0" direction="horizontal">
                 <ks-swiper-slide class="swiper-slide" ng-repeat="banner in banners">
-                    <img ng-src="{{banner.RefImageURL}}">
+                    <img ng-src="{{banner.PhotoURL}}" ng-click="goToBannerDetail(banner.RedirectURL)">
                 </ks-swiper-slide>
             </ks-swiper-container>
             <div class="main_btn_content" style="top:{{main_btn_content_top}}">
@@ -46,10 +46,10 @@
                 <img src="./images/main_profile_icon_integral_shop.png" class="main_profile_item_icon">积分商城
                 <img src="./images/arrow.png" class="main_profile_arrow">
             </div>
-            <div class="main_profile_item">
+            <!-- <div class="main_profile_item">
                 <img src="./images/main_profile_icon_integral_achieve.png" class="main_profile_item_icon">获取积分
                 <img src="./images/arrow.png" class="main_profile_arrow">
-            </div>
+            </div> -->
             <div class="main_profile_item" style="margin-top: 24px;" ng-click='goToContactUs()'>
                 <img src="./images/main_profile_icon_linkus.png" class="main_profile_item_icon">联系我们
                 <img src="./images/arrow.png" class="main_profile_arrow">

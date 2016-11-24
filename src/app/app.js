@@ -119,16 +119,16 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     });
 }).run(function($location) {
     if (!sessionStorage.getItem('user')) {
-        $location.path('/loading/'+encodeURIComponent($location.path()));
+        $location.path('/loading/' + encodeURIComponent($location.path()));
     }
 
 }).service('fyData', function() {
     var banners = [{
-        RefImageURL: './images/main_pro_cover1.png'
+        PhotoURL: './images/manage_money.png',
+        RedirectURL: '/active_review/9f96aebf-b2f6-4fab-a288-092a9ce66aef'
     }, {
-        RefImageURL: './images/main_pro_cover2.png'
-    }, {
-        RefImageURL: './images/main_pro_cover3.png'
+        PhotoURL: './images/manage_money.png',
+        RedirectURL: '/active_review/9f96aebf-b2f6-4fab-a288-092a9ce22aef'
     }];
     this.getBanners = function() {
         return banners;

@@ -11,15 +11,16 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
         $location.path('/product_list/' + CategoryID);
     };
     $scope.goToNewsList = function() {
+        fyData.nowNewsCategory = 0;
         $location.path('/news_list');
     };
-    $scope.goToAboutFy = function(){
+    $scope.goToAboutFy = function() {
         $location.path('/about_fy');
     };
-    $scope.goToActive = function(){
+    $scope.goToActive = function() {
         $location.path('/active');
     };
-    $scope.goToKnowledge = function(){
+    $scope.goToKnowledge = function() {
         $location.path('/manage_money');
     };
     $scope.goToMyIntegral = function() {
@@ -37,15 +38,18 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
     $scope.goToFeedback = function() {
         $location.path('/feedback');
     };
-    $scope.binding_mobile = function(){
+    $scope.binding_mobile = function() {
         $location.path('/binding_mobile');
     };
-    $scope.goToMyInfo = function(){
+    $scope.goToMyInfo = function() {
         $location.path('/my_info');
     };
-    $scope.goToContactUs = function(){
+    $scope.goToContactUs = function() {
         $location.path('/cantact_us');
     };
+    $scope.goToBannerDetail = function(RedirectURL) {
+        $location.path(RedirectURL);
+    }
 
     function init() {
         var show_con_height = document.body.clientHeight - 88;
