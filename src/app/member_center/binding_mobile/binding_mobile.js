@@ -4,7 +4,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 
 		getAccountList();
 		$scope.phones = [];
-		$scope.hasmobile = true;
+		$scope.hasmobile = false;
 		$scope.show_add_view = false;
 		$scope.show_remove_view = false;
 		$scope.nickname = fyData.user.NickName;
@@ -105,6 +105,9 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 				// 	dataHandle();
 				// }
 				$scope.phones = JSON.parse(req);
+				if ($scope.phones.length > 0) {
+					$scope.hasmobile = true;
+				};
 				$scope.dataGetSuccess = true;
 				console.log('success_'+req);
 			})
@@ -126,13 +129,23 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 			.success(function(req){
 
 				// $scope.phones = JSON.parse(req);
-				if (JSON.parse(req)) {
+				if (JSON.parse(req) == 1) {
+					//成功
 					var phone = {"Mobile": $scope.number};
 					$scope.phones.push(phone);
 					$scope.show_add_view = false;
 
+					if ($scope.phones.length == 1) {
+						fyData.user.Mobile = $scope.phones[0].Mobile;
+					};
 					window.history.back();
 					
+				}else if(JSON.parse(req) == 2){
+					//失败
+					alert('绑定失败！');
+				}else if(JSON.parse(req) == 3){
+					//已存在
+					alert('手机号已经被绑定，不能重复绑定！');
 				};
 				$scope.dataGetSuccess = true;
 				console.log('binding_'+req);
@@ -143,6 +156,8 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 			});
 		};	
 		function remove_mobile(){
+
+			$scope.dataGetSuccess = false;
 			$http({
 				method: 'get',
 				url: Const.baseUrl + 'User/RemoveMobile',
@@ -156,12 +171,18 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 				// $scope.phones = JSON.parse(req);
 				if (JSON.parse(req)) {
 					$scope.phones.pop($scope.rm_mobile);
+					if ($scope.phones.length <= 0) {
+						$scope.hasmobile = false;
+						fyData.user.Mobile = '';
+					};
 					console.log('success_'+req);
 				};
+				$scope.dataGetSuccess = true;
 				
 			})
 			.error(function(req){
 				console.log('error_'+req);
+				$scope.dataGetSuccess = true;
 			});
 		};
 		function getAutocode(){

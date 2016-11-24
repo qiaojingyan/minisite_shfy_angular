@@ -55,7 +55,9 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			});
 		};
 		
-
+		$scope.addOtherPhone = function(){
+			$location.path('/binding_mobile');
+		};
 		function add0(m){return m<10?'0'+m:m; };
 		function format(shijianchuo)
 		{
@@ -246,7 +248,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 		create_months(12);
 		create_days(31);
 		function create_years(max_year){
-			for (var i = max_year-120; i <= max_year; i++) {
+			for (var i = max_year; i > max_year - 100; i--) {
 				$scope.year_datas.push(i);
 			};
 		}

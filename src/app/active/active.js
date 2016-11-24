@@ -24,7 +24,7 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
 					$scope.all_acitves = JSON.parse(req);
 					// console.log($scope.all_acitves);
 				}
-				// console.log('success_'+req);
+				console.log('success_'+req);
 				$scope.dataGetSuccess = true;
 			})
 			.error(function(req){
@@ -40,7 +40,7 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
 				// if (confirm('请先绑定手机号，可以查看更多精彩内容！')) {
 				// 		$location.path('/binding_mobile');
 				// 	};
-				if (!fyData.user.Mobile.length || fyData.user.Mobile.length <= 0) {
+				if (!fyData.user.Mobile || fyData.user.Mobile.length <= 0) {
 					if (confirm('请先绑定手机号，可以查看更多精彩内容！')) {
 						$location.path('/binding_mobile');
 					};

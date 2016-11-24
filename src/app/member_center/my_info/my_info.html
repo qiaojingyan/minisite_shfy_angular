@@ -13,51 +13,52 @@
 			<div class="user_nickname">{{my_info.NickName}}</div>
 			
 			<div class="username info_class" ng-click='info_click(0)'>
-				姓名
+				<p>姓名</p>
 				<span>{{my_info.Name}}</span>
 				<div class="warning" ng-show='!my_info.Name || my_info.Name.length == 0'></div>
 				<div class="have_not" ng-show='!my_info.Name || my_info.Name.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="mobile info_class" ng-click='info_click(1)'>
-				手机号
+				<p>手机号</p>
 				<span>{{my_info.Mobile}}</span>
 				<div class="warning" ng-show='!my_info.Mobile || my_info.Mobile.length == 0'></div>
 				<div class="have_not" ng-show='!my_info.Mobile || my_info.Mobile.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="email info_class" ng-click='info_click(2)'>
-				邮箱
+				<p>邮箱</p>
 				<span>{{my_info.Email}}</span>
 				<div class="have_not" ng-show='!my_info.Email || my_info.Email.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="idcard info_class" ng-click='info_click(3)'>
-				身份证
+				<p>身份证</p>
 				<span>{{my_info.IDNumber}}</span>
 				<div class="have_not" ng-show='!my_info.IDNumber || my_info.IDNumber.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="birthday info_class" ng-click='info_click(4)'>
-				出生日期
+				<p>出生日期</p>
 				<span>{{my_info.Birthday}}</span>
 				<div class="have_not" ng-show='!my_info.Birthday || my_info.Birthday.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="area info_class" ng-click='info_click(5)'>
-				地区
+				<p>地区</p>
 				<span>{{my_info.Country +' '+ my_info.State +' '+ my_info.City}}</span>
 				<div class="have_not" ng-show='!my_info.City || my_info.City.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="detailed_address info_class" ng-click='info_click(6)'>
-				详细地址
+				<p>详细地址</p>
 				<span>{{my_info.Address}}</span>
+				<!-- <span>太阳宫大厦太阳宫大厦太阳宫大厦太</span> -->
 				<div class="have_not" ng-show='!my_info.Address || my_info.Address.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="postcode info_class" ng-click='info_click(7)'>
-				邮编
+				<p>邮编</p>
 				<span>{{my_info.Zip}}</span>
 				<div class="have_not" ng-show='!my_info.Zip || my_info.Zip.length == 0'>未填写</div>
 				<div class="arrows"></div>
@@ -97,11 +98,19 @@
 
 			</div>
 			<div class="input_area input_class" ng-show='show_arr[5].show_input' ng-click='select_city()'>地区：{{temp_info.Country +' '+ temp_info.State +' '+ temp_info.City}}</div>
-			<div class="input_detail_address input_class" ng-show='show_arr[6].show_input'>详细地址：<input type="text" ng-model='temp_info.Address'></div>
+			<!-- <div class="input_detail_address input_class" ng-show='show_arr[6].show_input'>详细地址：<input type="text" ng-model='temp_info.Address'></div> -->
+			<div class="input_detail_address input_class" ng-show='show_arr[6].show_input'>
+				<p>详细地址：</p>
+				<!-- <input type="text" ng-model='temp_info.Address'> -->
+				<textarea name="" id="" cols="30" rows="3" ng-model='temp_info.Address'></textarea>
+			</div>
 			<div class="input_postcard input_class" ng-show='show_arr[7].show_input'>邮编：<input type="text" ng-model='temp_info.Zip'></div>
 			
-			<div class="input_cancel" ng-click='is_change(false)'>取消</div>
-			<div class="input_confirm" ng-click='is_change(true)'>确定</div>
+			<div class="input_can_con_btn">
+				<div class="input_cancel" ng-click='is_change(false)'>取消</div>
+				<div class="input_confirm" ng-click='is_change(true)'>确定</div>
+			</div>	
+			
 			
 			<div class="city_view" ng-show='provinces_show || citys_show || areas_show'>
 				<div class="provinces" ng-show='provinces_show'>

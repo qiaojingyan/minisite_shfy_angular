@@ -60,10 +60,15 @@
 					</div>
 				</div>
 				<div class="apply_city" ng-click='select_city()'>地区：{{area_string}}</div>
-
-				<div class="phonedropdown_menu" ng-show='show_phone_menu'>
-					<div class="phone" ng-repeat='phonenum in phonenums' ng-click='click_phone(phonenum)'>{{phonenum.Mobile}}</div>
+				
+				<div class="phonedropdown_con" ng-show='show_phone_menu'>
+					<div class="phonedropdown_menu" >
+						<div class="phone" ng-repeat='phonenum in phonenums' ng-click='click_phone(phonenum)'>{{phonenum.Mobile}}</div>
+					</div>
+					<div class="addPhone" ng-click='addOtherPhone()'>添加其他手机</div>
 				</div>
+
+				
 
 				<div class="birthday_view" ng-show='show_year_view || show_month_view || show_day_view'>
 					<div class="year_view" ng-show='show_year_view'>
@@ -78,9 +83,11 @@
 				</div>
 
 				
+				<div class="apply_can_con_btn">
+					<div class="apply_cancel" ng-click='is_apply(false)'>取消</div>
+					<div class="apply_confirm" ng-click='is_apply(true)'>确定</div>
+				</div>	
 				
-				<div class="apply_cancel" ng-click='is_apply(false)'>取消</div>
-				<div class="apply_confirm" ng-click='is_apply(true)'>确定</div>
 			</div>
 
 			<div class="city_view" ng-show='provinces_show || citys_show || areas_show'>

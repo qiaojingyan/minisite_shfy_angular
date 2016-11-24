@@ -212,7 +212,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 		create_months(12);
 		create_days(31);
 		function create_years(max_year){
-			for (var i = max_year-120; i <= max_year; i++) {
+			for (var i = max_year; i > max_year - 100; i--) {
 				$scope.year_datas.push(i);
 			};
 		}
