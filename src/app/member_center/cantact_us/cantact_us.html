@@ -1,10 +1,6 @@
 <div ng-controller="cantact_us_controller">
 	<div class="cantact_us">
-		<div class="nav_bar">
-			<div class="bar_btn cantact_btn {{selecteds[0].select==1?'bar_btn_selected':''}}" index='cantact_view' ng-click='bar_btn_click(0)'>联系我们</div>
-			<div class="bar_btn business_btn {{selecteds[1].select==1?'bar_btn_selected':''}}" index='business_view' ng-click='bar_btn_click(1)'>招商合作</div>
-			<div class="bar_btn recruit_btn {{selecteds[2].select==1?'bar_btn_selected':''}}" index='recruit_view' ng-click='bar_btn_click(2)'>招贤纳士</div>
-		</div>
+		
 		<div class="cantact_view nav_controller" ng-show='selecteds[0].select==1'>
 			<a href="http://j.map.baidu.com/1863H" class="map_view"></a>
 			<div class="phone_num">全国客服:&nbsp&nbsp&nbsp&nbsp<span>400-002-5135</span></div>
@@ -68,15 +64,20 @@
 			</div>
 			<div class="recruit_content">
 				<p class="position">实习生岗位（总助、投资理财、金融分析等）</p>
-				<!-- <div class="demand">
-					<p><numb>1、</numb><span>根据产品特性、行业需求，制定市场推广合作方案；</span></p>
+				<div class="demand">
+					<!-- <p><numb>1、</numb><span>根据产品特性、行业需求，制定市场推广合作方案；</span></p>
 					<p><numb>2、</numb><span>负责线上市场推广（微信、APP等）以及线下活动策划等；</span></p>
 					<p><numb>3、</numb><span>负责同业信息的收集、调研及分析，每月提供至少500条精准sales leads；</span></p>
 					<p><numb>4、</numb><span>有效利用及维护原有客源，并通过各种途径开发新客户资源；</span></p>
-					<p><numb>5、</numb><span>负责市场推广的预算、资料准备、活动成本控制。</span></p>
-				</div> -->
+					<p><numb>5、</numb><span>负责市场推广的预算、资料准备、活动成本控制。</span></p> -->
+				</div>
 				
 			</div>
+		</div>
+		<div class="nav_bar">
+			<div class="bar_btn cantact_btn {{selecteds[0].select==1?'bar_btn_selected':''}}" index='cantact_view' ng-click='bar_btn_click(0)'>联系我们</div>
+			<div class="bar_btn business_btn {{selecteds[1].select==1?'bar_btn_selected':''}}" index='business_view' ng-click='bar_btn_click(1)'>招商合作</div>
+			<div class="bar_btn recruit_btn {{selecteds[2].select==1?'bar_btn_selected':''}}" index='recruit_view' ng-click='bar_btn_click(2)'>招贤纳士</div>
 		</div>
 	</div>
 </div>

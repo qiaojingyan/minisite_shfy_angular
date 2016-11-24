@@ -94,7 +94,7 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 		};
 		
 		
-		$scope.birthday = fyData.user.Birthday.length > 0 ? fyData.user.Birthday : '1999-01-01';
+		$scope.birthday = fyData.user.Birthday.length > 0 ? format_yyyy_mm_dd(fyData.user.Birthday) : '1999-01-01';
 		$scope.province = {'name': fyData.user.State};
 		$scope.city = {'name': fyData.user.City};
 		$scope.area = {};
