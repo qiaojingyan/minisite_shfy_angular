@@ -22,20 +22,20 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
         return value;
     }
 
-    function init() {
-        var openid = $location.search()['openid'];
-        var redirectPath = decodeURIComponent($stateParams.redirectUrl);
+    function delCookie(cookie_name) {
+        var myDate = new Date();
+        myDate.setTime(-1000); //设置时间    
+        document.cookie = cookie_name + "=''; expires=" + myDate.toGMTString();
+    }
 
-        console.log(window.location.href);
-        if (openid == undefined || openid == null || openid == '') {
-            openid = getCookie('FXI.WeChat.OpenId');
-            if (openid == undefined || openid == null) {
-                window.location.href = 'http://wechat.fxigroup.com/wechat/oauth/index?param=' + encodeURIComponent('http://wechat.fxigroup.com/minisite/#/'+redirectPath);
-                return;
-            }
+    function init() {
+        var openid = getCookie('FXI.WeChat.OpenId');
+        if (openid == undefined || openid == null) {
+            window.location.href = 'http://wechat.fxigroup.com/wechat/oauth/index?param=' + encodeURIComponent('http://wechat.fxigroup.com/minisite/#/' + redirectPath);
+            return;
         }
 
-
+        var redirectPath = decodeURIComponent($stateParams.redirectUrl);
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Token/GetToken",
@@ -43,6 +43,10 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                 'OpenId': openid,
             }
         }).success(function(res) {
+            if (res == null) {
+                window.location.href = 'http://wechat.fxigroup.com/wechat/oauth/index?param=' + encodeURIComponent('http://wechat.fxigroup.com/minisite/#/' + redirectPath);
+                return;
+            }
             var Token = res;
             fyData.user.token = Token;
             if (redirectPath == '/integral_shop' || $location.path() == '/integral_shop') {
