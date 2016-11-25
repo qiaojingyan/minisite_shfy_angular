@@ -40,6 +40,12 @@ productMoudle.controller('productListCtrl', ['$scope', '$http', '$location', '$s
     }
 
     $scope.goProductDetail = function(CategoryID) {
+        if (fyData.user.Mobile == null || fyData.user.Mobile == undefined || fyData.user.Mobile == '') {
+            if (confirm("请绑定手机号，可查看更多内容哦！")) {
+                $location.path('binding_mobile');
+            }
+            return;
+        }
         $location.path('/product_detail/' + $stateParams.categoryId + '/' + CategoryID);
     };
 
@@ -83,11 +89,6 @@ productMoudle.controller('productDetailCtrl', ['$scope', '$http', '$location', '
     init();
 
     function init() {
-        if (fyData.user.Mobile == null || fyData.user.Mobile == undefined || fyData.user.Mobile == '') {
-            alert('请先绑定手机号');
-            $location.path('binding_mobile');
-            return;
-        }
         $scope.productCategory = {
             CategoryID: $stateParams.parentCategoryId
         };

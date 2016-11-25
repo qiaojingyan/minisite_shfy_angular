@@ -7,4 +7,5 @@ angular.module('manager.const', [])
         // baseUrl: 'http://172.16.0.218:3000/shfy/api/'
         // baseUrl: 'http://172.16.0.211:3000/shfy/api/'
         baseUrl: 'http://wechat.fxigroup.com/wechat/api/'
+
     });
