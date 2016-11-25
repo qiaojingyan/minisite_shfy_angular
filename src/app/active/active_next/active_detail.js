@@ -10,6 +10,8 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
         	// console.log(fyData.user[key]);
         }
 
+        
+
 		getDetailActive();
 		getAccountList();
 		function getDetailActive(){
@@ -96,7 +98,11 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 		$scope.is_show_applyview =false;
 		
 		$scope.username = fyData.user.Name;
+		if (fyData.user.Sex != 1 && fyData.user.Sex != 2) {
+			fyData.user.Sex = 1;
+		};
 		$scope.isMale = fyData.user.Sex;
+
 		if ($scope.isMale == 1) {
 			$('.apply_sex .sex_male').addClass('sex_selected');
 		}else{

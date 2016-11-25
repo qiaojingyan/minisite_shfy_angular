@@ -39,13 +39,19 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
 			// $location.path('/active_review/'+active.EventID);
 			if (active.EventStatus === 1) {
 				
-				if (!fyData.user.Mobile || fyData.user.Mobile.length <= 0) {
+				if (fyData.user.Mobile == undefined || fyData.user.Mobile == null || fyData.user.Mobile.length <= 0 ) {
 					if (confirm('请先绑定手机号，可以查看更多精彩内容！')) {
 						$location.path('/binding_mobile');
+					}
+					else{
+						// window.history.back();
+						
 					};
 				}else{
+					
 					$location.path('/active_detail/'+active.EventID);
 				};
+				
 				
 			}else if (active.EventStatus === 3){
 				$location.path('/active_review/'+active.EventID);
