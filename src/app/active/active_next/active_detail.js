@@ -3,6 +3,12 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 	function($scope, $http, $location, $stateParams, Const, fyData){
 
 		// console.log('详情——activeid:'+$stateParams.id);
+		for(var key in fyData.user){
+        	if (fyData.user[key] == undefined || fyData.user[key] == null) {
+        		fyData.user[key] = '';
+        	}; 
+        	// console.log(fyData.user[key]);
+        }
 
 		getDetailActive();
 		getAccountList();

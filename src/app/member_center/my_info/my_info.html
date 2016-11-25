@@ -47,12 +47,14 @@
 			<div class="area info_class" ng-click='info_click(5)'>
 				<p>地区</p>
 				<span>{{my_info.Country +' '+ my_info.State +' '+ my_info.City}}</span>
+				<!-- <span>常妖</span> -->
 				<div class="have_not" ng-show='!my_info.City || my_info.City.length == 0'>未填写</div>
 				<div class="arrows"></div>
 			</div>
 			<div class="detailed_address info_class" ng-click='info_click(6)'>
 				<p>详细地址</p>
 				<span>{{my_info.Address}}</span>
+				<!-- <span>太阳宫大厦六层太阳</span> -->
 				<!-- <span>太阳宫大厦太阳宫大厦太阳宫大厦太</span> -->
 				<div class="have_not" ng-show='!my_info.Address || my_info.Address.length == 0'>未填写</div>
 				<div class="arrows"></div>
