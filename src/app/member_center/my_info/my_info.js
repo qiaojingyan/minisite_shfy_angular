@@ -18,7 +18,8 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 			})
 			.success(function(req){
 				if(1){
-					$scope.my_info = JSON.parse(req);
+					// $scope.my_info = JSON.parse(req);
+					$scope.my_info = req;
 					// console.log('my_info: '+$scope.my_info);
 					dataHandle();
 				}
@@ -175,7 +176,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 				// 	$scope.all_acitves = JSON.parse(req);
 				// 	console.log($scope.all_acitves);
 				// }
-				if (JSON.parse(req)) {
+				if (req) {
 					$scope.my_info = angular.copy($scope.temp_info);
 					fyData.user = angular.copy($scope.my_info);
 					setUserToLocal();

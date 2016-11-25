@@ -13,7 +13,7 @@ productMoudle.controller('productListCtrl', ['$scope', '$http', '$location', '$s
             }
         });
         getProductContent($stateParams.categoryId, function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.dataGetSuccess = true;
             if (res.length == 1 && res[0].Description != undefined && res[0].Description != '' && res[0].Description != null) {
                 document.getElementById('product_content').innerHTML = res[0].Description;
@@ -22,7 +22,7 @@ productMoudle.controller('productListCtrl', ['$scope', '$http', '$location', '$s
             $scope.productList = res;
         });
         getCategoryInfo($stateParams.categoryId, function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.productCategory = res;
         });
     }
@@ -91,12 +91,12 @@ productMoudle.controller('productDetailCtrl', ['$scope', '$http', '$location', '
             CategoryID: $stateParams.parentCategoryId
         };
         getCategoryInfo($stateParams.parentCategoryId, function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.productCategory = res;
         });
 
         getProductDetail($stateParams.categoryId, function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.dataGetSuccess = true;
             $scope.productDetail = res;
 

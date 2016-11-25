@@ -17,7 +17,8 @@ active_module.controller('about_fy_controller', ['$scope', '$http', '$location',
 	                'PageSize': 100
 	            }
 	        }).success(function(res) {
-	            var data = JSON.parse(res)[0];
+	            // var data = JSON.parse(res)[0];
+	            data = res[0];
 	            // $scope.NewsList = res;
 	            $('.about_fy_content').html(data.ContentBody);
 	            // console.log(res);

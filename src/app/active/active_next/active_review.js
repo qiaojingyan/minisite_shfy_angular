@@ -9,7 +9,8 @@ active_module.controller('active_review_controller', ['$scope', '$http', '$locat
 		})
 		.success(function(req){
 			if(1){
-				$scope.acitve_review = JSON.parse(req);
+				// $scope.acitve_review = JSON.parse(req);
+				$scope.acitve_review = req;
 
 				$('#active_review_content').prepend($scope.acitve_review.EventContent);
 				// document.getElementById('active_review_content').innerHTML = $scope.acitve_review.EventContent;

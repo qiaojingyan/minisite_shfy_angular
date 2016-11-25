@@ -24,7 +24,8 @@ integralModule.controller('myIntegralCtrl', ['$scope', '$http', '$location', '$s
             }
         }).success(function(res) {
             $scope.dataGetSuccess = true;
-            $scope.myIntegralRecords = JSON.parse(res);
+            $scope.myIntegralRecords = res;
+            // $scope.myIntegralRecords = JSON.parse(res);
 
             $scope.myAchieveIntegralRecords = [];
             $scope.myExchangeIntegralRecords = [];
@@ -53,7 +54,8 @@ integralModule.controller('myIntegralCtrl', ['$scope', '$http', '$location', '$s
                 'Token': fyData.user.token
             }
         }).success(function(res) {
-            $scope.esUrl = JSON.parse(res);
+            // $scope.esUrl = JSON.parse(res);
+            $scope.esUrl = res;
             if (fun) {
                 fun();
             }

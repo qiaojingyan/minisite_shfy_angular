@@ -17,7 +17,7 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
                 'CategoryID': 'd1264b05-7ff9-4cb1-95fb-ee3106928c33'
             }
         }).success(function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.NewsCategorys = res;
             $scope.NewsCategorys[fyData.nowNewsCategory].selected = 1;
             getNewsList($scope.NewsCategorys[fyData.nowNewsCategory].CategoryID);
@@ -38,7 +38,7 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
             }
         }).success(function(res) {
             $scope.dataGetSuccess = true;
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.NewsList = res;
         });
 
@@ -81,7 +81,7 @@ newsModule.controller('newsDetailCtrl', ['$scope', '$http', '$location', '$state
             }
         }).success(function(res) {
             $scope.dataGetSuccess = true;
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.nowNews = res;
             if ($scope.nowNews.ContentBody != undefined && $scope.nowNews.ContentBody != null) {
                 document.getElementById('news_detail_content').innerHTML = $scope.nowNews.ContentBody;

@@ -15,7 +15,7 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                 'OpenId': openid,
             }
         }).success(function(res) {
-            var Token = JSON.parse(res);
+            var Token = res;
             fyData.user.token = Token;
             $http({
                 method: 'GET',
@@ -24,10 +24,8 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                     'Token': Token,
                 }
             }).success(function(res) {
-                res = JSON.parse(res);
-                if(res == null){
+                if (res == null) {
                     return;
-                    // res = {};
                 }
                 fyData.user = res;
                 fyData.user.token = Token;

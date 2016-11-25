@@ -104,7 +104,8 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 				// 	// console.log('my_info: '+$scope.my_info);
 				// 	dataHandle();
 				// }
-				$scope.phones = JSON.parse(req);
+				// $scope.phones = JSON.parse(req);
+				$scope.phones = req;
 				if ($scope.phones.length > 0) {
 					$scope.hasmobile = true;
 				};
@@ -129,7 +130,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 			.success(function(req){
 
 				// $scope.phones = JSON.parse(req);
-				if (JSON.parse(req) == 1) {
+				if (req == 1) {
 					//成功
 					var phone = {"Mobile": $scope.number};
 					$scope.phones.push(phone);
@@ -140,10 +141,10 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 					};
 					window.history.back();
 					
-				}else if(JSON.parse(req) == 2){
+				}else if(req == 2){
 					//失败
 					alert('绑定失败！');
-				}else if(JSON.parse(req) == 3){
+				}else if(req == 3){
 					//已存在
 					alert('手机号已经被绑定，不能重复绑定！');
 				};
@@ -169,7 +170,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 			.success(function(req){
 
 				// $scope.phones = JSON.parse(req);
-				if (JSON.parse(req)) {
+				if (req) {
 					$scope.phones.pop($scope.rm_mobile);
 					if ($scope.phones.length <= 0) {
 						$scope.hasmobile = false;
@@ -217,7 +218,7 @@ active_module.controller('binding_mobile_controller', ['$scope', '$http', '$loca
 			.success(function(req){
 
 				// $scope.phones = JSON.parse(req);
-				if (JSON.parse(req)) {
+				if (req) {
 					
 					binding_mobile();
 				}else{

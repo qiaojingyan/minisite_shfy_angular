@@ -67,12 +67,12 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
         $scope.nowPage = fyData.nowPage;
         $scope.banners = [{},{}];
         getBanners(function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.banners = res;
         });
 
         getCategoryList('F3A147D3-92B6-4BC6-8DD2-0988CBE46F32', function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.productList = res;
         })
 
@@ -88,7 +88,8 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
                 'Token': fyData.user.token
             }
         }).success(function(res) {
-            $scope.esUrl = JSON.parse(res);
+            // $scope.esUrl = JSON.parse(res);
+            $scope.esUrl = res;
             if (fun) {
                 fun();
             }

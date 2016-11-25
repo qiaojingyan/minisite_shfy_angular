@@ -17,7 +17,8 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			})
 			.success(function(req){
 				if(1){
-					$scope.active_info = JSON.parse(req);
+					// $scope.active_info = JSON.parse(req);
+					$scope.active_info = req;
 					$scope.active_info.Birthday = format_yyyy_mm_dd($scope.active_info.Birthday);
 					// console.log($scope.active_info);
 					// $scope.active_info.st_end_time = format($scope.active_info.StartDate)+'~~'+format($scope.active_info.EndDate);
@@ -40,7 +41,8 @@ active_detail_module.controller('active_detail_controller', ['$scope', '$http', 
 			})
 			.success(function(req){
 
-				$scope.phonenums = JSON.parse(req);
+				// $scope.phonenums = JSON.parse(req);
+				$scope.phonenums = req;
 				if ($scope.phonenums.length > 0) {
 					$scope.phonenum = $scope.phonenums[0].Mobile;
 				}

@@ -34,7 +34,7 @@ feedbackModule.controller('feedbackCtrl', ['$scope', '$http', '$location', '$sta
             },
             data: $scope.myfeedback
         }).success(function(res) {
-            res = JSON.parse(res);
+            // res = JSON.parse(res);
             $scope.loading = false;
             if(res == true){
                 alert('提交成功')
