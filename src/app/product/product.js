@@ -83,7 +83,7 @@ productMoudle.controller('productDetailCtrl', ['$scope', '$http', '$location', '
     init();
 
     function init() {
-        if (fyData.user.Mobile == null || fyData.user.Mobile == undefined) {
+        if (fyData.user.Mobile == null || fyData.user.Mobile == undefined || fyData.user.Mobile == '') {
             $location.path('binding_mobile');
             return;
         }
