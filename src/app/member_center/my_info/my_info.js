@@ -5,7 +5,19 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 		$scope.my_info = {};
 		if (fyData.user) {
 	        // fyData.user = JSON.parse(sessionStorage.getItem('user'));
+	        for(var key in fyData.user){
+	        	if (fyData.user[key] == undefined || fyData.user[key] == null) {
+	        		fyData.user[key] = '';
+	        	}; 
+	        	// console.log(fyData.user[key]);
+	        	// if (key == 'Address') {
+	        	// 	if(fyData.user.Address.length <= 0){fyData.user.Address = ' ';}
+	        	// };
+	        	
+	        }
+
 	        $scope.my_info = fyData.user;
+
 	        $scope.dataGetSuccess = true;
 	        dataHandle();
 	    }else{
