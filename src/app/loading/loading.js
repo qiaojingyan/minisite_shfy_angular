@@ -17,6 +17,23 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
         }).success(function(res) {
             var Token = res;
             fyData.user.token = Token;
+            if (redirectPath == '/integral_shop' || $location.path() == '/integral_shop') {
+                $http({
+                    method: 'GET',
+                    url: Const.baseUrl + "/Credit/GetEsURL",
+                    params: {
+                        'Token': Token,
+                    }
+                }).success(function(res) {
+                    if (res == null) {
+                        alert('网络错误，请稍候重试');
+                        window.history.back();
+                        return;
+                    }
+                    window.location.href = res;
+                });
+                return;
+            }
             $http({
                 method: 'GET',
                 url: Const.baseUrl + "/User/GetUser",

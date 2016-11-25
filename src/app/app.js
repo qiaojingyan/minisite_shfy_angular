@@ -116,6 +116,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 templateUrl: './app/about_fy/about_fy.html'
             }
         }
+    }).state('integral_shop', {
+        url: '/integral_shop',
+        views: {
+            '': {
+                templateUrl: './app/loading/page_loading.html'
+            }
+        }
     });
 }).run(function($location) {
     if (!sessionStorage.getItem('user')) {
@@ -123,16 +130,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     }
 
 }).service('fyData', function() {
-    var banners = [{
-        PhotoURL: './images/manage_money.png',
-        RedirectURL: '/active_review/9f96aebf-b2f6-4fab-a288-092a9ce66aef'
-    }, {
-        PhotoURL: './images/manage_money.png',
-        RedirectURL: '/active_review/9f96aebf-b2f6-4fab-a288-092a9ce22aef'
-    }];
-    this.getBanners = function() {
-        return banners;
-    };
     this.user = {};
     if (sessionStorage.getItem('user')) {
         this.user = JSON.parse(sessionStorage.getItem('user'));
