@@ -180,7 +180,7 @@ active_module.controller('my_info_controller', ['$scope', '$http', '$location', 
 							};
 			$http({
 				method: 'post',
-				url: Const.baseUrl + 'User/SaveUser?Token=123456',
+				url: Const.baseUrl + 'User/SaveUser?Token='+fyData.user.token,
 				data: info_data
 			})
 			.success(function(req){

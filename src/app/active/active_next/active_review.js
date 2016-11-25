@@ -1,11 +1,15 @@
 var active_module = angular.module('active_review_module', []);
-active_module.controller('active_review_controller', ['$scope', '$http', '$location','$stateParams', 'Const',  
-	function($scope, $http, $location, $stateParams, Const){
+active_module.controller('active_review_controller', ['$scope', '$http', '$location','$stateParams', 'fyData', 'Const',  
+	function($scope, $http, $location, $stateParams, fyData, Const){
 
 	// console.log('回顾——activeid:'+$stateParams.id);	
 	$http({
 			method: 'get',
-			url: Const.baseUrl + 'Event/GetEvent?Token=123456&EventId='+$stateParams.id
+			url: Const.baseUrl + 'Event/GetEvent',
+			params: {
+		                'Token': fyData.user.token,
+		                'EventId': $stateParams.id
+		            }
 		})
 		.success(function(req){
 			if(1){
