@@ -156,30 +156,4 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         });
     }
 
-    var self = this;
-
-    function getToken() {
-        if (self.user.openid != null) {
-            $http({
-                method: 'GET',
-                url: Const.baseUrl + "/Token/GetToken",
-                params: {
-                    'OpenId': self.user.openid,
-                }
-            }).success(function(res) {
-                if (res == null) {
-                    alert("认证出错，请退出重新登陆");
-                    return;
-                }
-                self.user.token = res;
-                sessionStorage.setItem('user', JSON.stringify(self.user))
-            });
-        }
-        setTimeout(function() {
-            getToken();
-        }, 1000 * 60);
-    }
-
-    // getToken();
-
 });
