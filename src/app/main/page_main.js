@@ -31,9 +31,12 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
             window.location.href = $scope.esUrl;
             return;
         }
-        getEsUrl(function() {
-            window.location.href = $scope.esUrl;
+        fyData.getToken(function(token) {
+            getEsUrl(function() {
+                window.location.href = $scope.esUrl;
+            }, token);
         });
+
     };
     $scope.goToFeedback = function() {
         $location.path('/feedback');
@@ -65,27 +68,31 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
             showNavButtons: false
         };
         $scope.nowPage = fyData.nowPage;
-        $scope.banners = [{},{}];
-        getBanners(function(res) {
-            // res = JSON.parse(res);
-            $scope.banners = res;
+        $scope.banners = [{}, {}];
+
+        fyData.getToken(function(token) {
+            getBanners(function(res) {
+                // res = JSON.parse(res);
+                $scope.banners = res;
+            }, token);
+
+            getCategoryList('F3A147D3-92B6-4BC6-8DD2-0988CBE46F32', function(res) {
+                // res = JSON.parse(res);
+                $scope.productList = res;
+            }, token);
         });
 
-        getCategoryList('F3A147D3-92B6-4BC6-8DD2-0988CBE46F32', function(res) {
-            // res = JSON.parse(res);
-            $scope.productList = res;
-        })
 
         $scope.user = fyData.user;
 
     }
 
-    function getEsUrl(fun) {
+    function getEsUrl(fun, token) {
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Credit/GetEsURL",
             params: {
-                'Token': fyData.user.token
+                'Token': token
             }
         }).success(function(res) {
             // $scope.esUrl = JSON.parse(res);
@@ -96,12 +103,12 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
         });
     }
 
-    function getCategoryList(CategoryID, fun) {
+    function getCategoryList(CategoryID, fun, token) {
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Category/GetCategoryList",
             params: {
-                'Token': fyData.user.token,
+                'Token': token,
                 'CategoryID': CategoryID
             }
         }).success(function(res) {
@@ -111,12 +118,12 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
         });
     }
 
-    function getBanners(fun) {
+    function getBanners(fun, token) {
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Info/GetInfoList",
             params: {
-                'Token': fyData.user.token,
+                'Token': token,
                 'CategoryID': '0CB47B14-7535-407E-AEA1-646F82DDB118',
                 'PageIndex': 1,
                 'PageSize': 100

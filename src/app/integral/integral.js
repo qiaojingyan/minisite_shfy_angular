@@ -6,59 +6,58 @@ integralModule.controller('myIntegralCtrl', ['$scope', '$http', '$location', '$s
     init();
 
     function init() {
-        $http({
-            method: 'GET',
-            url: Const.baseUrl + "/Credit/GetCredit",
-            params: {
-                'Token': fyData.user.token
-            }
-        }).success(function(res) {
-            $scope.myIntegral = res;
-        });
-        $http({
-            method: 'GET',
-            url: Const.baseUrl + "/Credit/GetCreditList",
-            params: {
-                'Token': fyData.user.token,
-                'CreditType': ''
-            }
-        }).success(function(res) {
-            $scope.dataGetSuccess = true;
-            $scope.myIntegralRecords = res;
-            // $scope.myIntegralRecords = JSON.parse(res);
-
-            $scope.myAchieveIntegralRecords = [];
-            $scope.myExchangeIntegralRecords = [];
-            $scope.myIntegralRecords.forEach(function(record) {
-                var date = new Date(record.CreditDate);
-                var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
-                var day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
-                record.CreditDateText = date.getFullYear() + "-" + month + "-" + day;
-
-                if (record.CreditType == 1) {
-                    $scope.myAchieveIntegralRecords.push(record);
-                } else {
-                    $scope.myExchangeIntegralRecords.push(record);
+        fyData.getToken(function(token) {
+            $http({
+                method: 'GET',
+                url: Const.baseUrl + "/Credit/GetCredit",
+                params: {
+                    'Token': token
                 }
+            }).success(function(res) {
+                $scope.myIntegral = res;
             });
+            $http({
+                method: 'GET',
+                url: Const.baseUrl + "/Credit/GetCreditList",
+                params: {
+                    'Token': token,
+                    'CreditType': ''
+                }
+            }).success(function(res) {
+                $scope.dataGetSuccess = true;
+                $scope.myIntegralRecords = res;
+                // $scope.myIntegralRecords = JSON.parse(res);
+
+                $scope.myAchieveIntegralRecords = [];
+                $scope.myExchangeIntegralRecords = [];
+                $scope.myIntegralRecords.forEach(function(record) {
+                    var date = new Date(record.CreditDate);
+                    var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : '0' + (date.getMonth() + 1);
+                    var day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate();
+                    record.CreditDateText = date.getFullYear() + "-" + month + "-" + day;
+
+                    if (record.CreditType == 1) {
+                        $scope.myAchieveIntegralRecords.push(record);
+                    } else {
+                        $scope.myExchangeIntegralRecords.push(record);
+                    }
+                });
+            });
+            getEsUrl(token);
         });
-        getEsUrl();
+
         $scope.selectedPage = 1;
     }
 
-    function getEsUrl(fun) {
+    function getEsUrl(token) {
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Credit/GetEsURL",
             params: {
-                'Token': fyData.user.token
+                'Token': token
             }
         }).success(function(res) {
-            // $scope.esUrl = JSON.parse(res);
             $scope.esUrl = res;
-            if (fun) {
-                fun();
-            }
         });
     }
 

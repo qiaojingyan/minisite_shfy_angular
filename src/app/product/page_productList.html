@@ -4,12 +4,18 @@
     <div class="tips_name">{{productCategory.CategoryName}}</div>
     <div class="productlist">
         <div class="product_item" ng-repeat="product in productList" ng-click='goProductDetail(product.ProductID)'>
-            <div class="text_expectedIncome">{{getListIncome(product.ExpectedIncome)}}</div>
-            <div class="text_expectedIncomeText">{{product.ExpectedIncomeDesc}}</div>
-            <div class="line_split"></div>
-            <div class="text_name">{{product.Name}}</div>
-            <div class="text_IncomeType">{{getRewardType(product)}}</div>
-            <div class="arrow"></div>
+            <div class="product_item_left">
+                <div class="text_name">{{product.Name}}</div>
+                <div class="product_item_left_content">认购起点 <span class="text_subscriptionPoint">{{product.SubscriptionPoint}}</span></div>
+                <div class="product_item_left_content">资金投向 {{product.Investment}}</div>
+                <div class="product_item_tips_con">
+                    <span class="product_item_tips" ng-if="product.IncomeType!=''">{{product.IncomeType}}</span>
+                    <span class="product_item_tips product_item_tips_after" ng-if="product.RewardType!=''">{{product.RewardType}}</span>
+                </div>
+            </div>
+            <div class="arrow_con">
+                <div class="arrow"></div>
+            </div>
         </div>
     </div>
     <div class="product_content" id="product_content">

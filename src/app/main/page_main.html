@@ -30,7 +30,9 @@
         </div>
         <div class="profile_fy" ng-if="nowPage == 3">
             <div class="profile_head_con">
-                <div class="profile_head_img" style="background-image: url({{user.HeadImgUrl}})"></div>
+                <div class="profile_head_img">
+                    <img src="{{user.HeadImgUrl}}" style="width: 100%;height: 100%;border-radius: 90px;">
+                </div>
                 <div class="profile_head_nickname">{{user.NickName}}</div>
                 <div class="btn_linkPhone" ng-click='binding_mobile()'>绑定手机号</div>
             </div>

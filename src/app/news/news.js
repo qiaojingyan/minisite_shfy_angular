@@ -27,20 +27,22 @@ newsModule.controller('newsListCtrl', ['$scope', '$http', '$location', '$statePa
     function getNewsList(CategoryID) {
 
         $scope.dataGetSuccess = false;
-        $http({
-            method: 'GET',
-            url: Const.baseUrl + "/Info/GetInfoList",
-            params: {
-                'Token': fyData.user.token,
-                'CategoryID': CategoryID,
-                'PageIndex': 1,
-                'PageSize': 100
-            }
-        }).success(function(res) {
-            $scope.dataGetSuccess = true;
-            // res = JSON.parse(res);
-            $scope.NewsList = res;
+        fyData.getToken(function(token) {
+            $http({
+                method: 'GET',
+                url: Const.baseUrl + "/Info/GetInfoList",
+                params: {
+                    'Token': token,
+                    'CategoryID': CategoryID,
+                    'PageIndex': 1,
+                    'PageSize': 100
+                }
+            }).success(function(res) {
+                $scope.dataGetSuccess = true;
+                $scope.NewsList = res;
+            });
         });
+
 
     }
 
@@ -72,20 +74,22 @@ newsModule.controller('newsDetailCtrl', ['$scope', '$http', '$location', '$state
     init();
 
     function init() {
-        $http({
-            method: 'GET',
-            url: Const.baseUrl + "/Info/GetInfo",
-            params: {
-                'Token': fyData.user.token,
-                'InfoID': $stateParams.newsId,
-            }
-        }).success(function(res) {
-            $scope.dataGetSuccess = true;
-            // res = JSON.parse(res);
-            $scope.nowNews = res;
-            if ($scope.nowNews.ContentBody != undefined && $scope.nowNews.ContentBody != null) {
-                document.getElementById('news_detail_content').innerHTML = $scope.nowNews.ContentBody;
-            }
+        fyData.getToken(function(token) {
+            $http({
+                method: 'GET',
+                url: Const.baseUrl + "/Info/GetInfo",
+                params: {
+                    'Token': token,
+                    'InfoID': $stateParams.newsId,
+                }
+            }).success(function(res) {
+                $scope.dataGetSuccess = true;
+                $scope.nowNews = res;
+                if ($scope.nowNews.ContentBody != undefined && $scope.nowNews.ContentBody != null) {
+                    document.getElementById('news_detail_content').innerHTML = $scope.nowNews.ContentBody;
+                }
+            });
         });
+
     }
 }]);
