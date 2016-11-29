@@ -1,0 +1,15 @@
+<div class="integral_achieve" ng-controller="achieveIntegralCtrl">
+    <div class="text_content"><span class="highlight">{{user.NickName}}，</span>专属二维码
+        <br>长按保存图片，分享图片赢取积分
+    </div>
+    <img src="{{imgUrl}}" class="imgContent">
+    <div class="spinner_con" ng-if="loading">
+        <div class="spinner spinner_integral_achieve">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+</div>

@@ -42,6 +42,7 @@ productMoudle.controller('productListCtrl', ['$scope', '$http', '$location', '$s
     }
 
     $scope.goProductDetail = function(CategoryID) {
+        console.log('/product_detail/' + $stateParams.categoryId + '/' + CategoryID);
         if (fyData.user.Mobile == null || fyData.user.Mobile == undefined || fyData.user.Mobile == '') {
             if (confirm("请绑定手机号，可查看更多内容哦！")) {
                 $location.path('binding_mobile');
@@ -107,7 +108,6 @@ productMoudle.controller('productDetailCtrl', ['$scope', '$http', '$location', '
                 // res = JSON.parse(res);
                 $scope.dataGetSuccess = true;
                 $scope.productDetail = res;
-
                 var ProductElement = [{
                     key: '产品名称',
                     value: res.Name,

@@ -123,6 +123,20 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 templateUrl: './app/loading/page_loading.html'
             }
         }
+    }).state('integral_achieve', {
+        url: '/integral_achieve',
+        views: {
+            '': {
+                templateUrl: './app/integral/page_achieveIntegral.html'
+            }
+        }
+    }).state('active_online_1202', {
+        url: '/active_online_1202',
+        views: {
+            '': {
+                templateUrl: './app/active/active_online/active_online_1202.html'
+            }
+        }
     });
 }).run(function($location) {
     if (!sessionStorage.getItem('user')) {
@@ -136,6 +150,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     }
     this.nowPage = 1;
     this.nowNewsCategory = 0;
+    var self = this;
 
     this.getToken = function(fun) {
         $http({

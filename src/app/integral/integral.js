@@ -82,4 +82,26 @@ integralModule.controller('myIntegralCtrl', ['$scope', '$http', '$location', '$s
 
     }
 
-}])
+}]);
+
+integralModule.controller('achieveIntegralCtrl', ['$scope', '$http', '$location', '$stateParams', 'Const', 'fyData', function($scope, $http, $location, $stateParams, Const, fyData) {
+    init();
+
+    function init() {
+        $scope.user = fyData.user;
+        $scope.loading = true;
+
+        fyData.getToken(function(token) {
+            $http({
+                method: 'GET',
+                url: Const.baseUrl + "/User/GetUserQrCodeURL",
+                params: {
+                    'Token': token
+                }
+            }).success(function(res) {
+                $scope.loading = false;
+                $scope.imgUrl = res;
+            });
+        });
+    }
+}]);

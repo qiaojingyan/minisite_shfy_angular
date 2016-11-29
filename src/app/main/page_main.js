@@ -53,6 +53,9 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
     $scope.goToBannerDetail = function(RedirectURL) {
         $location.path(RedirectURL);
     }
+    $scope.goToAchieveIntegral = function() {
+        $location.path('/integral_achieve');
+    }
 
     function init() {
         var show_con_height = document.body.clientHeight - 88;
