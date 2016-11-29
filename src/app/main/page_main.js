@@ -1,7 +1,7 @@
 'use strict';
 var mainMoudle = angular.module('mainMoudle', ['ksSwiper', 'ngTouch']);
 
-mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyData', function($scope, $http, $location, Const, fyData) {
+mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', '$stateParams', 'Const', 'fyData', function($scope, $http, $location, $stateParams, Const, fyData) {
     init();
 
     $scope.chosePage = function(num) {
@@ -54,6 +54,9 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', 'Const', 'fyD
         $location.path(RedirectURL);
     }
     $scope.goToAchieveIntegral = function() {
+        var b = new Base64();
+        var str = b.encode(fyData.user.OpenId);
+        $location.search().useInfo = str;
         $location.path('/integral_achieve');
     }
 

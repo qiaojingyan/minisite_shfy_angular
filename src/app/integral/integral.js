@@ -88,10 +88,20 @@ integralModule.controller('achieveIntegralCtrl', ['$scope', '$http', '$location'
     init();
 
     function init() {
+
         $scope.user = fyData.user;
         $scope.loading = true;
 
+        var b = new Base64();
+        var useInfo = $location.search().useInfo;
+        if (useInfo == undefined) {
+            useInfo = b.encode(fyData.user.OpenId);
+            $location.search().useInfo = useInfo;
+        }
+        var openid = b.decode(useInfo);
+
         fyData.getToken(function(token) {
+            console.log("token来了");
             $http({
                 method: 'GET',
                 url: Const.baseUrl + "/User/GetUserQrCodeURL",
@@ -99,9 +109,20 @@ integralModule.controller('achieveIntegralCtrl', ['$scope', '$http', '$location'
                     'Token': token
                 }
             }).success(function(res) {
+                console.log("二维码来了");
                 $scope.loading = false;
                 $scope.imgUrl = res;
             });
-        });
+            $http({
+                method: 'GET',
+                url: Const.baseUrl + "/User/GetUser",
+                params: {
+                    'Token': token
+                }
+            }).success(function(res) {
+                console.log("User信息来了");
+                $scope.user = res;
+            });
+        }, openid);
     }
 }]);

@@ -82,6 +82,16 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                 fyData.user.token = Token;
                 fyData.user.openid = openid;
                 sessionStorage.setItem('user', JSON.stringify(fyData.user));
+                if (redirectPath == '/integral_achieve') {
+                    console.log($location.search().useInfo);
+                    var useInfo = $location.search().useInfo;
+                    if (useInfo == undefined) {
+                        var b = new Base64();
+                        var str = b.encode(fyData.user.OpenId);
+                        useInfo = str;
+                    }
+                    $location.search().useInfo = useInfo;
+                }
                 $location.path(redirectPath);
             });
         });

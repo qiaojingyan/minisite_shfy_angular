@@ -152,12 +152,15 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     this.nowNewsCategory = 0;
     var self = this;
 
-    this.getToken = function(fun) {
+    this.getToken = function(fun,openid) {
+        if(openid == undefined){
+            openid = self.user.OpenId;
+        }
         $http({
             method: 'GET',
             url: Const.baseUrl + "/Token/GetToken",
             params: {
-                'OpenId': self.user.openid,
+                'OpenId': openid,
             }
         }).success(function(res) {
             if (res == null) {
@@ -170,5 +173,4 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             }
         });
     }
-
 });
