@@ -1,20 +1,55 @@
-<div class="active_online_1202">
-	<div class="scene1">
-		<div class="scene1_title"></div>
-		<div class="scene1_pointer">
-			<div class="scene1_pointer_title"></div>
-		</div>
-		<div class="active_btn">
-			<div class="active_text_cj" ng-click="cj()"></div>
-		</div>
-	</div>
-	<div class="scene2">
-		<div class="scene2_awardbg">
-			<div class="scene2_award"></div>
-		</div>
-		<div class="scene2_award_info"></div>
-		<div class="active_btn">
-			<div class="scene2_text_saveInfo"></div>
-		</div>
-	</div>
+<div class="active_online_1202" ng-controller="active_2012_controller">
+    <div class="scene1" ng-if="nothasMyAward">
+        <div class="scene1_title"></div>
+        <div class="scene1_pointer">
+        </div>
+        <div class="scene1_pointer_title"></div>
+        <div class="active_btn">
+            <div class="active_text_cj" ng-click="cj()"></div>
+        </div>
+    </div>
+    <iframe id="ifram1" style="pointer-events: none;opacity: 0;"></iframe>
+    <div class="scene2 {{myAward}} {{saveInfoSuccess}} {{hasexchange}}" style="display: {{nothasMyAward?'none':'block'}}">
+        <div class="scene2_awardbg">
+            <div class="scene2_award"></div>
+        </div>
+        <div class="scene2_award_info">
+        </div>
+        <div class="scene2_award_info2">
+            现金红包抽奖一次
+            <br>获奖编号：{{myAwardInfo.AwardNumber}}
+        </div>
+        <div class="active_btn active_btn_scene2_big">
+            <div class="scene2_text_saveInfo" ng-click="openInfo()"></div>
+            <div class="active_text_exchange" ng-click="exchange()"></div>
+        </div>
+        <div class="btn_hasexchange"></div>
+        <div class="info_con">
+            <div class="btn_close" ng-click="closeInfo()"></div>
+            <div class="text_name text">姓名</div>
+            <input class="input_name input_active" ng-model="username"></input>
+            <div class="line line1"></div>
+            <div class="text_phone text">手机号</div>
+            <input class="input_phone input_active" type="number" ng-model="phonenum"></input>
+            <div class="line line2"></div>
+            <div class="text_code text">验证码</div>
+            <input class="input_code input_active" type="number" ng-model="code"></input>
+            <div class="active_btn2 btn_sendCode send_autocode_btn" ng-click="sendCode()">获取验证码
+            </div>
+            <div class="line line3"></div>
+            <div class="active_btn btn_sure">
+                <div class="text_sure" ng-click="saveInfo()"></div>
+            </div>
+        </div>
+    </div>
+    <div class="spinner_con" ng-if="!dataGetSuccess">
+        <div class="spinner spinner_product_detail">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+    </div>
+    <div class="img2code" ng-if="show2Code"></div>
 </div>

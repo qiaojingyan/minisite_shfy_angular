@@ -29,6 +29,8 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
     }
 
     function init() {
+        console.log($stateParams.redirectUrl);
+        console.log('loading');
         var redirectPath = decodeURIComponent($stateParams.redirectUrl);
         var openid = getCookie('FXI.WeChat.OpenId');
         if ($location.search().debug == 1314) {
@@ -82,7 +84,7 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
                 fyData.user.token = Token;
                 fyData.user.openid = openid;
                 sessionStorage.setItem('user', JSON.stringify(fyData.user));
-                if (redirectPath == '/integral_achieve') {
+                if (redirectPath == '/integral_achieve' || redirectPath == '/active_online_1202') {
                     console.log($location.search().useInfo);
                     var useInfo = $location.search().useInfo;
                     if (useInfo == undefined) {

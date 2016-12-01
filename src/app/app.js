@@ -1,6 +1,6 @@
 'use strict';
 var routerApp = angular.module('routerApp', ['ui.router', 'mainMoudle', 'manager.const', 'productMoudle', 'newsModule', 'integralModule', 'feedbackModule', 'active_module', 'active_detail_module', 'manage_money_module',
-    'about_fy_module', 'my_info_module', 'cantact_us_module', 'active_review_module', 'binding_mobile_module', 'loadingModule'
+    'about_fy_module', 'my_info_module', 'cantact_us_module', 'active_review_module', 'binding_mobile_module', 'loadingModule', 'active_online_module'
 ]);
 routerApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
@@ -137,8 +137,16 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 templateUrl: './app/active/active_online/active_online_1202.html'
             }
         }
+    }).state('active_online_1202_wine', {
+        url: '/active_online_1202_wine',
+        views: {
+            '': {
+                templateUrl: './app/active/active_online/active_online_1202_wine.html'
+            }
+        }
     });
 }).run(function($location) {
+    console.log($location.path());
     if (!sessionStorage.getItem('user')) {
         $location.path('/loading/' + encodeURIComponent($location.path()));
     }
@@ -152,8 +160,8 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     this.nowNewsCategory = 0;
     var self = this;
 
-    this.getToken = function(fun,openid) {
-        if(openid == undefined){
+    this.getToken = function(fun, openid) {
+        if (openid == undefined) {
             openid = self.user.OpenId;
         }
         $http({

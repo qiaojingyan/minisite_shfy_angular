@@ -1,5 +1,8 @@
 .active_online_1202 {
     ._br-position(0, 0, 100%, 100%);
+    .img2code {
+        ._br-position(0, 0, 100%, 100%, "@{imgUrl}/active_1202/active_online_1202_2code.png");
+    }
     .scene2 {
         ._br-position(0, 0, 100%, 100%, "@{imgUrl}/active_1202/active_online_1202_bg2.png");
         .scene2_awardbg {
@@ -11,9 +14,160 @@
         .scene2_award_info {
             ._br-position(62px, 624px, "@{imgUrl}/active_1202/active_online_1202_awardinfo.png");
         }
+        .scene2_award_info2 {
+            display: none;
+            ._br-position(78px, 624px, "@{imgUrl}/active_1202/active_online_1202_text_saveinfosuccess_6.png");
+            color: white;
+            font-size: 28px;
+            text-align: center;
+            line-height: 49px;
+        }
         .scene2_text_saveInfo {
             ._br-position(14px, 15px, 502px, 82px, "@{imgUrl}/active_1202/active_online_1202_text_saveInfo.png");
-        	background-position: center center;
+            background-position: center center;
+        }
+        .info_con {
+            display: none;
+            height: 499px;
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+            background-color: white;
+        }
+        .text {
+            ._br-position(25px, 98px, 100%, 40px);
+            font-size: 24px;
+        }
+        .line {
+            ._br-position(0, 158px, 100%, 1px);
+            background-color: #eaeaea;
+        }
+        .text_phone {
+            top: 190px;
+        }
+        .line2 {
+            top: 158px-98px+190px;
+        }
+        .text_code {
+            top: 278px;
+        }
+        .line3 {
+            top: 158px-98px+278px;
+        }
+        .text_sure {
+            ._br-position(14px, 15px, 502px, 82px, "@{imgUrl}/active_1202/active_online_1202_text_sure.png");
+            background-position: center center;
+        }
+        .btn_sendCode {
+            ._br-position(456px, 176px, 160px, 56px);
+            background-color: #fbd50d;
+            color: #926806;
+            font-size: 24px;
+            text-align: center;
+            ._br-border-radius(4px);
+            font-weight: bold;
+            line-height: 56px;
+        }
+        .text_sendcode {
+            ._br-position(7px, 12px, 183px, 62px, "@{imgUrl}/active_1202/active_online_1202_text_sendCode.png");
+            background-position: center center;
+        }
+        .input_active {
+            ._br-position(107px, 92px, 300px, 47px);
+            font-size: 24px;
+            border: none;
+        }
+        .input_phone {
+            top: 186px;
+            left: 107px;
+        }
+        .input_code {
+            top: 272px;
+            left: 107px;
+        }
+        .btn_close {
+            ._br-position(576px, 20px, "@{imgUrl}/active_1202/active_online_1202_btn_close.png");
+        }
+        .active_text_exchange {
+            display: none;
+            ._br-position(14px, 15px, 502px, 82px, "@{imgUrl}/active_1202/active_online_1202_text_exchange.png");
+            background-position: center center;
+        }
+        .btn_hasexchange {
+            display: none;
+            ._br-position(508px, 478px, "@{imgUrl}/active_1202/active_online_1202_hasexchange.png");
+        }
+        &.award1 {
+            .scene2_award {
+                ._br-position(-89px, -140px, "@{imgUrl}/active_1202/active_online_1202_award1.png");
+            }
+        }
+        &.award2 {
+            .scene2_award {
+                ._br-position(-83px, -128px, "@{imgUrl}/active_1202/active_online_1202_award2.png");
+            }
+        }
+        &.award3 {
+            .scene2_award {
+                ._br-position(-89px, -126px, "@{imgUrl}/active_1202/active_online_1202_award3.png");
+            }
+        }
+        &.award4 {
+            .scene2_award {
+                ._br-position(-72px, -134px, "@{imgUrl}/active_1202/active_online_1202_award4.png");
+            }
+        }
+        &.award5 {
+            .scene2_award {
+                ._br-position(-55px, -134px, "@{imgUrl}/active_1202/active_online_1202_award5.png");
+            }
+        }
+        &.award6 {
+            .scene2_awardbg {
+                ._br-position(190px, 387px, "@{imgUrl}/active_1202/active_online_1202_award6.png");
+            }
+            .scene2_award {
+                display: none;
+            }
+            .scene2_award_info {
+                ._br-position(52px, 624px, "@{imgUrl}/active_1202/active_online_1202_awardinfo2.png");
+            }
+        }
+        &.saveInfoSuccess {
+            .scene2_award_info {
+                ._br-position(52px, 624px, "@{imgUrl}/active_1202/active_online_1202_text_saveinfosuccess.png");
+            }
+            .active_text_exchange {
+                display: block;
+            }
+            .scene2_text_saveInfo {
+                display: none;
+            }
+            &.award6 {
+                .scene2_award_info {
+                    display: none;
+                }
+                .scene2_award_info2 {
+                    display: block;
+                }
+                .active_btn_scene2_big {
+                    display: none;
+                }
+            }
+        }
+        &.hasexchange {
+            .scene2_award_info {
+                ._br-position(52px, 624px, "@{imgUrl}/active_1202/active_online_1202_text_hasexchange.png");
+            }
+            .scene2_text_saveInfo {
+                display: none;
+            }
+            .active_btn_scene2_big {
+                display: none;
+            }
+            .btn_hasexchange {
+                display: block;
+            }
         }
     }
     .scene1 {
@@ -23,9 +177,64 @@
         }
         .scene1_pointer {
             ._br-position(270px, 465px, "@{imgUrl}/active_1202/active_online_1202_pointer.png");
+            ._br_origin(73px 103px);
+            &.award1 {
+                ._br-animation(rotate_An_1 2s 0s forwards linear);
+                ._br-keyframes(rotate_An_1);
+                .-frames(@-...) {
+                    100% {
+                        ._br-transform(rotate(35deg+360deg*2));
+                    }
+                }
+            }
+            &.award3 {
+                ._br-animation(rotate_An_2 2.2s 0s forwards linear);
+                ._br-keyframes(rotate_An_2);
+                .-frames(@-...) {
+                    100% {
+                        ._br-transform(rotate(92deg+360deg*2));
+                    }
+                }
+            }
+            &.award5 {
+                ._br-animation(rotate_An_3 2.4s 0s forwards linear);
+                ._br-keyframes(rotate_An_3);
+                .-frames(@-...) {
+                    100% {
+                        ._br-transform(rotate(156deg+360deg*2));
+                    }
+                }
+            }
+            &.award2 {
+                ._br-animation(rotate_An_4 2.6s 0s forwards linear);
+                ._br-keyframes(rotate_An_4);
+                .-frames(@-...) {
+                    100% {
+                        ._br-transform(rotate(219deg+360deg*2));
+                    }
+                }
+            }
+            &.award6 {
+                ._br-animation(rotate_An_5 2.8s 0s forwards linear);
+                ._br-keyframes(rotate_An_5);
+                .-frames(@-...) {
+                    100% {
+                        ._br-transform(rotate(277deg+360deg*2));
+                    }
+                }
+            }
+            &.award4 {
+                ._br-animation(rotate_An_6 3s 0s forwards linear);
+                ._br-keyframes(rotate_An_6);
+                .-frames(@-...) {
+                    100% {
+                        ._br-transform(rotate(331deg+360deg*2));
+                    }
+                }
+            }
         }
         .scene1_pointer_title {
-            ._br-position(20px, 51px, 102px, 102px, "@{imgUrl}/active_1202/active_online_1202_poiner_title.png");
+            ._br-position(270px+20px, 465px+51px, 102px, 102px, "@{imgUrl}/active_1202/active_online_1202_poiner_title.png");
             background-position: center center;
         }
         .active_text_cj {

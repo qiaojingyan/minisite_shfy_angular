@@ -51,6 +51,9 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', '$stateParams
         $location.path('/cantact_us');
     };
     $scope.goToBannerDetail = function(RedirectURL) {
+        var b = new Base64();
+        var useInfo = b.encode(fyData.user.OpenId);
+        $location.search().useInfo = useInfo;
         $location.path(RedirectURL);
     }
     $scope.goToAchieveIntegral = function() {
