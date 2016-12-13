@@ -21,6 +21,7 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
 
                 }).success(function(req) {
                     if (1) {
+                        console.log(req);
                         $scope.all_acitves = req;
                         // $scope.all_acitves = JSON.parse(req);
                         // console.log($scope.all_acitves);
@@ -39,6 +40,13 @@ active_module.controller('active_controller', ['$scope', '$http', '$location', '
             // console.log('click_active:'+active.Title);
             // $location.path('/active_review/'+active.EventID);
             if (active.EventStatus === 1) {
+                if (active.URL != undefined || active.URL != '') {
+                    var b = new Base64();
+                    var useInfo = b.encode(fyData.user.OpenId);
+                    $location.search().useInfo = useInfo;
+                    $location.path(active.URL);
+                    return;
+                }
 
                 if (fyData.user.Mobile == undefined || fyData.user.Mobile == null || fyData.user.Mobile.length <= 0) {
                     if (confirm('请先绑定手机号，可以查看更多精彩内容！')) {

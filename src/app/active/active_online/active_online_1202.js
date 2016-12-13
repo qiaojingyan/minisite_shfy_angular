@@ -188,16 +188,6 @@ active_online_module.controller('active_2012_controller', ['$scope', '$http', '$
         $scope.couldCj = false;
 
         fyData.getToken(function(token) {
-            $http({
-                method: 'GET',
-                url: Const.baseUrl + "/User/SaveUserEvent",
-                params: {
-                    'Token': token,
-                    'EventType': 2
-                }
-            }).success(function(res) {
-                console.log(res);
-            });
             //判断有没有奖品
             judgeHasAward(token, function(res) {
                 if (res == false) {
@@ -205,6 +195,16 @@ active_online_module.controller('active_2012_controller', ['$scope', '$http', '$
                     $scope.couldCj = true;
                     return;
                 }
+                $http({
+                    method: 'GET',
+                    url: Const.baseUrl + "/User/SaveUserEvent",
+                    params: {
+                        'Token': token,
+                        'EventType': 2
+                    }
+                }).success(function(res) {
+                    console.log(res);
+                });
                 //抽奖
                 $http({
                     method: 'GET',

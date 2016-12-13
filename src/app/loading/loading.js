@@ -37,7 +37,7 @@ loadingModule.controller('loadingCtrl', ['$scope', '$http', '$location', '$state
             openid = 'oeJFAvy0Dr-Zcz_pWZH86DAaSBO8';
         }
         if (openid == undefined || openid == null) {
-            window.location.href = 'http://wechat.fxigroup.com/wechat/oauth/index?param=' + encodeURIComponent('http://wechat.fxigroup.com/minisite/#/' + redirectPath);
+            window.location.href = 'http://wechat.fxigroup.com/wechat/oauth/index?param=' + encodeURIComponent('http://wechat.fxigroup.com/minisite/#' + redirectPath);
             return;
         }
         $http({

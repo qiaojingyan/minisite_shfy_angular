@@ -82,6 +82,7 @@ mainMoudle.controller('mainCtrl', ['$scope', '$http', '$location', '$stateParams
         fyData.getToken(function(token) {
             getBanners(function(res) {
                 // res = JSON.parse(res);
+                console.log(res);
                 $scope.banners = res;
             }, token);
 
